@@ -1,2 +1,2 @@
-#  Team 13
-## Group Project
+##  Team 13
+#### Group Project - Splinter
