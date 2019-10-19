@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
+<ListView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
         <TextView
             android:id="@+id/Bill1"
             android:layout_width="wrap_content"
@@ -51,5 +53,5 @@
             android:layout_toRightOf="@id/Bill3"
             android:layout_below="@+id/Bill2"
             android:text=">"></Button>
-
+</ListView>
 </RelativeLayout>
