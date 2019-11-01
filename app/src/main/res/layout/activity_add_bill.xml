@@ -5,50 +5,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddBillActivity">
+    tools:isScrollContainer="true"
 
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/lv_item"
+        android:numColumns="4"/>
+
+    <!--    <ListView-->
+<!--        android:id="@+id/lv_item"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="600dp"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentTop="true"/>-->
     <EditText
         android:id="@+id/editTextItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Item Name"
-        android:layout_marginVertical="600dp"
-        android:layout_marginLeft="10dp"
-
-     />
+        android:layout_below="@+id/lv_item" />
 
     <EditText
         android:id="@+id/editTextItemQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/editTextItemName"
-        android:hint="Quantity"
-        android:layout_marginVertical="600dp"
         android:layout_marginLeft="20dp"
+        android:hint="Quantity"
+        android:layout_below="@+id/lv_item"
         />
 
     <EditText
         android:id="@+id/editTextItemPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/lv_item"
+        android:layout_marginLeft="20dp"
         android:hint="Unit Price"
         android:layout_toRightOf="@+id/editTextItemQuantity"
-        android:layout_marginVertical="600dp"
-        android:layout_marginLeft="20dp"
-
         />
 
     <Button
         android:id="@+id/btnAddItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginVertical="600dp"
+        android:layout_below="@+id/lv_item"
+        android:layout_marginLeft="20dp"
         android:layout_toRightOf="@+id/editTextItemPrice"
-        android:text="Add"
-        />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lv_item"/>
+        android:layout_marginBottom="0dp"
+        android:text="Add" />
+    <Button
+        android:id="@+id/itemSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_below="@id/btnAddItem" />
+    <Button
+        android:id="@+id/billDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:layout_below="@id/btnAddItem"
+        android:layout_toRightOf="@id/itemSave" />
 </RelativeLayout>
