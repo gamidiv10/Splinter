@@ -63,46 +63,9 @@ public class AddBillActivity extends Activity {
     }
 
 
-    private void setToggleEvent(GridView lvItems){
-
-        for(int i=0; i<lvItems.getChildCount(); i++) {
-
-            final CardView cardView = (CardView) lvItems.getChildAt(i);
-
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (cardView.getCardBackgroundColor().getDefaultColor() == -1)
-                    {
-                        cardView.setCardBackgroundColor(Color.parseColor("#FF6F00"));
-                        Toast.makeText(addBillActivity.this, "State :  True", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-
-                        cardView.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
-                        Toast.makeText(addBillActivity.this, "State :  False", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
-    }
 
 
-    private void setSingleEvent(GridView lvItems){
 
-        for(int i=0; i<lvItems.getChildCount(); i++)
-        {
 
-            CardView cardView = (CardView)lvItems.getChildAt(i);
-
-            final int finalI = i;
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(addBillActivity.this, "Clicked at index", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-    }
 
 }
