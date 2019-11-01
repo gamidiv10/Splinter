@@ -4,15 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 
 public class MainActivity extends AppCompatActivity {
 
-  private Button addBillButton;
+  private Button addBillButton, addParticipantButton;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -20,25 +18,30 @@ public class MainActivity extends AppCompatActivity {
 
 
     addBillButton = findViewById(R.id.addBillButton);
+    addParticipantButton = findViewById(R.id.addParticipantButton);
 
     addBillButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
 
-      Intent intentForAddingBill = new Intent(MainActivity.this, addBillActivity.class);
+        Intent intentForAddingBill = new Intent(MainActivity.this, AddBillActivity.class);
 
         startActivity(intentForAddingBill);
 
       }
     });
 
+    addParticipantButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        Intent intentForAddingParticipant = new Intent(MainActivity.this, AddParticipantActivity.class);
+
+        startActivity(intentForAddingParticipant);
+      }
 
 
+    });
   }
-//  @Override
-//  public boolean onCreateOptionsMenu(Menu menu) {
-//    getMenuInflater().inflate(R.menu.activity_main, menu);
-//    return true;
-//  }
 
 }

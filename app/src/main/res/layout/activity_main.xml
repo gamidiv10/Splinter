@@ -12,6 +12,15 @@
             android:layout_height="wrap_content"
             android:text="Add Bill"
             android:layout_alignParentRight="true"></Button>
+
+        <Button
+            android:id="@+id/addParticipantButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Participant"
+            android:layout_toLeftOf="@+id/addBillButton"></Button>
+
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

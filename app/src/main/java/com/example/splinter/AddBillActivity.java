@@ -3,16 +3,14 @@ package com.example.splinter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
-public class addBillActivity extends Activity {
+public class AddBillActivity extends Activity {
     private ArrayAdapter<String> itemsAdapter;
     Button itemadd;
     EditText itemName, itemPrice, itemQuantity;
