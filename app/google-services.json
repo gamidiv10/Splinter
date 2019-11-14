@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "393719489595",
+    "firebase_url": "https://splinter-f86ee.firebaseio.com",
+    "project_id": "splinter-f86ee",
+    "storage_bucket": "splinter-f86ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393719489595:android:2e5d94607256c60f41281e",
+        "android_client_info": {
+          "package_name": "com.example.splinter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393719489595-hbnh8avr6sfi4oc2sesed4k90uf3mii6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZZXDyZvOtcBHhgW2jPlDcUfseIhfEjcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393719489595-hbnh8avr6sfi4oc2sesed4k90uf3mii6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
