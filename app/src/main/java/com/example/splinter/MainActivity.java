@@ -67,6 +67,46 @@ public class MainActivity extends AppCompatActivity {
 
 
     });
+
+      // Get the current Instance
+      mLoginAuthentication = FirebaseAuth.getInstance();
+
+      // Get the context of variables in activity
+      etEMAIL = findViewById(R.id.et_email);
+      etPassword = findViewById(R.id.et_password);
+      tvCreateAccount = findViewById(R.id.tv_createAccount);
+      btnLogin = findViewById(R.id.btn_login);
+      textInputLayoutEmail = findViewById(R.id.inputLayout_email);
+      textInputLayoutPassword = findViewById(R.id.inputLayout_password);
+
+      //Firebase Authentication Listener
+
+
+      btnLogin.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+
+              if (validateEMAIL() & validatePassword()) {
+
+                  // Intent to home page
+                  Toast.makeText(getApplicationContext(), "EMAIL: " + EMAIL, Toast.LENGTH_SHORT).show();
+                  Toast.makeText(getApplicationContext(), "Password: " + PASSWORD, Toast.LENGTH_SHORT).show();
+                  startSignIn();
+              }
+
+          }
+      });
+
+
+      tvCreateAccount.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Intent intentToSignup = new Intent(getApplicationContext(), SignupActivity.class);
+              startActivity(intentToSignup);
+
+          }
+      });
+
   }
     //  Initialize variable
     EditText etEMAIL, etPassword;
@@ -89,51 +129,10 @@ public class MainActivity extends AppCompatActivity {
                     ".{8,24}" +               //at least between 8 to 24 characters
                     "$");
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        // Get the current Instance
-        mLoginAuthentication = FirebaseAuth.getInstance();
-
-        // Get the context of variables in activity
-        etEMAIL = findViewById(R.id.et_email);
-        etPassword = findViewById(R.id.et_password);
-        tvCreateAccount = findViewById(R.id.tv_createAccount);
-        btnLogin = findViewById(R.id.btn_login);
-        textInputLayoutEmail = findViewById(R.id.inputLayout_email);
-        textInputLayoutPassword = findViewById(R.id.inputLayout_password);
-
-        //Firebase Authentication Listener
 
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (validateEMAIL() & validatePassword()) {
-
-                    // Intent to home page
-                    Toast.makeText(getApplicationContext(), "EMAIL: " + EMAIL, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(), "Password: " + PASSWORD, Toast.LENGTH_SHORT).show();
-                    startSignIn();
-                }
-
-            }
-        });
 
 
-        tvCreateAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentToSignup = new Intent(getApplicationContext(), SignupActivity.class);
-                startActivity(intentToSignup);
-
-            }
-        });
-
-    }
 
     @Override
     public void onStart() {

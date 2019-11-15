@@ -14,6 +14,7 @@
         android:hint="First Name"
         android:layout_marginVertical="550dp"
         android:layout_marginLeft="10dp"
+        android:inputType="textMultiLine"
 
         />
 
@@ -25,6 +26,8 @@
         android:hint="Last Name"
         android:layout_marginVertical="550dp"
         android:layout_marginLeft="20dp"
+        android:inputType="textMultiLine"
+
         />
 
     <EditText
@@ -35,6 +38,7 @@
         android:layout_toRightOf="@+id/editTextLastName"
         android:layout_marginVertical="550dp"
         android:layout_marginLeft="20dp"
+        android:inputType="textMultiLine"
 
         />
 
