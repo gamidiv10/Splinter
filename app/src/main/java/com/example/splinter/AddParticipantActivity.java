@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 
 public class AddParticipantActivity extends AppCompatActivity {
@@ -24,10 +25,14 @@ public class AddParticipantActivity extends AppCompatActivity {
         lastName = findViewById(R.id.editTextLastName);
         email = findViewById(R.id.editTextEMail);
         addParticipantButton = findViewById(R.id.btnAddParticipant);
-        ListView lvItems;
+        GridView lvItems;
         itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         lvItems = findViewById(R.id.lv_item);
         lvItems.setAdapter(itemsAdapter);
+
+        itemsAdapter.add("First Name");
+        itemsAdapter.add("Last Name");
+        itemsAdapter.add("Email");
 
         addParticipantButton.setOnClickListener(new View.OnClickListener() {
             @Override

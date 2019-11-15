@@ -11,9 +11,9 @@
         android:id="@+id/editTextFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="First Name"
-        android:layout_marginVertical="550dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
+        android:hint="First Name"
         android:inputType="textMultiLine"
 
         />
@@ -22,10 +22,10 @@
         android:id="@+id/editTextLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/editTextFirstName"
         android:hint="Last Name"
-        android:layout_marginVertical="550dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:inputType="textMultiLine"
 
         />
@@ -34,26 +34,32 @@
         android:id="@+id/editTextEMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:hint="E-Mail"
         android:layout_toRightOf="@+id/editTextLastName"
-        android:layout_marginVertical="550dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:inputType="textMultiLine"
 
         />
 
     <Button
         android:id="@+id/btnAddParticipant"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginVertical="550dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/editTextEMail"
         android:text="Add"
         />
-    <ListView
+    <GridView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lv_item">
-    </ListView>
+        android:layout_height="550dp"
+        android:id="@+id/lv_item"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:numColumns="3">
+    </GridView>
+
+
 </RelativeLayout>
