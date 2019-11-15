@@ -5,8 +5,9 @@
     <uses-feature android:name="android.hardware.bluetooth" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:value="ca-app-pub-3162157850946233~8845791837"
@@ -24,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Bluetooth" />
+        <activity android:name=".Locations"/>
     </application>
 
 </manifest>
