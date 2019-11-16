@@ -38,38 +38,13 @@ import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
-  private Button addBillButton, addParticipantButton;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
 
-    addBillButton = findViewById(R.id.addBillButton);
-    addParticipantButton = findViewById(R.id.addParticipantButton);
-
-    addBillButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-
-        Intent intentForAddingBill = new Intent(MainActivity.this, AddBillActivity.class);
-
-        startActivity(intentForAddingBill);
-
-      }
-    });
-
-    addParticipantButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-
-        Intent intentForAddingParticipant = new Intent(MainActivity.this, AddParticipantActivity.class);
-
-        startActivity(intentForAddingParticipant);
-      }
-
-
-    });
 
       // Get the current Instance
       mLoginAuthentication = FirebaseAuth.getInstance();
@@ -92,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
               if (validateEMAIL() & validatePassword()) {
 
                   // Intent to home page
-                  Toast.makeText(getApplicationContext(), "EMAIL: " + EMAIL, Toast.LENGTH_SHORT).show();
-                  Toast.makeText(getApplicationContext(), "Password: " + PASSWORD, Toast.LENGTH_SHORT).show();
+//                  Toast.makeText(getApplicationContext(), "EMAIL: " + EMAIL, Toast.LENGTH_SHORT).show();
+//                  Toast.makeText(getApplicationContext(), "Password: " + PASSWORD, Toast.LENGTH_SHORT).show();
                   startSignIn();
               }
 
@@ -200,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Sign IN Problem", Toast.LENGTH_SHORT).show();
                 }else{
-                    startActivity(new Intent(MainActivity.this, SignupActivity.class));
+                    startActivity(new Intent(MainActivity.this, Home.class));
 
                 }
 

@@ -8,34 +8,6 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/tv_app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="@string/app_name"
-        android:textSize="30sp" />
-        <Button
-            android:id="@+id/addBillButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Bill"
-            android:layout_alignParentRight="true"></Button>
-
-        <Button
-            android:id="@+id/addParticipantButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Participant"
-            android:layout_toLeftOf="@+id/addBillButton"></Button>
-
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="50dp"
-            android:id="@+id/listview1"></ListView>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout_email"

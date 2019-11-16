@@ -86,4 +86,17 @@
         android:text="@string/sign_up"
         android:textAllCaps="true" />
 
+    <TextView
+        android:id="@+id/tv_createAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_signup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:linksClickable="true"
+        android:text="@string/login"
+        android:textColor="@color/colorBlue" />
+
 </RelativeLayout>
