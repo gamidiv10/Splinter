@@ -5,23 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddBillActivity">
-    tools:isScrollContainer="true"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/source_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/source_txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:hint="Bill Name" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <GridView
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/source_input"
         android:id="@+id/lv_item"
         android:numColumns="4"/>
 
     <EditText
         android:id="@+id/editTextItemName"
         android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
         android:hint="Item Name"
-        android:layout_below="@+id/lv_item" />
+        android:inputType="textMultiLine" />
 
     <EditText
         android:id="@+id/editTextItemQuantity"
@@ -29,17 +49,20 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/editTextItemName"
         android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
         android:hint="Quantity"
-        android:layout_below="@+id/lv_item"
+        android:inputType="textMultiLine"
         />
 
     <EditText
         android:id="@+id/editTextItemPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lv_item"
         android:layout_marginLeft="20dp"
         android:hint="Unit Price"
+        android:inputType="textMultiLine"
+
+        android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/editTextItemQuantity"
         />
 
@@ -47,22 +70,12 @@
         android:id="@+id/btnAddItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lv_item"
         android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
+
         android:layout_toRightOf="@+id/editTextItemPrice"
         android:layout_marginBottom="0dp"
         android:text="Add" />
-    <Button
-        android:id="@+id/itemSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:layout_below="@id/btnAddItem" />
-    <Button
-        android:id="@+id/billDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        android:layout_below="@id/btnAddItem"
-        android:layout_toRightOf="@id/itemSave" />
+
+
 </RelativeLayout>

@@ -10,6 +10,9 @@ package com.example.splinter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -108,7 +111,9 @@ public class MainActivity extends AppCompatActivity {
       });
 
   }
-    //  Initialize variable
+
+
+//      Initialize variable
     EditText etEMAIL, etPassword;
     Button btnLogin;
     TextView tvCreateAccount;

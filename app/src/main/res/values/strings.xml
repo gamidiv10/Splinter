@@ -6,4 +6,5 @@
     <string name="create_an_account">Create an account? Click Here</string>
     <string name="sign_up">Sign Up</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="add_bill">Add Bill</string>
 </resources>

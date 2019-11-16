@@ -1,11 +1,14 @@
 package com.example.splinter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,7 +18,7 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class AddBillActivity extends Activity {
+public class AddBillActivity extends AppCompatActivity {
     private ArrayAdapter<String> itemsAdapter;
     Button itemadd, billDelete;
     EditText itemName, itemPrice, itemQuantity;
@@ -23,11 +26,13 @@ public class AddBillActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bill);
+
+
         itemName = findViewById(R.id.editTextItemName);
         itemPrice = findViewById(R.id.editTextItemPrice);
         itemQuantity = findViewById(R.id.editTextItemQuantity);
         itemadd = findViewById(R.id.btnAddItem);
-        billDelete = findViewById(R.id.billDelete);
+
         GridView lvItems;
         itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         lvItems = findViewById(R.id.lv_item);
@@ -52,19 +57,16 @@ public class AddBillActivity extends Activity {
             }
         });
 
-        billDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                startActivity(getIntent());
-            }
-        });
+
 
     }
 
-
-
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
 
 
 
