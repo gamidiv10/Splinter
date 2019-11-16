@@ -6,10 +6,12 @@
         android:id="@+id/save_button"
         android:title="Save"
         app:showAsAction="ifRoom"
+        android:icon="@drawable/save"
         />
     <item
         android:id="@+id/add_participants_button"
         android:title="Add People"
         app:showAsAction="ifRoom"
+        android:icon="@drawable/add_participants"
         />
 </menu>

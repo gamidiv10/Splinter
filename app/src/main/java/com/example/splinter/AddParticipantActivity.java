@@ -1,6 +1,8 @@
 package com.example.splinter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +12,15 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class AddParticipantActivity extends AppCompatActivity {
 
-    private ArrayAdapter<String> itemsAdapter;
     Button addParticipantButton;
     EditText firstName, lastName, email;
+    private ArrayList<String> fnameList = new ArrayList<>();
+    private ArrayList<String> lnameList = new ArrayList<>();
+    private ArrayList<String> emailIdList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +30,9 @@ public class AddParticipantActivity extends AppCompatActivity {
         firstName = findViewById(R.id.editTextFirstName);
         lastName = findViewById(R.id.editTextLastName);
         email = findViewById(R.id.editTextEMail);
-        addParticipantButton = findViewById(R.id.btnAddParticipant);
-        GridView lvItems;
-        itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        lvItems = findViewById(R.id.lv_item);
-        lvItems.setAdapter(itemsAdapter);
 
-        itemsAdapter.add("First Name");
-        itemsAdapter.add("Last Name");
-        itemsAdapter.add("Email");
+        addParticipantButton = findViewById(R.id.btnAddParticipant);
+
 
         addParticipantButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,10 +42,23 @@ public class AddParticipantActivity extends AppCompatActivity {
                 fName = firstName.getText().toString();
                 lName = lastName.getText().toString();
                 eMail = email.getText().toString();
-                itemsAdapter.add(fName);
-                itemsAdapter.add(lName);
-                itemsAdapter.add(eMail);
+                fnameList.add(fName);
+                lnameList.add(lName);
+                emailIdList.add(eMail);
+
+                initRecyclerView();
+
+                firstName.setText("");
+                lastName.setText("");
+                email.setText("");
             }
         });
+    }
+    private void initRecyclerView()
+    {
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_participants);
+        RecyclerViewAdapterParticipants adapter = new RecyclerViewAdapterParticipants(this, fnameList, lnameList, emailIdList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }

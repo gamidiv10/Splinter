@@ -26,14 +26,13 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <GridView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/source_input"
-        android:id="@+id/lv_item"
-        android:numColumns="4"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_view"
+        android:layout_below="@+id/source_input"/>
+
+
 
     <EditText
         android:id="@+id/editTextItemName"

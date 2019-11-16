@@ -1,27 +1,28 @@
 package com.example.splinter;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-
-import android.app.Activity;
-import android.graphics.Color;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridLayout;
-import android.widget.GridView;
-import android.widget.ListView;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class AddBillActivity extends AppCompatActivity {
-    private ArrayAdapter<String> itemsAdapter;
+    private ArrayList<String> itemList = new ArrayList<>();
+    private ArrayList<String> itemQtyList = new ArrayList<>();
+    private ArrayList<String> itemPriceList = new ArrayList<>();
+
+
     Button itemadd, billDelete;
     EditText itemName, itemPrice, itemQuantity;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,14 +34,7 @@ public class AddBillActivity extends AppCompatActivity {
         itemQuantity = findViewById(R.id.editTextItemQuantity);
         itemadd = findViewById(R.id.btnAddItem);
 
-        GridView lvItems;
-        itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        lvItems = findViewById(R.id.lv_item);
-        lvItems.setAdapter(itemsAdapter);
-        itemsAdapter.add("Item");
-        itemsAdapter.add("Qty");
-        itemsAdapter.add("Price");
-        itemsAdapter.add("Total");
+
         itemadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,18 +42,23 @@ public class AddBillActivity extends AppCompatActivity {
                 name = itemName.getText().toString();
                 price = itemPrice.getText().toString();
                 quantity =itemQuantity.getText().toString();
-                double total = Integer.parseInt(price) * Integer.parseInt(quantity);
+                //double total = Integer.parseInt(price) * Integer.parseInt(quantity);
+                double total = Double.parseDouble(price) * Double.parseDouble(quantity);
                 totals = String.valueOf(total);
-                itemsAdapter.add(name);
-                itemsAdapter.add(quantity);
-                itemsAdapter.add(price);
-                itemsAdapter.add(totals);
+                itemList.add(name);
+                itemQtyList.add("Qty:" + quantity);
+                itemPriceList.add("$" + totals);
+
+                initRecyclerView();
+
+                itemName.setText("");
+                itemPrice.setText("");
+                itemQuantity.setText("");
+
             }
         });
-
-
-
-    }
+//
+   }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,7 +66,27 @@ public class AddBillActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
 
+        if (id == R.id.add_participants_button) {
+
+            Intent intentForAddingParticipant = new Intent(AddBillActivity.this, AddParticipantActivity.class);
+
+            startActivity(intentForAddingParticipant);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void initRecyclerView()
+    {
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, itemList, itemQtyList, itemPriceList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
 
 }
