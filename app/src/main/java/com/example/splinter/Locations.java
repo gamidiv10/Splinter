@@ -5,8 +5,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,6 +24,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.util.List;
+import java.util.Locale;
+
 public class Locations extends AppCompatActivity {
 
 
@@ -29,8 +35,8 @@ public class Locations extends AppCompatActivity {
     Button fetch;
     TextView user_location;
     private FusedLocationProviderClient mFusedLocationClient;
-
-
+    Geocoder geocoder;
+    List<Address> addresses;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +51,6 @@ public class Locations extends AppCompatActivity {
             public void onClick(View view) {
 
                 fetchLocation();
-
-
             }
         });
 
@@ -108,15 +112,37 @@ public class Locations extends AppCompatActivity {
                                 // Logic to handle location object
                                 Double latittude = location.getLatitude();
                                 Double longitude = location.getLongitude();
-
-                                user_location.setText("Latitude = "+latittude + "\nLongitude = " + longitude);
-
+                                user_location.setText("Location = "+getCompleteAddressString(latittude,longitude));
+                                //user_location.setText(latittude+""+longitude);
                             }
                         }
                     });
-
         }
 
+    }
+
+    private String getCompleteAddressString(double LATITUDE, double LONGITUDE) {
+        String strAdd = "";
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1);
+            if (addresses != null) {
+                Address returnedAddress = addresses.get(0);
+                StringBuilder strReturnedAddress = new StringBuilder("");
+
+                for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
+                }
+                strAdd = strReturnedAddress.toString();
+                Log.w("My Current address", strReturnedAddress.toString());
+            } else {
+                Log.w("My Current address", "No Address returned!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.w("My Current address", "Canont get Address!");
+        }
+        return strAdd;
     }
 
     @Override
