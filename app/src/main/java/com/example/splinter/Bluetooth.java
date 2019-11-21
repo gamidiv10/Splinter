@@ -51,13 +51,6 @@ public class Bluetooth extends AppCompatActivity{
             mStatusBlueTv.setText("Bluetooth is available");
         }
 
-        //set image according to bluetooth status(on/off)
-    /*if (mBlueAdapter.isEnabled()){
-      mBlueIv.setImageResource(R.drawable.ic_action_on);
-    }
-    else {
-      mBlueIv.setImageResource(R.drawable.ic_action_off);
-    }*/
 
         //on btn click
         mOnBtn.setOnClickListener(new View.OnClickListener() {

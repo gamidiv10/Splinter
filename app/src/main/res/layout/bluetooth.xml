@@ -15,8 +15,7 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textAlignment="center"
-        android:textSize="20sp"
-        android:textColor="#000"/>
+        android:textSize="20sp" />
     <!--Bluetooth icon (on/off)-->
     <ImageView
         android:id="@+id/bluetoothIv"

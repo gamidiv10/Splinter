@@ -126,6 +126,12 @@ public class Locations extends AppCompatActivity {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         try {
             List<Address> addresses = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1);
+            String address = addresses.get(0).getAddressLine(0);
+            String city = addresses.get(0).getLocality();
+            String state = addresses.get(0).getAdminArea();
+            String zip = addresses.get(0).getPostalCode();
+            String country = addresses.get(0).getCountryName();
+
             if (addresses != null) {
                 Address returnedAddress = addresses.get(0);
                 StringBuilder strReturnedAddress = new StringBuilder("");
@@ -133,7 +139,7 @@ public class Locations extends AppCompatActivity {
                 for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
                     strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
                 }
-                strAdd = strReturnedAddress.toString();
+                strAdd = country.toString();
                 Log.w("My Current address", strReturnedAddress.toString());
             } else {
                 Log.w("My Current address", "No Address returned!");
