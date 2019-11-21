@@ -112,12 +112,12 @@ public class MainActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mLoginAuthentication.getCurrentUser();
         if (currentUser != null) {
-            Toast.makeText(getApplicationContext(), "User already Logged OUT", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "User already Logged In", Toast.LENGTH_SHORT).show();
             signOut();
 
 
         } else {
-            Toast.makeText(getApplicationContext(), "User already Logged in", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "User Logged Out", Toast.LENGTH_SHORT).show();
 
         }
     }
