@@ -20,7 +20,7 @@
         android:layout_marginLeft="10dp"
         android:hint="First Name"
         android:inputType="textMultiLine"
-
+        android:maxWidth="130dp"
         />
 
     <EditText
@@ -30,33 +30,42 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/editTextFirstName"
         android:hint="Last Name"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
+        android:maxWidth="125dp"
         android:inputType="textMultiLine"
-
         />
 
-    <EditText
-        android:id="@+id/editTextEMail"
+<!--    <EditText-->
+<!--        android:id="@+id/editTextEMail"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:hint="E-Mail"-->
+<!--        android:layout_toRightOf="@+id/editTextLastName"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:inputType="textEmailAddress"-->
+<!--        />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnAddParticipant"-->
+<!--        android:layout_width="60dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_toRightOf="@+id/editTextLastName"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:text="Add"-->
+<!--        />-->
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnAddParticipant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/plus_thick"
         android:layout_alignParentBottom="true"
-        android:hint="E-Mail"
-        android:layout_toRightOf="@+id/editTextLastName"
-        android:layout_marginLeft="10dp"
-        android:inputType="textMultiLine"
-
+        android:layout_marginRight="30dp"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="@color/cardview_light_background"
         />
-
-    <Button
-        android:id="@+id/btnAddParticipant"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/editTextEMail"
-        android:text="Add"
-        />
-
 
 
 </RelativeLayout>

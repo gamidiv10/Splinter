@@ -1,9 +1,11 @@
 package com.example.splinter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -30,7 +32,7 @@ public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapt
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bill_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bill_recyclerview, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -53,6 +55,8 @@ public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapt
 
         TextView itemName, qty, price;
         RelativeLayout parent_layout;
+        ImageButton editButton;
+        Intent intent;
 
         public ViewHolder(@NonNull View itemView)
         {
@@ -61,6 +65,17 @@ public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapt
             qty = itemView.findViewById(R.id.tv_qty);
             price = itemView.findViewById(R.id.tv_tPrice);
             parent_layout = itemView.findViewById(R.id.parent_layout);
+
+            editButton = itemView.findViewById(R.id.edit_item_button);
+            editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+//                    intent = new Intent(RecyclerViewAdapter.this(), RecyclerViewAdapter.class);
+
+                }
+            });
+
         }
     }
 }

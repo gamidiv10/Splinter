@@ -5,7 +5,11 @@
     android:layout_height="wrap_content"
     android:padding="15dp"
     android:clickable="true"
-    android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:background="@color/colorLightGrey"
+    android:layoutMode="clipBounds"
+    android:layout_marginBottom="1dp"
+    android:clipToPadding="true">
 
 
     <TextView
@@ -13,9 +17,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Milk"
+        android:inputType="textMultiLine"
+        android:maxLines="2"
         android:maxWidth="130dp"
-        android:textSize="22dp"
-        android:layout_alignEnd="@id/tv_item_name"/>
+        android:textSize="22dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,10 +33,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_tPrice"
-        android:text="$45"
+        android:text="$456.9"
+        android:inputType="numberDecimal"
         android:layout_centerVertical="true"
-        android:layout_marginHorizontal="150dp" />
+        android:layout_marginHorizontal="150dp"
+        android:maxWidth="160dp"/>
 
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/edit_icon"
+        android:backgroundTint="@color/cardview_shadow_end_color"
+        android:id="@+id/edit_item_button"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
 
 </RelativeLayout>
+

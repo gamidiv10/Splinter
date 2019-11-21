@@ -7,32 +7,49 @@
     android:clickable="true"
     android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/account_image"
+        android:src="@drawable/account"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        />
     <TextView
         android:id="@+id/tv_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Milk"
+        android:text="Vamsi"
         android:textSize="22dp"
-        android:layout_alignEnd="@id/tv_item_name"/>
+        android:maxWidth="80dp"
+        android:layout_toRightOf="@+id/account_image"
+        android:layout_marginStart="20dp"
+        android:inputType="textMultiLine"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_qty"
+        android:maxWidth="80dp"
+        android:inputType="textMultiLine"
         android:layout_toRightOf="@+id/tv_item_name"
         android:layout_marginHorizontal="10dp"
         android:textSize="22dp"
-        android:text="Qty:4"/>
+        android:text="Gamidi"/>
 
-    <TextView
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/tv_tPrice"-->
+<!--        android:text="$45"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_marginHorizontal="150dp" />-->
+
+    <androidx.appcompat.widget.AppCompatCheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_tPrice"
-        android:text="$45"
-        android:layout_centerVertical="true"
-        android:layout_marginHorizontal="150dp" />
+        android:layout_alignParentRight="true"
 
-
-
+        android:layout_marginRight="20dp"/>
 </RelativeLayout>

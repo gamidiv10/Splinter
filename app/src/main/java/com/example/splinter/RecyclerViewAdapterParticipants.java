@@ -17,11 +17,11 @@ public class RecyclerViewAdapterParticipants extends  RecyclerView.Adapter<Recyc
     private ArrayList<String> emailList = new ArrayList<>();
     private Context rvContext;
 
-    public RecyclerViewAdapterParticipants(Context context, ArrayList<String> fnameList, ArrayList<String> lnameList, ArrayList<String> emailIdList)
+    public RecyclerViewAdapterParticipants(Context context, ArrayList<String> fnameList, ArrayList<String> lnameList)
     {
         firstNameList = fnameList;
         lastNameList = lnameList;
-        emailList = emailIdList;
+        //emailList = emailIdList;
         rvContext = context;
     }
 
@@ -39,7 +39,7 @@ public class RecyclerViewAdapterParticipants extends  RecyclerView.Adapter<Recyc
     {
         holder.itemName.setText(firstNameList.get(position));
         holder.qty.setText(lastNameList.get(position));
-        holder.price.setText(emailList.get(position));
+        //holder.price.setText(emailList.get(position));
 
     }
 
@@ -60,7 +60,7 @@ public class RecyclerViewAdapterParticipants extends  RecyclerView.Adapter<Recyc
             super(itemView);
             itemName = itemView.findViewById(R.id.tv_item_name);
             qty = itemView.findViewById(R.id.tv_qty);
-            price = itemView.findViewById(R.id.tv_tPrice);
+            //price = itemView.findViewById(R.id.tv_tPrice);
             parent_layout = itemView.findViewById(R.id.recycler_view_participants);
         }
     }
