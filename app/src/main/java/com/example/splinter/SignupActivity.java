@@ -21,10 +21,10 @@ import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
 
-    EditText etEnterEmail, etEnterPassword, etReenterPassword;
+    EditText etEnterEmail, etEnterPassword, etReenterPassword, etFirstName, etLastName;
     Button btnSignup;
-    String enteredEmail, enteredPassword, reenteredPassword;
-    TextInputLayout inputLayoutEnterEmail, inputLayoutEnterPassword, inputLayoutReenterPassword;
+    String enteredEmail, enteredPassword, reenteredPassword, firstName, lastName;
+    TextInputLayout inputLayoutEnterEmail, inputLayoutEnterPassword, inputLayoutReenterPassword, inputLayoutFirstName, inputLayoutLastName;
 
 
     // Firebase Authentication
@@ -51,10 +51,15 @@ public class SignupActivity extends AppCompatActivity {
         etEnterEmail = findViewById(R.id.et_enterEmail);
         etEnterPassword = findViewById(R.id.et_enterPassword);
         etReenterPassword = findViewById(R.id.et_reenterPassword);
+        etFirstName = findViewById(R.id.et_firstName);
+        etLastName = findViewById(R.id.et_lastName);
         btnSignup = findViewById(R.id.btn_signup);
         inputLayoutEnterEmail = findViewById(R.id.inputLayout_enterEmail);
         inputLayoutEnterPassword = findViewById(R.id.inputLayout_enterPassword);
         inputLayoutReenterPassword = findViewById(R.id.inputLayout_reenterPassword);
+        inputLayoutFirstName = findViewById(R.id.inputLayout_firstName);
+        inputLayoutLastName = findViewById(R.id.inputLayout_lastName);
+
 
         // Firebase get running Instance
         mSignupAuthentication = FirebaseAuth.getInstance();
@@ -81,7 +86,8 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Error in User creation! Try Again!", Toast.LENGTH_SHORT).show();
                 } else {
                     // After Signin it will go to the dashBoard
-                    startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                    finish();
                 }
             }
         });

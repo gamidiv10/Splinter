@@ -12,45 +12,94 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="@string/sign_up"
-        android:textAllCaps="true"
+        android:layout_marginTop="70dp"
+        android:text="@string/create_account"
         android:textSize="30sp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_signup"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayout_firstName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/et_firstName"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint="@string/first_name"
+                android:inputType="text"
+                android:scrollHorizontally="true"
+                android:paddingStart="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayout_lastName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="20dp">
+
+            <EditText
+                android:id="@+id/et_lastName"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint="@string/last_name"
+                android:inputType="text"
+                android:scrollHorizontally="true"
+                android:paddingStart="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout_enterEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_signup"
+        android:layout_below="@+id/linearLayout_Name"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp">
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp">
 
         <EditText
             android:id="@+id/et_enterEmail"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:scrollHorizontally="true" />
+            android:scrollHorizontally="true"
+            android:paddingStart="10dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout_enterPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputLayout_enterEmail"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="10dp"
         app:passwordToggleEnabled="true">
 
         <EditText
             android:id="@+id/et_enterPassword"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:scrollHorizontally="true" />
@@ -58,22 +107,24 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout_reenterPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputLayout_enterPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="10dp"
         app:passwordToggleEnabled="true">
 
         <EditText
             android:id="@+id/et_reenterPassword"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="@string/confirm_password"
             android:inputType="textPassword"
-            android:scrollHorizontally="true" />
+            android:scrollHorizontally="true"
+            android:paddingStart="10dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -84,19 +135,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="@string/sign_up"
-        android:textAllCaps="true" />
-
-    <TextView
-        android:id="@+id/tv_createAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_signup"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:linksClickable="true"
-        android:text="@string/login"
-        android:textColor="@color/colorBlue" />
+        android:textAllCaps="true"
+        android:padding="10dp"/>
 
 </RelativeLayout>
