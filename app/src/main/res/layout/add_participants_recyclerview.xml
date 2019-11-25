@@ -21,10 +21,10 @@
         android:layout_height="wrap_content"
         android:text="Vamsi"
         android:textSize="22dp"
-        android:maxWidth="80dp"
+        android:width="70dp"
         android:layout_toRightOf="@+id/account_image"
         android:layout_centerVertical="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:inputType="textMultiLine"
         />
 
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_last_name"
-        android:maxWidth="80dp"
+        android:width="70dp"
         android:inputType="textMultiLine"
         android:layout_toRightOf="@+id/tv_first_name"
         android:layout_marginHorizontal="10dp"
@@ -49,7 +49,7 @@
         android:id="@+id/edit_participant_button"
         android:layout_toRightOf="@+id/tv_last_name"
 
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_centerVertical="true"/>
 
     <ImageButton

@@ -18,7 +18,9 @@
         <activity
             android:label="Add Participant"
             android:name=".AddParticipantActivity"
-            android:parentActivityName=".AddBillActivity">
+            android:parentActivityName=".AddBillActivity"
+            android:windowSoftInputMode="adjustResize"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -27,18 +29,21 @@
         <activity
             android:name=".AddBillActivity"
             android:label="Add Bill"
-            android:parentActivityName=".Home">
+            android:parentActivityName=".Home"
+            android:windowSoftInputMode="adjustResize"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-
-        </activity>
-        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 
