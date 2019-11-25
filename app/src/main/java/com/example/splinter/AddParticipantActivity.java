@@ -1,3 +1,7 @@
+/*
+ * Created By: Vamsi Gamidi
+ */
+
 package com.example.splinter;
 
 import androidx.appcompat.app.AppCompatActivity;
