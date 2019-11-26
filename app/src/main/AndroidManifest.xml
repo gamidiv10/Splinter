@@ -62,16 +62,7 @@
         <activity android:name=".Internet"/>
         <activity android:name=".CameraActivity"/>
 
-        <provider
-            android:authorities="com.example.splinter.fileprovider"
-            android:name="androidx.core.content.FileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.File_PROVIDER_PATHS"
-                android:resource="@xml/file_paths">
-            </meta-data>
-        </provider>
+
     </application>
 
 </manifest>

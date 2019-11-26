@@ -72,7 +72,7 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     private File createPhoto(){
-        String name = new SimpleDateFormat("yyyyMMdd_names").format(new Date());
+        String name = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         File image =null;
         try {
