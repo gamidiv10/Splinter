@@ -24,7 +24,7 @@
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/nameImageView"
-                android:src="@drawable/ic_name"
+                android:src="@drawable/ic_insert_emoticon_black_24dp"
                 style="@style/profileDetailsImage" />
 
             <TextView
@@ -44,7 +44,7 @@
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/mobileImageView"
-                android:src="@drawable/ic_mobile"
+                android:src="@drawable/ic_contact_phone_black_24dp"
                 style="@style/profileDetailsImage" />
 
             <TextView
@@ -63,7 +63,7 @@
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/emailImageView"
-                android:src="@drawable/ic_email"
+                android:src="@drawable/ic_contact_mail_black_24dp"
                 style="@style/profileDetailsImage" />
 
             <TextView
@@ -82,7 +82,7 @@
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/addressImageView"
-                android:src="@drawable/ic_address"
+                android:src="@drawable/ic_location_city_black_24dp"
                 style="@style/profileDetailsImage" />
 
             <TextView
@@ -101,7 +101,7 @@
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/dobImageView"
-                android:src="@drawable/ic_dob"
+                android:src="@drawable/ic_date_range_black_24dp"
                 style="@style/profileDetailsImage" />
 
             <TextView
