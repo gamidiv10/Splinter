@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#575AEC</color>
+    <color name="colorPrimaryDark">#567CF0</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorBlue">#555586</color>
+    <color name="colorLayerBack">#8a56ab</color>
+    <color name="colorback">#241333</color>
+    <color name="colorTitle">#362742</color>
+    <color name="colorSubTitle">#c5c9cf</color>
+    <color name="colorwhite">#ffffff</color>
+    <color name="profilePrimaryDark">#4A2E8B</color>
+    <color name="profileAccentColor">#F7F7F7</color>
+    <color name="whiteTextColor">#fff</color>
+    <color name="profileBackground">#fff</color>
+    <color name="blackTextColor">#000</color>
+    <color name="profileEditTextColor">#707070</color>
+
+    <color name="colorLightGrey">#d1dccf</color>
 </resources>

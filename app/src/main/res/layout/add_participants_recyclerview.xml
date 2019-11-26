@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_layout_participants"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:clickable="true"
+    android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/account_image"
+        android:src="@drawable/account"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        />
+    <TextView
+        android:id="@+id/tv_first_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vamsi"
+        android:textSize="22dp"
+        android:width="70dp"
+        android:layout_toRightOf="@+id/account_image"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:inputType="textMultiLine"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_last_name"
+        android:width="70dp"
+        android:inputType="textMultiLine"
+        android:layout_toRightOf="@+id/tv_first_name"
+        android:layout_marginHorizontal="10dp"
+        android:layout_centerVertical="true"
+        android:textSize="22dp"
+        android:text="Gamidi"/>
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/edit_icon"
+        android:backgroundTint="@color/cardview_shadow_end_color"
+        android:id="@+id/edit_participant_button"
+        android:layout_toRightOf="@+id/tv_last_name"
+
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/delete_icon"
+        android:backgroundTint="@color/cardview_shadow_end_color"
+        android:id="@+id/delete_participant_button"
+        android:layout_toRightOf="@+id/edit_participant_button"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="50dp"/>
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+/>
+</RelativeLayout>
