@@ -21,7 +21,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Home"
-            android:label="@string/title_activity_home"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
@@ -50,14 +49,21 @@
 
         </activity>
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".Bluetooth" />
+        <activity android:name=".Locations"/>
+        <activity android:name=".Internet"/>
+        <activity android:name=".LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Bluetooth" />
-        <activity android:name=".Locations"/>
-        <activity android:name=".Internet"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -24,6 +24,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -35,7 +36,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
         //FloatingActionButton fab = findViewById(R.id.addBill_fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +86,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.nav_logout: {
-                Intent intentForAddingBill = new Intent(Home.this, MainActivity.class);
+                Intent intentForAddingBill = new Intent(Home.this, LoginActivity.class);
                 startActivity(intentForAddingBill);
             }
         }

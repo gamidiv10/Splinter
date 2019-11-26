@@ -31,6 +31,5 @@
     <fragment
         android:id="@+id/nav_logout"
         android:name="com.example.splinter.ui.logout.logout"
-        android:label="@string/logout"
-        tools:layout="@layout/logout_fragment" />
+        android:label="@string/logout" />
 </navigation>
