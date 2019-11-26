@@ -6,6 +6,7 @@
 
 
 package com.example.splinter;
+import android.content.Intent;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import android.graphics.BlendMode;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    Intent i = new Intent(this, Internet.class);
+    startActivity(i);
 
 
 
