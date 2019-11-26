@@ -40,11 +40,9 @@ public class currency extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.currency,
                 android.R.layout.activity_list_item);
 
     }
-
 
 }
