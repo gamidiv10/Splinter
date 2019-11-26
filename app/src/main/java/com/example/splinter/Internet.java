@@ -12,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.location.LocationServices;
 
+/**
+ * Created by Jasper Jiao on 2019-11-20.
+ */
+
 public class Internet extends AppCompatActivity {
 
     @Override
