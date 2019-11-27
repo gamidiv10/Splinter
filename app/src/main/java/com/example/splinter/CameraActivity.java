@@ -47,14 +47,16 @@ public class CameraActivity extends AppCompatActivity {
         imageView = findViewById(R.id.image);
     }
 
-    protected void onActivityResuly(int requestCode, int resultCode, Intent data){
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
-            if(requestCode == 1){
+        if(resultCode == RESULT_OK) {
+            if (requestCode == 1) {
                 Bitmap bitmap = BitmapFactory.decodeFile(patchToFile);
                 imageView.setImageBitmap(bitmap);
             }
         }
+
     }
 
     private void TakingPic(){
@@ -64,7 +66,7 @@ public class CameraActivity extends AppCompatActivity {
             photoFile = createPhoto();
             if (photoFile !=null){
                 patchToFile = photoFile.getAbsolutePath();
-                Uri photoURI = FileProvider.getUriForFile(CameraActivity.this,"abcds",photoFile);
+                Uri photoURI = FileProvider.getUriForFile(CameraActivity.this,"fssdfs",photoFile);
                 takePic.putExtra(MediaStore.EXTRA_OUTPUT,photoURI);
                 startActivityForResult(takePic,1);
             }
