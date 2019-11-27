@@ -98,7 +98,6 @@ public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapt
                 {
                     editTextItemName.setText(itemList.get(getAdapterPosition()));
                     editTextQty.setText(itemQty.get(getAdapterPosition()).substring(4));
-                    editTextPrice.setText(itemPrice.get(getAdapterPosition()).substring(2));
 
                     double tPrice = Double.parseDouble(itemPrice.get(getAdapterPosition()).substring(1));
                     final double qty = Double.parseDouble(editTextQty.getText().toString());
@@ -112,13 +111,14 @@ public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapt
                     buttonSave.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            holder.itemName.setText(editTextItemName.getText());
-                            holder.qty.setText("Qty : " + editTextQty.getText());
 
+                            itemList.set(getAdapterPosition(), editTextItemName.getText().toString());
+
+                            itemQty.set(getAdapterPosition(), "Qty:" + editTextQty.getText());
 
                             double updatedUnitPrice = Double.parseDouble(editTextPrice.getText().toString().substring(1));
                             double updatedQuantity = Double.parseDouble(editTextQty.getText().toString());
-                            holder.price.setText("$" + updatedUnitPrice *  updatedQuantity);
+                            itemPrice.set(getAdapterPosition(), "$" + updatedUnitPrice *  updatedQuantity);
 
                             notifyItemChanged(getAdapterPosition());
                             dialogEditBill.cancel();
@@ -127,7 +127,6 @@ public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapt
                     });
 
 
-                    holder.itemName.setText(editTextItemName.getText());
                     buttonCancel.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

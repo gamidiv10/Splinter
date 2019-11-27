@@ -96,8 +96,10 @@ public class RecyclerViewAdapterParticipants extends  RecyclerView.Adapter<Recyc
                     buttonSave.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            holder.firstName.setText(editTextFirstName.getText());
-                            holder.lastName.setText(editTextLastName.getText());
+
+                            firstNameList.set(getAdapterPosition(), editTextFirstName.getText().toString());
+                            lastNameList.set(getAdapterPosition(), editTextLastName.getText().toString());
+                            notifyItemChanged(getAdapterPosition());
 
                             dialogEditParticipant.cancel();
 
