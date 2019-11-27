@@ -26,14 +26,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycler_view"
-        android:layout_below="@+id/source_input"
-        android:layout_marginBottom="4dp"
-        android:layout_above="@+id/edit_text_layout"
-        />
+
 <LinearLayout
     android:id="@+id/edit_text_layout"
     android:layout_width="match_parent"
@@ -87,4 +80,12 @@
         android:backgroundTint="@color/cardview_shadow_end_color"
         />
 </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_view"
+        android:layout_below="@+id/source_input"
+        android:layout_marginBottom="4dp"
+        android:layout_above="@+id/edit_text_layout"
+        />
 </RelativeLayout>

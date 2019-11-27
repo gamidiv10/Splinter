@@ -33,7 +33,6 @@ public class RecyclerViewAdapterParticipants extends  RecyclerView.Adapter<Recyc
     {
         firstNameList = fnameList;
         lastNameList = lnameList;
-        //emailList = emailIdList;
         rvContext = context;
     }
 
@@ -58,7 +57,6 @@ public class RecyclerViewAdapterParticipants extends  RecyclerView.Adapter<Recyc
     {
         holder.firstName.setText(firstNameList.get(position));
         holder.lastName.setText(lastNameList.get(position));
-        //holder.price.setText(emailList.get(position));
 
     }
 

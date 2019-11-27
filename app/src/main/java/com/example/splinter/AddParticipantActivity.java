@@ -8,17 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -28,7 +23,6 @@ public class AddParticipantActivity extends AppCompatActivity {
     EditText firstName, lastName, email;
     private ArrayList<String> fnameList = new ArrayList<>();
     private ArrayList<String> lnameList = new ArrayList<>();
-    //private ArrayList<String> emailIdList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +31,6 @@ public class AddParticipantActivity extends AppCompatActivity {
 
         firstName = findViewById(R.id.editTextFirstName);
         lastName = findViewById(R.id.editTextLastName);
-        //email = findViewById(R.id.editTextEMail);
 
         addParticipantButton = findViewById(R.id.btnAddParticipant);
 
@@ -56,20 +49,17 @@ public class AddParticipantActivity extends AppCompatActivity {
 
                 }
                 else {
-                    String fName, lName, eMail;
+                    String fName, lName;
 
                     fName = firstName.getText().toString();
                     lName = lastName.getText().toString();
-                    //eMail = email.getText().toString();
                     fnameList.add(fName);
                     lnameList.add(lName);
-                    //emailIdList.add(eMail);
 
                     initRecyclerView();
 
                     firstName.setText("");
                     lastName.setText("");
-                    //email.setText("");
                 }
             }
         });
@@ -84,7 +74,6 @@ public class AddParticipantActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.add_partcipants_menu, menu);
         return true;
     }
