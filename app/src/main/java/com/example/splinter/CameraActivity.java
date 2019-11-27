@@ -66,7 +66,7 @@ public class CameraActivity extends AppCompatActivity {
             photoFile = createPhoto();
             if (photoFile !=null){
                 patchToFile = photoFile.getAbsolutePath();
-                Uri photoURI = FileProvider.getUriForFile(CameraActivity.this,"fssdfs",photoFile);
+                Uri photoURI = FileProvider.getUriForFile(CameraActivity.this,"com.example.splinter.fileprovider",photoFile);
                 takePic.putExtra(MediaStore.EXTRA_OUTPUT,photoURI);
                 startActivityForResult(takePic,1);
             }
