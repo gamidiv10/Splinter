@@ -1,5 +1,6 @@
 package com.example.splinter;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.splinter.Model.SignupDatabaseActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
@@ -19,17 +21,27 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
 
+import static com.example.splinter.R.id;
+import static com.example.splinter.R.layout;
+import static com.example.splinter.R.string;
+
 public class SignupActivity extends AppCompatActivity {
 
-    EditText etEnterEmail, etEnterPassword, etReenterPassword, etFirstName, etLastName;
-    Button btnSignup;
-    String enteredEmail, enteredPassword, reenteredPassword, firstName, lastName;
-    TextInputLayout inputLayoutEnterEmail, inputLayoutEnterPassword, inputLayoutReenterPassword, inputLayoutFirstName, inputLayoutLastName;
+    public EditText etEnterEmail, etEnterPassword, etReenterPassword, etFirstName, etLastName;
+    public Button btnSignup;
+    public String enteredEmail, enteredPassword, reenteredPassword, firstName, lastName;
+    public TextInputLayout inputLayoutEnterEmail, inputLayoutEnterPassword, inputLayoutReenterPassword, inputLayoutFirstName, inputLayoutLastName;
 
+    String passwordError = "Password should be between 8 to 24 character\n" +
+            "at least 1 special character [@#$%^&+=]\n" +
+            "at least 1 digit\n" +
+            "at least 1 capital letter\n" +
+            "at least 1 small letter\n";
 
     // Firebase Authentication
     FirebaseAuth mSignupAuthentication;
 
+    SignupDatabaseActivity signuDBActivity = new SignupDatabaseActivity();
 
     // Password validation pattern //https://codinginflow.com/tutorials/android/validate-email-password-regular-expressions
     public static final Pattern PATTERN_PASSWORD =
@@ -46,19 +58,19 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(layout.activity_signup);
 
-        etEnterEmail = findViewById(R.id.et_enterEmail);
-        etEnterPassword = findViewById(R.id.et_enterPassword);
-        etReenterPassword = findViewById(R.id.et_reenterPassword);
-        etFirstName = findViewById(R.id.et_firstName);
-        etLastName = findViewById(R.id.et_lastName);
-        btnSignup = findViewById(R.id.btn_signup);
-        inputLayoutEnterEmail = findViewById(R.id.inputLayout_enterEmail);
-        inputLayoutEnterPassword = findViewById(R.id.inputLayout_enterPassword);
-        inputLayoutReenterPassword = findViewById(R.id.inputLayout_reenterPassword);
-        inputLayoutFirstName = findViewById(R.id.inputLayout_firstName);
-        inputLayoutLastName = findViewById(R.id.inputLayout_lastName);
+        etEnterEmail = findViewById(id.et_enterEmail);
+        etEnterPassword = findViewById(id.et_enterPassword);
+        etReenterPassword = findViewById(id.et_reenterPassword);
+        etFirstName = findViewById(id.et_firstName);
+        etLastName = findViewById(id.et_lastName);
+        btnSignup = findViewById(id.btn_signup);
+        inputLayoutEnterEmail = findViewById(id.inputLayout_enterEmail);
+        inputLayoutEnterPassword = findViewById(id.inputLayout_enterPassword);
+        inputLayoutReenterPassword = findViewById(id.inputLayout_reenterPassword);
+        inputLayoutFirstName = findViewById(id.inputLayout_firstName);
+        inputLayoutLastName = findViewById(id.inputLayout_lastName);
 
 
         // Firebase get running Instance
@@ -68,22 +80,29 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (isvalidEmail() & isvalidPassword() & isvalidConfirmPassword()) {
-                    Toast.makeText(getApplicationContext(), "Account Created", Toast.LENGTH_SHORT).show();
-                    createUSerInDatabase();
+                if (isvalidEmail() & isvalidPassword() & isvalidConfirmPassword() & isvalidFirstname() & isvalidLastname()) {
+                    Toast.makeText(getApplicationContext(), " User Account Created", Toast.LENGTH_SHORT).show();
+                    ProgressDialog progress = new ProgressDialog(getApplicationContext());
+                    progress.setMessage("Creating Account ...");
+                    progress.show();
+                    progress.setCancelable(false);
+                    createUserInDatabase();
+                    signuDBActivity.writeUserdata();
+                    progress.dismiss();
                 }
 
             }
         });
     }
 
-    private void createUSerInDatabase() {
+    private void createUserInDatabase() {
 
         mSignupAuthentication.createUserWithEmailAndPassword(enteredEmail, enteredPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Error in User creation! Try Again!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
+
                 } else {
                     // After Signin it will go to the dashBoard
                     startActivity(new Intent(SignupActivity.this, LoginActivity.class));
@@ -93,10 +112,32 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
+    public Boolean isvalidFirstname() {
+        firstName = etFirstName.getText().toString().trim();
+        if (firstName.isEmpty()) {
+            inputLayoutFirstName.setError(getString(R.string.no_empty_field));
+            return false;
+        } else {
+            inputLayoutFirstName.setError(null);
+            return true;
+        }
+    }
+
+    public Boolean isvalidLastname() {
+        lastName = etLastName.getText().toString().trim();
+        if (lastName.isEmpty()) {
+            inputLayoutLastName.setError(getString(string.no_empty_field));
+            return false;
+        } else {
+            inputLayoutLastName.setError(null);
+            return true;
+        }
+    }
+
     public Boolean isvalidEmail() {
         enteredEmail = etEnterEmail.getText().toString().trim();
         if (enteredEmail.isEmpty()) {
-            inputLayoutEnterEmail.setError("Field cannot be empty");
+            inputLayoutEnterEmail.setError(getString(string.no_empty_field));
             return false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(enteredEmail).matches()) {
             inputLayoutEnterEmail.setError("Please enter a valid EMAIL address");
@@ -110,14 +151,10 @@ public class SignupActivity extends AppCompatActivity {
     private Boolean isvalidPassword() {
         enteredPassword = etEnterPassword.getText().toString().trim();
         if (enteredPassword.isEmpty()) {
-            inputLayoutEnterPassword.setError("Field cannot be empty");
+            inputLayoutEnterPassword.setError(getString(string.no_empty_field));
             return false;
         } else if (!PATTERN_PASSWORD.matcher(enteredPassword).matches()) {
-            inputLayoutEnterPassword.setError("Password should be between 8 to 24 character\n" +
-                    "at least 1 special character [@#$%^&+=]\n" +
-                    "at least 1 digit\n" +
-                    "at least 1 capital letter\n" +
-                    "at least 1 small letter\n");
+            inputLayoutEnterPassword.setError(passwordError);
             etEnterPassword.setText("");
             return false;
         } else {
@@ -129,7 +166,7 @@ public class SignupActivity extends AppCompatActivity {
     private Boolean isvalidConfirmPassword() {
         reenteredPassword = etReenterPassword.getText().toString().trim();
         if (reenteredPassword.isEmpty()) {
-            inputLayoutReenterPassword.setError("Field cannot be Empty");
+            inputLayoutReenterPassword.setError(getString(string.no_empty_field));
             return false;
         } else if (!enteredPassword.equals(reenteredPassword)) {
             inputLayoutReenterPassword.setError("Doesn't match the given Password");

@@ -63,7 +63,6 @@ public class LoginActivity extends AppCompatActivity {
 
         //Firebase Authentication Listener
 
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,8 +70,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (validateEMAIL() & validatePassword()) {
 
                     // Intent to home page
-//                  Toast.makeText(getApplicationContext(), "EMAIL: " + EMAIL, Toast.LENGTH_SHORT).show();
-//                  Toast.makeText(getApplicationContext(), "Password: " + PASSWORD, Toast.LENGTH_SHORT).show();
                     startSignIn();
                 }
 
@@ -112,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
     public Boolean validateEMAIL() {
         EMAIL = etEMAIL.getText().toString().trim();
         if (EMAIL.isEmpty()) {
-            textInputLayoutEmail.setError("Field cannot be empty");
+            textInputLayoutEmail.setError(getString(R.string.no_empty_field));
             return false;
         } else if (!Patterns.EMAIL_ADDRESS.matcher(EMAIL).matches()) {
             textInputLayoutEmail.setError("Please enter a valid EMAIL address");
@@ -126,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
     public Boolean validatePassword() {
         PASSWORD = etPassword.getText().toString().trim();
         if (PASSWORD.isEmpty()) {
-            textInputLayoutPassword.setError("Field cannot be empty");
+            textInputLayoutPassword.setError(getString(R.string.no_empty_field));
             return false;
         } else if (!PATTERN_PASSWORD.matcher(PASSWORD).matches()) {
             textInputLayoutPassword.setError("Password should be between 8 to 24 character\n" +
@@ -148,7 +145,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Sign IN Problem", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Sign In Problem", Toast.LENGTH_SHORT).show();
                 } else {
                     startActivity(new Intent(LoginActivity.this, Home.class));
                     finish();
@@ -165,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
         this.backPressSingleTime = true;
-        Toast.makeText(getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.back_again_to_exit, Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable() {
             @Override

@@ -22,7 +22,7 @@
         <activity android:name=".Home" />
         <activity android:name=".AddBillActivity"></activity>
         <activity android:name=".AddParticipantActivity"></activity>
-
+        <activity android:name=".Model.SignupDatabaseActivity" />
 
 
         <meta-data
