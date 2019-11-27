@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class AddBillActivity extends AppCompatActivity {
     private ArrayList<String> itemPriceList = new ArrayList<>();
 
 
-    Button itemadd, billDelete;
+    ImageButton itemadd;
     EditText itemName, itemPrice, itemQuantity;
 
 
@@ -38,32 +39,46 @@ public class AddBillActivity extends AppCompatActivity {
         itemadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name, price, quantity,totals;
-                name = itemName.getText().toString();
-                price = itemPrice.getText().toString();
-                quantity =itemQuantity.getText().toString();
-                //double total = Integer.parseInt(price) * Integer.parseInt(quantity);
-                double total = Double.parseDouble(price) * Double.parseDouble(quantity);
-                totals = String.valueOf(total);
-                itemList.add(name);
-                itemQtyList.add("Qty:" + quantity);
-                itemPriceList.add("$" + totals);
 
-                initRecyclerView();
+                if(itemName.getText().toString().length() == 0 || itemPrice.getText().toString().length() == 0
+                        || itemQuantity.getText().toString().length() == 0)
+                {
+                    if (itemName.getText().toString().length() == 0) {
+                        itemName.setError("Value should not be empty");
+                    }
+                    if (itemPrice.getText().toString().length() == 0) {
+                        itemPrice.setError("Value should not be empty");
+                    }
+                    if (itemQuantity.getText().toString().length() == 0) {
+                        itemQuantity.setError("Value should not be empty");
+                    }
+                }
+                else {
+                    String name, price, quantity, totals;
+                    name = itemName.getText().toString();
+                    price = itemPrice.getText().toString();
+                    quantity = itemQuantity.getText().toString();
+                    double total = Double.parseDouble(price) * Double.parseDouble(quantity);
+                    totals = String.valueOf(total);
+                    itemList.add(name);
+                    itemQtyList.add("Qty:" + quantity);
+                    itemPriceList.add("$" + totals);
 
-                itemName.setText("");
-                itemPrice.setText("");
-                itemQuantity.setText("");
+                    initRecyclerView();
 
+                    itemName.setText("");
+                    itemPrice.setText("");
+                    itemQuantity.setText("");
+                }
             }
         });
-//
+
    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.add_bill_menu, menu);
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem item) {

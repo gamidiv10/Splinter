@@ -6,15 +6,18 @@
 
 
 package com.example.splinter;
+import android.content.Intent;
 
 import android.content.Intent;
+import android.os.Bundle;
+
+import android.graphics.BlendMode;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

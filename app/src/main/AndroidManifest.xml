@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
     package="com.example.splinter">
+    <uses-feature android:name="android.hardware.bluetooth" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <user-permission android:name="android.permission.ACCESS_CAMERA" />
 
     <application
+        android:value="ca-app-pub-3162157850946233~8845791837"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,18 +21,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.splinter.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".Home"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity android:name=".Bluetooth" />
+        <activity android:name=".Locations"/>
+        <activity android:name=".Internet"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".Home" />
-        <activity android:name=".AddBillActivity"></activity>
-        <activity android:name=".AddParticipantActivity"></activity>
+        <activity android:name=".AddBillActivity"
+            android:label="Add Bill"
+            android:parentActivityName=".Home"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+        <activity android:name=".AddParticipantActivity"
+            android:parentActivityName=".AddBillActivity"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
         <activity android:name=".Model.SignupDatabaseActivity" />
 
 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:clickable="true"
+    android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:background="@color/colorLightGrey"
+    android:layoutMode="clipBounds"
+    android:layout_marginBottom="1dp"
+    android:clipToPadding="true">
+
+    <TextView
+        android:id="@+id/tv_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Milk"
+        android:inputType="textMultiLine"
+        android:maxLines="2"
+        android:width="100dp"
+        android:textSize="22dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_qty"
+        android:text="Qty:4"
+        android:layout_below="@+id/tv_item_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_tPrice"
+        android:text="$456.9"
+        android:inputType="numberDecimal"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="150dp"
+        android:width="130dp"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/edit_icon"
+        android:backgroundTint="@color/cardview_shadow_end_color"
+        android:id="@+id/edit_item_button"
+        android:layout_toLeftOf="@+id/delete_item_button"
+        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/delete_icon"
+        android:backgroundTint="@color/cardview_shadow_end_color"
+        android:id="@+id/delete_item_button"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+

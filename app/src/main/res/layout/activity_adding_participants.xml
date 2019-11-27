@@ -10,8 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recycler_view_participants"
-        android:layout_below="@+id/source_input"/>
+        android:layout_below="@+id/source_input"
+        android:layout_above="@+id/edit_text_layout"
+        />
 
+    <LinearLayout
+        android:id="@+id/edit_text_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
     <EditText
         android:id="@+id/editTextFirstName"
         android:layout_width="wrap_content"
@@ -20,7 +27,7 @@
         android:layout_marginLeft="10dp"
         android:hint="First Name"
         android:inputType="textMultiLine"
-
+        android:width="140dp"
         />
 
     <EditText
@@ -30,33 +37,22 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/editTextFirstName"
         android:hint="Last Name"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
+        android:width="140dp"
         android:inputType="textMultiLine"
-
         />
 
-    <EditText
-        android:id="@+id/editTextEMail"
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnAddParticipant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:hint="E-Mail"
-        android:layout_toRightOf="@+id/editTextLastName"
-        android:layout_marginLeft="10dp"
-        android:inputType="textMultiLine"
+        android:src="@drawable/plus_thick"
 
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="@color/cardview_light_background"
         />
 
-    <Button
-        android:id="@+id/btnAddParticipant"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/editTextEMail"
-        android:text="Add"
-        />
-
-
-
+    </LinearLayout>
 </RelativeLayout>
