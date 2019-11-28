@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +23,7 @@ public class AddBillActivity extends AppCompatActivity {
     public boolean isBillSaved = false;
     public Menu billmenu;
     String strEditText;
-
+    Html html;
     ImageButton itemadd;
     EditText itemName, itemPrice, itemQuantity;
 
@@ -105,10 +106,10 @@ public class AddBillActivity extends AppCompatActivity {
         MenuItem sendEmailItem = menu.findItem(R.id.send_email_button);
         MenuItem saveItem = menu.findItem(R.id.save_button);
 
-        if (!isBillSaved) {
-            sendEmailItem.setEnabled(false);
-            sendEmailItem.getIcon().setAlpha(130);
-        }
+//        if (!isBillSaved) {
+//            sendEmailItem.setEnabled(false);
+//            sendEmailItem.getIcon().setAlpha(130);
+//        }
 
         if(itemList.isEmpty() || emailList.isEmpty())
         {
@@ -133,6 +134,13 @@ public class AddBillActivity extends AppCompatActivity {
             }
 
         }
+        String body = new String("<html> <header> Bill name </header> <br> <body>" +
+                "<table >" +
+                "<tr><th>Item</th><th> count </th> <th>Price</th><th>total</th> <th>Total price</th></tr><br>" +
+                "<tr> <td> bread</td> <td> 3 </td> <td> 3.5</td> <td> 10.5 </td></tr> <br>" +
+                "" +
+                "</table>" +
+                " </body> </html>");
 
         if (id == R.id.send_email_button) {
 
@@ -146,8 +154,8 @@ public class AddBillActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.putExtra(Intent.EXTRA_EMAIL, mailList);
             intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-            intent.putExtra(Intent.EXTRA_TEXT, message);
-            intent.setType("message/rfc822");
+            intent.putExtra(Intent.EXTRA_TEXT, html.fromHtml(body));
+            intent.setType("text/html");
             startActivity(Intent.createChooser(intent, "Choose an Email client :"));
         } else {
             Toast.makeText(getApplicationContext(), "Please save the bill to send via email", Toast.LENGTH_SHORT);
@@ -167,10 +175,10 @@ public class AddBillActivity extends AppCompatActivity {
 
                 strEditText = data.getStringExtra("editTextValue");
                 emailList = data.getStringArrayListExtra("emailList");
-                if (isBillSaved) {
-                    sendEmailItem.setEnabled(true);
-                    sendEmailItem.getIcon().setAlpha(200);
-                }
+//                if (isBillSaved) {
+//                    sendEmailItem.setEnabled(true);
+//                    sendEmailItem.getIcon().setAlpha(200);
+//                }
                 MenuItem saveItem = billmenu.findItem(R.id.save_button);
 
                 if(!itemList.isEmpty() && !emailList.isEmpty())
