@@ -27,7 +27,7 @@
         android:layout_marginLeft="10dp"
         android:hint="First Name"
         android:inputType="textMultiLine"
-        android:width="140dp"
+        android:width="100dp"
         />
 
     <EditText
@@ -37,10 +37,21 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/editTextFirstName"
         android:hint="Last Name"
-        android:layout_marginLeft="20dp"
-        android:width="140dp"
+        android:layout_marginLeft="10dp"
+        android:width="100dp"
         android:inputType="textMultiLine"
         />
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/editTextFirstName"
+            android:hint="Email"
+            android:layout_marginLeft="10dp"
+            android:width="100dp"
+            android:inputType="textMultiLine"
+            />
 
 
     <androidx.appcompat.widget.AppCompatImageButton

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ public class AddParticipantActivity extends AppCompatActivity {
     EditText firstName, lastName, email;
     private ArrayList<String> fnameList = new ArrayList<>();
     private ArrayList<String> lnameList = new ArrayList<>();
+    private ArrayList<String> emailList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class AddParticipantActivity extends AppCompatActivity {
 
         firstName = findViewById(R.id.editTextFirstName);
         lastName = findViewById(R.id.editTextLastName);
+        email = findViewById(R.id.editTextEmail);
 
         addParticipantButton = findViewById(R.id.btnAddParticipant);
 
@@ -46,24 +49,31 @@ public class AddParticipantActivity extends AppCompatActivity {
                     if (lastName.getText().toString().length() == 0) {
                         lastName.setError("Value should not be empty");
                     }
+                    if (email.getText().toString().length() == 0) {
+                        email.setError("Value should not be empty");
+                    }
 
                 }
                 else {
-                    String fName, lName;
+                    String fName, lName, mail;
 
                     fName = firstName.getText().toString();
                     lName = lastName.getText().toString();
+                    mail = email.getText().toString();
                     fnameList.add(fName);
                     lnameList.add(lName);
-
+                    emailList.add(mail);
                     initRecyclerView();
 
                     firstName.setText("");
                     lastName.setText("");
+                    email.setText("");
+
                 }
             }
         });
     }
+
     private void initRecyclerView()
     {
         RecyclerView recyclerView = findViewById(R.id.recycler_view_participants);
@@ -83,8 +93,10 @@ public class AddParticipantActivity extends AppCompatActivity {
 
         if (id == R.id.save_button) {
 
-          //button click event
-        }
+            Intent intent = new Intent();
+            intent.putExtra("emailList", emailList);
+            setResult(RESULT_OK, intent);
+            finish();        }
 
         return super.onOptionsItemSelected(item);
     }
