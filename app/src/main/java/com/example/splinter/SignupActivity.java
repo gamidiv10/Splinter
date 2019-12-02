@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.splinter.Model.SignupDatabaseActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
@@ -50,7 +49,6 @@ public class SignupActivity extends AppCompatActivity {
             "at least 1 small letter\n";
     // Firebase Authentication
     FirebaseAuth mSignupAuthentication;
-    SignupDatabaseActivity signuDBActivity = new SignupDatabaseActivity();
 
     FirebaseDatabase signUpDB = FirebaseDatabase.getInstance("https://splinter-f86ee.firebaseio.com");
 

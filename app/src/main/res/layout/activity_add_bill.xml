@@ -32,12 +32,6 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true">
 
-    <LinearLayout
-        android:id="@+id/edit_text_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
         <EditText
             android:id="@+id/editTextItemName"
             android:layout_width="wrap_content"
