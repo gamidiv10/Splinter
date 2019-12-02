@@ -18,7 +18,7 @@ public class AddBillActivity extends AppCompatActivity {
     private ArrayList<String> itemList = new ArrayList<>();
     private ArrayList<String> itemQtyList = new ArrayList<>();
     private ArrayList<String> itemPriceList = new ArrayList<>();
-
+    private double billTotal;
 
     ImageButton itemadd;
     EditText itemName, itemPrice, itemQuantity;
@@ -59,6 +59,7 @@ public class AddBillActivity extends AppCompatActivity {
                     price = itemPrice.getText().toString();
                     quantity = itemQuantity.getText().toString();
                     double total = Double.parseDouble(price) * Double.parseDouble(quantity);
+                    billTotal += total;
                     totals = String.valueOf(total);
                     itemList.add(name);
                     itemQtyList.add("Qty:" + quantity);
