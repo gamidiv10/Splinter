@@ -1,6 +1,10 @@
-package com.example.splinter.ui.profile;
+/*
+ * Author: Prem Kumar Menni
+ * Contributors:
+ * Date: 2019
+ */
 
-import androidx.lifecycle.ViewModelProviders;
+package com.example.splinter.ui.profile;
 
 import android.os.Bundle;
 
@@ -15,32 +19,28 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import com.example.splinter.R;
-import com.example.splinter.ui.home.HomeViewModel;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class profile extends Fragment {
 
-    private DatabaseReference mdatabase;
-    private ProfileViewModel mViewModel;
-    private Button profile_edit;
-    private ProfileViewModel profileViewModel;
+  private DatabaseReference mdatabase;
+  private ProfileViewModel mViewModel;
+  private Button profile_edit;
+  private ProfileViewModel profileViewModel;
 
-    private ArrayAdapter<String> adapter;
-    public static profile newInstance() {
-        return new profile();
-    }
+  private ArrayAdapter<String> adapter;
 
-    private ArrayList<String> arrayList = new ArrayList<>();
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+  public static profile newInstance() {
+    return new profile();
+  }
+
+  private ArrayList<String> arrayList = new ArrayList<>();
+
+  @Override
+  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                           @Nullable Bundle savedInstanceState) {
 //        profileViewModel =
 //                ViewModelProviders.of(this).get(profileViewModel.getClass());
 //        View root = inflater.inflate(R.layout.profile_fragment, container, false);
@@ -77,9 +77,9 @@ public class profile extends Fragment {
 //            }
 //        });
 
-        return inflater.inflate(R.layout.profile_fragment, container, false);
+    return inflater.inflate(R.layout.profile_fragment, container, false);
 
-    }
+  }
 //    @Override
 //    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 //        super.onActivityCreated(savedInstanceState);

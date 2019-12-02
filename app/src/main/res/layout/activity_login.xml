@@ -75,6 +75,7 @@
         android:linksClickable="true"
         android:text="@string/create_an_account"
         android:textColor="@color/colorBlue" />
+
     <TextView
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"

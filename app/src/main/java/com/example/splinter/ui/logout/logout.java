@@ -1,3 +1,9 @@
+/*
+ * Author: Yashesh Savani
+ * Contributors: Sneh Jogani
+ * Date: 2019
+ */
+
 package com.example.splinter.ui.logout;
 
 import android.content.Intent;
@@ -12,24 +18,24 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class logout extends Fragment {
 
-    private FirebaseAuth logoutFireBaseAuthentication;
+  private FirebaseAuth logoutFireBaseAuthentication;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        logoutFireBaseAuthentication = FirebaseAuth.getInstance();
-        signOut();
-    }
+  @Override
+  public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    logoutFireBaseAuthentication = FirebaseAuth.getInstance();
+    signOut();
+  }
 
-    private void signOut() {
-        logoutFireBaseAuthentication.signOut();
-        Toast.makeText(getContext(), "Logged Out", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getContext(), LoginActivity.class);
-        // Removal of Back stacking activities
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+  private void signOut() {
+    logoutFireBaseAuthentication.signOut();
+    Toast.makeText(getContext(), "Logged Out", Toast.LENGTH_SHORT).show();
+    Intent intent = new Intent(getContext(), LoginActivity.class);
+    // Removal of Back stacking activities
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(intent);
 
-    }
+  }
 
 
 }

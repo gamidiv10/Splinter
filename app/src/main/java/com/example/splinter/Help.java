@@ -1,3 +1,8 @@
+/*
+ * Author: Prem Kumar Menni
+ * Date: 2019
+ */
+
 package com.example.splinter;
 
 import android.os.Bundle;
@@ -12,12 +17,12 @@ import android.view.View;
 
 public class Help extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_help);
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -27,6 +32,6 @@ public class Help extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
-    }
+  }
 
 }

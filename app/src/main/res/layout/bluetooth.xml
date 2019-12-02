@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".MainActivity"
-    android:transitionGroup="true">
+    android:orientation="vertical"
+    android:transitionGroup="true"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/statusBluetoothTv"
@@ -24,7 +23,7 @@
 
     <Switch
         android:id="@+id/onBtn"
-        android:minWidth="200dp"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Turn On"
@@ -34,19 +33,19 @@
 
     <Switch
         android:id="@+id/offBtn"
-        android:minWidth="200dp"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Turn Off"
-        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+        android:minWidth="200dp"
+        android:text="Turn Off" />
 
     <Switch
         android:id="@+id/discoverableBtn"
-        android:minWidth="200dp"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Discoverable"
-        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+        android:minWidth="200dp"
+        android:text="Discoverable" />
 
     <Switch
         android:id="@+id/pairedBtn"
@@ -65,11 +64,11 @@
 
     <TextView
         android:id="@+id/pairedTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:minWidth="200dp"
         android:text=""
-        android:textColor="#000"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="#000" />
 
     <TextView
         android:id="@+id/status"
