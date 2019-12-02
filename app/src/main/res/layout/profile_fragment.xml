@@ -8,6 +8,7 @@
     android:background="@color/profileBackground">
 
 <!--    Reference: https://appsnipp.com/free-android-profile-design-with-source-code/-->
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -20,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/profilePrimaryDark"
+            app:contentScrim="@color/whiteTextColor"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar"
             app:expandedTitleMarginEnd="64dp"
@@ -34,25 +35,27 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:id="@+id/linearLayout"
-                android:background="@drawable/profile_bk">
+                android:background="@color/deep_purple">
 
                 <ImageView
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/chuck_norris_icon" />
+                    android:src="@drawable/ic_tag_faces_black_24dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/myname"
                     android:textSize="28dp"
+                    android:textColor="@color/whiteTextColor"
                     android:textStyle="bold"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/useremail"
-                    android:textSize="12dp"
+                    android:textSize="16dp"
+                    android:textColor="@color/whiteTextColor"
                     android:textStyle="bold"/>
 
                 <RelativeLayout
@@ -63,14 +66,10 @@
                     android:layout_marginTop="20dp"
                     android:background="@color/profileBackground">
 
-                    <View
-                        android:layout_alignParentTop="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:background="@drawable/profile_bk"/>
 
                     <Button
                         android:id="@+id/profile_edit"
+                        android:layout_margin="5dp"
                         android:text="@string/profile_edit"
                         style="@style/profileStyledBackButton" />
                 </RelativeLayout>

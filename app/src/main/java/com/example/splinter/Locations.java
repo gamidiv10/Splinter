@@ -37,7 +37,6 @@ public class Locations extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 1;
     Context context = this;
-    Button fetch;
     TextView user_location;
     private FusedLocationProviderClient mFusedLocationClient;
     Geocoder geocoder;
@@ -45,20 +44,12 @@ public class Locations extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.location);
+        setContentView(R.layout.currency_fragment);
 
-        fetch = findViewById(R.id.fetch_location);
-        user_location = findViewById(R.id.user_location);
+        user_location = findViewById(R.id.user_current_location);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        fetch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                fetchLocation();
-            }
-        });
-
+        fetchLocation();
     }
 
     private void fetchLocation() {
@@ -94,14 +85,11 @@ public class Locations extends AppCompatActivity {
                         })
                         .create()
                         .show();
-
-
             } else {
-                // No explanation needed; request the permission
+                // Request the permission
                 ActivityCompat.requestPermissions(Locations.this,
                         new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
                         MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-
                 // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
                 // app-defined int constant. The callback method gets the
                 // result of the request.
@@ -117,13 +105,12 @@ public class Locations extends AppCompatActivity {
                                 // Logic to handle location object
                                 Double latittude = location.getLatitude();
                                 Double longitude = location.getLongitude();
-                                user_location.setText("Location = "+getCompleteAddressString(latittude,longitude));
+                                user_location.setText(getCompleteAddressString(latittude,longitude));
                                 //user_location.setText(latittude+""+longitude);
                             }
                         }
                     });
         }
-
     }
 
     private String getCompleteAddressString(double LATITUDE, double LONGITUDE) {

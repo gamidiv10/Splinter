@@ -1,52 +1,35 @@
 package com.example.splinter.ui.logout;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-
-import android.app.AppComponentFactory;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.splinter.Home;
-import com.example.splinter.MainActivity;
-import com.example.splinter.R;
+import com.example.splinter.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class logout extends Fragment {
 
-    private LogoutViewModel mViewModel;
-
-    public static logout newInstance() {
-        return new logout();
-    }
+    private FirebaseAuth logoutFireBaseAuthentication;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.logout_fragment, container, false);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        logoutFireBaseAuthentication = FirebaseAuth.getInstance();
+        signOut();
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(LogoutViewModel.class);
-        // TODO: Use the ViewModel
-        goToAttract(mViewModel);
-
-    }
-
-    private void goToAttract(LogoutViewModel v) {
-        Intent intent = new Intent(getActivity(), MainActivity.class);
+    private void signOut() {
+        logoutFireBaseAuthentication.signOut();
+        Toast.makeText(getContext(), "Logged Out", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        // Removal of Back stacking activities
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-    }
 
+    }
 
 
 }

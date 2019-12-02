@@ -1,79 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignupActivity">
 
-
-    <TextView
-        android:id="@+id/tv_signup"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="@string/sign_up"
-        android:textAllCaps="true"
-        android:textSize="30sp" />
+        android:layout_height="wrap_content">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayout_enterEmail"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_signup"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp">
+        <TextView
+            android:id="@+id/tv_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:text="@string/create_account"
+            android:textSize="30sp" />
 
-        <EditText
-            android:id="@+id/et_enterEmail"
+        <LinearLayout
+            android:id="@+id/linearLayout_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_signup"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayout_firstName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/et_firstName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/first_name"
+                    android:inputType="text"
+                    android:paddingStart="10dp"
+                    android:scrollHorizontally="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayout_lastName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/et_lastName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/last_name"
+                    android:inputType="text"
+                    android:paddingStart="10dp"
+                    android:scrollHorizontally="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayout_enterEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:scrollHorizontally="true" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_below="@+id/linearLayout_Name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayout_enterPassword"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/inputLayout_enterEmail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        app:passwordToggleEnabled="true">
+            <EditText
+                android:id="@+id/et_enterEmail"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="10dp"
+                android:scrollHorizontally="true" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/et_enterPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayout_enterPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:scrollHorizontally="true" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_below="@+id/inputLayout_enterEmail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/et_enterPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:scrollHorizontally="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout_reenterPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inputLayout_enterPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="10dp"
         app:passwordToggleEnabled="true">
 
         <EditText
             android:id="@+id/et_reenterPassword"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="@string/confirm_password"
             android:inputType="textPassword"
-            android:scrollHorizontally="true" />
+            android:scrollHorizontally="true"
+            android:paddingStart="10dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -84,10 +142,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="@string/sign_up"
-        android:textAllCaps="true" />
+        android:textAllCaps="true"
+        android:padding="10dp"/>
 
     <TextView
-        android:id="@+id/tv_createAccount"
+        android:id="@+id/btn_signup_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_signup"
@@ -100,3 +159,4 @@
         android:textColor="@color/colorBlue" />
 
 </RelativeLayout>
+</ScrollView>

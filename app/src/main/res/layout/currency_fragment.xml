@@ -5,21 +5,53 @@
     android:layout_height="match_parent"
     tools:context=".ui.currency.currency">
     <TextView
+        android:id="@+id/default_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="24dp"
+        android:text="@string/default_currency"/>
+
+    <TextView
+        android:id="@+id/present_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/default_currency"
+        android:text="@string/present_location"
+        android:layout_marginLeft="10dp"
+        android:layout_centerHorizontal="false"
+        android:textSize="24dp" />
+    <TextView
+        android:id="@+id/user_current_location"
+        android:layout_below="@+id/default_currency"
+        android:layout_toRightOf="@+id/present_location"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp" />
+
+    <TextView
         android:id="@+id/select_period"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/user_current_location"
         android:textSize="24dp"
         android:text="@string/currency_selection"/>
-
-    <Spinner
-        android:id="@+id/currencyspinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/select_period"/>
+<!--    <Spinner-->
+<!--        android:id="@+id/currencyspinner"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/select_period"/>-->
 
     <ListView
-        android:id="@+id/currencylist"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/select_period"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/currencyspinner"/>
+        android:entries="@array/currency">
+
+    </ListView>
+
 </RelativeLayout>
