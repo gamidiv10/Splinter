@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                     HashMap<String, Object> UserData = (HashMap<String, Object>) dataSnapshot.getValue();
 
                     for (Map.Entry<String, Object> users : UserData.entrySet()) {
-=                        Object rootID = users.getValue();
+                        Object rootID = users.getValue();
                         try {
                             JSONObject rootObject = new JSONObject(rootID.toString());
                             JSONObject email = rootObject.getJSONObject("Email");
