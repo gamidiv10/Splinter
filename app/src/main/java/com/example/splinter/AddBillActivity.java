@@ -43,7 +43,7 @@ public class AddBillActivity extends AppCompatActivity {
                 if(itemName.getText().toString().length() == 0 || itemPrice.getText().toString().length() == 0
                         || itemQuantity.getText().toString().length() == 0)
                 {
-                    if (itemName.getText().toString().length() == 0) {
+                             if (itemName.getText().toString().length() == 0) {
                         itemName.setError("Value should not be empty");
                     }
                     if (itemPrice.getText().toString().length() == 0) {
@@ -64,7 +64,8 @@ public class AddBillActivity extends AppCompatActivity {
                     itemQtyList.add("Qty:" + quantity);
                     itemPriceList.add("$" + totals);
 
-                    initRecyclerView();
+
+                   initRecyclerView();
 
                     itemName.setText("");
                     itemPrice.setText("");

@@ -1,6 +1,5 @@
 package com.example.splinter;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -18,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Pattern;
 
@@ -26,22 +27,6 @@ import static com.example.splinter.R.layout;
 import static com.example.splinter.R.string;
 
 public class SignupActivity extends AppCompatActivity {
-
-    public EditText etEnterEmail, etEnterPassword, etReenterPassword, etFirstName, etLastName;
-    public Button btnSignup;
-    public String enteredEmail, enteredPassword, reenteredPassword, firstName, lastName;
-    public TextInputLayout inputLayoutEnterEmail, inputLayoutEnterPassword, inputLayoutReenterPassword, inputLayoutFirstName, inputLayoutLastName;
-
-    String passwordError = "Password should be between 8 to 24 character\n" +
-            "at least 1 special character [@#$%^&+=]\n" +
-            "at least 1 digit\n" +
-            "at least 1 capital letter\n" +
-            "at least 1 small letter\n";
-
-    // Firebase Authentication
-    FirebaseAuth mSignupAuthentication;
-
-    SignupDatabaseActivity signuDBActivity = new SignupDatabaseActivity();
 
     // Password validation pattern //https://codinginflow.com/tutorials/android/validate-email-password-regular-expressions
     public static final Pattern PATTERN_PASSWORD =
@@ -54,6 +39,20 @@ public class SignupActivity extends AppCompatActivity {
                     "(?=\\S+$)" +           //no white spaces
                     ".{8,24}" +               //at least between 8 to 24 characters
                     "$");
+    public EditText etEnterEmail, etEnterPassword, etReenterPassword, etFirstName, etLastName;
+    public Button btnSignup;
+    public String enteredEmail, enteredPassword, reenteredPassword, firstName, lastName;
+    public TextInputLayout inputLayoutEnterEmail, inputLayoutEnterPassword, inputLayoutReenterPassword, inputLayoutFirstName, inputLayoutLastName;
+    String passwordError = "Password should be between 8 to 24 character\n" +
+            "at least 1 special character [@#$%^&+=]\n" +
+            "at least 1 digit\n" +
+            "at least 1 capital letter\n" +
+            "at least 1 small letter\n";
+    // Firebase Authentication
+    FirebaseAuth mSignupAuthentication;
+    SignupDatabaseActivity signuDBActivity = new SignupDatabaseActivity();
+
+    FirebaseDatabase signUpDB = FirebaseDatabase.getInstance("https://splinter-f86ee.firebaseio.com");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,18 +80,32 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (isvalidEmail() & isvalidPassword() & isvalidConfirmPassword() & isvalidFirstname() & isvalidLastname()) {
-                    Toast.makeText(getApplicationContext(), " User Account Created", Toast.LENGTH_SHORT).show();
-                    ProgressDialog progress = new ProgressDialog(getApplicationContext());
-                    progress.setMessage("Creating Account ...");
-                    progress.show();
-                    progress.setCancelable(false);
-                    createUserInDatabase();
-                    signuDBActivity.writeUserdata();
-                    progress.dismiss();
+                    Toast.makeText(getApplicationContext(), " Creating Account...", Toast.LENGTH_SHORT).show();
+                    Boolean success = writeUserdata();
+                    if (success) {
+                        createUserInDatabase();
+                    }else{
+                        Toast.makeText(getApplicationContext(),string.error_in_user_creation,Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
         });
+    }
+
+    public Boolean writeUserdata() {
+        try {
+            DatabaseReference referenceToRoot = signUpDB.getReference();
+            DatabaseReference userRef = referenceToRoot.child("Users");
+            DatabaseReference emailRef = userRef.push().child("Email");
+            emailRef.child("Email_value").setValue(enteredEmail);
+            emailRef.child("First_name").setValue(firstName);
+            emailRef.child("Last_name").setValue(lastName);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private void createUserInDatabase() {
@@ -175,6 +188,16 @@ public class SignupActivity extends AppCompatActivity {
         } else {
             inputLayoutReenterPassword.setError(null);
             return true;
+        }
+    }
+
+    public static class User {
+        String emailToDB, firstNameToDB, lastNameToDB;
+
+        public User(String emailToDB, String firstNameToDB, String lastNameToDB) {
+            this.emailToDB = emailToDB;
+            this.firstNameToDB = firstNameToDB;
+            this.lastNameToDB = lastNameToDB;
         }
     }
 }
