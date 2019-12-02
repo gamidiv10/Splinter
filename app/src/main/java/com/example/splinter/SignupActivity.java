@@ -6,6 +6,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -47,6 +48,7 @@ public class SignupActivity extends AppCompatActivity {
                     "$");
     public EditText etEnterEmail, etEnterPassword, etReenterPassword, etFirstName, etLastName;
     public Button btnSignup;
+    public TextView btn_signup_login;
     public String enteredEmail, enteredPassword, reenteredPassword, firstName, lastName;
     public TextInputLayout inputLayoutEnterEmail, inputLayoutEnterPassword, inputLayoutReenterPassword, inputLayoutFirstName, inputLayoutLastName;
     String passwordError = "Password should be between 8 to 24 character\n" +
@@ -75,10 +77,17 @@ public class SignupActivity extends AppCompatActivity {
         inputLayoutReenterPassword = findViewById(id.inputLayout_reenterPassword);
         inputLayoutFirstName = findViewById(id.inputLayout_firstName);
         inputLayoutLastName = findViewById(id.inputLayout_lastName);
-
-
+//        btnlogin = findViewById(R.id.btn_login);
+        btn_signup_login = findViewById(R.id.btn_signup_login);
         // Firebase get running Instance
         mSignupAuthentication = FirebaseAuth.getInstance();
+
+        btn_signup_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+            }
+        });
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,10 +101,17 @@ public class SignupActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
                     }
+                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                 }
-
             }
         });
+//        btnlogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+//            }
+//        });
     }
 
     public Boolean writeUserdata() {

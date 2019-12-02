@@ -75,5 +75,17 @@
         android:linksClickable="true"
         android:text="@string/create_an_account"
         android:textColor="@color/colorBlue" />
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_createAccount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:linksClickable="true"
+        android:text="@string/forgot_password"
+        android:textColor="@color/colorBlue" />
 
 </RelativeLayout>

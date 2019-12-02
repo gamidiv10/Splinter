@@ -5,6 +5,8 @@
 package com.example.splinter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckBox;
+import androidx.recyclerview.widget.AdapterListUpdateCallback;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +18,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class AddParticipantActivity extends AppCompatActivity {
@@ -25,6 +30,11 @@ public class AddParticipantActivity extends AppCompatActivity {
     private ArrayList<String> fnameList = new ArrayList<>();
     private ArrayList<String> lnameList = new ArrayList<>();
     private ArrayList<String> emailList = new ArrayList<>();
+    private ArrayList<String> selectedfnameList = new ArrayList<>();
+    private ArrayList<String> selectedlnameList = new ArrayList<>();
+    private ArrayList<String> selectedemailList = new ArrayList<>();
+    FirebaseDatabase database;
+    ArrayList<String> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +44,10 @@ public class AddParticipantActivity extends AppCompatActivity {
         firstName = findViewById(R.id.editTextFirstName);
         lastName = findViewById(R.id.editTextLastName);
         email = findViewById(R.id.editTextEmail);
+        database = FirebaseDatabase.getInstance();
+
 
         addParticipantButton = findViewById(R.id.btnAddParticipant);
-
 
         addParticipantButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,12 +83,14 @@ public class AddParticipantActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
+
 
     private void initRecyclerView()
     {
         RecyclerView recyclerView = findViewById(R.id.recycler_view_participants);
-        RecyclerViewAdapterParticipants adapter = new RecyclerViewAdapterParticipants(this, fnameList, lnameList);
+        RecyclerViewAdapterParticipants adapter = new RecyclerViewAdapterParticipants(this, fnameList, lnameList, emailList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -91,14 +104,19 @@ public class AddParticipantActivity extends AppCompatActivity {
         int id = item.getItemId();
 
 
-        if (id == R.id.save_button) {
+        if (id == R.id.save_button)
+        {
 
             Intent intent = new Intent();
             intent.putExtra("emailList", emailList);
             intent.putExtra("participantsCount", fnameList.size());
+            intent.putExtra("fnameList", fnameList);
+            intent.putExtra("lnameList", lnameList);
             setResult(RESULT_OK, intent);
-            finish();        }
+            finish();
+        }
 
         return super.onOptionsItemSelected(item);
     }
+
 }
