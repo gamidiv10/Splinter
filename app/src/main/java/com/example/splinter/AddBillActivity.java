@@ -55,6 +55,7 @@ public class AddBillActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add_bill);
 
+    // fetching textViews
     itemName = findViewById(R.id.editTextItemName);
     itemPrice = findViewById(R.id.editTextItemPrice);
     itemQuantity = findViewById(R.id.editTextItemQuantity);
@@ -65,6 +66,7 @@ public class AddBillActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
 
+        // validating item name and price entries
         if (itemName.getText().toString().length() == 0 || itemPrice.getText().toString().length() == 0
                 || itemQuantity.getText().toString().length() == 0) {
           if (itemName.getText().toString().length() == 0) {
@@ -82,9 +84,12 @@ public class AddBillActivity extends AppCompatActivity {
           name = itemName.getText().toString();
           price = itemPrice.getText().toString();
           quantity = itemQuantity.getText().toString();
+
+          // calculating total bill amount
           double total = Double.parseDouble(price) * Double.parseDouble(quantity);
           billTotal += total;
           totals = String.valueOf(total);
+
           itemList.add(name);
           itemQtyList.add("Qty:" + quantity);
           itemPriceList.add("$" + totals);
@@ -93,12 +98,13 @@ public class AddBillActivity extends AppCompatActivity {
           // individualShare = billTotal / (participantsCount + 1)
           // amountOwed = individualShare * participantsCount
 
+          // initializing recycler view with the data received
           initRecyclerView();
 
+          // resetting editTextView values to empty
           itemName.setText("");
           itemPrice.setText("");
           itemQuantity.setText("");
-
 
           MenuItem saveItem = billmenu.findItem(R.id.save_button);
 
@@ -147,15 +153,19 @@ public class AddBillActivity extends AppCompatActivity {
       startActivityForResult(intentForAddingParticipant, 1);
     }
 
+    // on save button click in options item menu
     if (id == R.id.save_button) {
 
+      // validating whether bill name not null
       if (Objects.requireNonNull(billName.getText()).toString().length() == 0) {
         billName.setError("Value should not be empty");
       } else {
 
+        // fetching participants list from firebase db
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         ArrayList<Participant> participantObjList = new ArrayList<>();
 
+        // adding participants to local arrayList
         for (int i = 0; i < fnameList.size(); i++) {
           //String itemID = mDatabase.push().getKey();
 
@@ -193,11 +203,14 @@ public class AddBillActivity extends AppCompatActivity {
       }
       MenuItem sendEmailItem = billmenu.findItem(R.id.send_email_button);
 
+      /// if bill is saved then allow send email
       if (isBillSaved) {
         sendEmailItem.setEnabled(true);
         sendEmailItem.getIcon().setAlpha(200);
       }
     }
+
+    // email body
     String body = "<html> <header> Hi, you are added into the bill with name  </header> <body> <div> Splinter" +
             "dated November 11 2019 by Team 7 </div> <br>" +
             "<p> Totalbill amount id 100$ <p> <br>" +
@@ -205,6 +218,7 @@ public class AddBillActivity extends AppCompatActivity {
 
     if (id == R.id.send_email_button) {
 
+      // email subject
       String subject = "Splitter - New Bill Added";
       //noinspection unused
       String message = "Bill Details";
