@@ -3,7 +3,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="create_an_account">Create an account? Click here!</string>
+    <string name="create_an_account">Create an account?</string>
     <string name="sign_up">Sign Up</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="add_bill">Add Bill</string>
@@ -14,7 +14,7 @@
     <string name="nav_header_subtitle">splinter@splinter.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="currency">Currency</string>
-    <string name="action_settings">Share</string>
+    <string name="action_share">Share</string>
     <string name="profile">Profile</string>
     <string name="contact_us">Contact us</string>
     <string name="menu_home">Home</string>
@@ -24,8 +24,8 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="logging_out">Logging out</string>
-    <string name="owes_you">Others owes you:</string>
-    <string name="owed_you">You owe others:</string>
+    <string name="owes_you">You get</string>
+    <string name="owed_you">You owe</string>
     <string name="zero">0</string>
     <string name="bill_name">Bill Name</string>
     <string name="first_name">First name</string>
@@ -35,10 +35,11 @@
     <string name="error_in_user_creation">Error in User creation! Try Again!</string>
     <string name="no_empty_field">Field cannot be empty</string>
     <string name="back_again_to_exit">Please click BACK again to exit</string>
-    <string name="myname">myname</string>
-    <string name="useremail">my mmail id</string>
-    <string name="fname">userfirstname</string>
-    <string name="lname">userlastname</string>
+    <string name="myname">Splinter</string>
+    <string name="useremail">Splinter@splinter.com</string>
+    <string name="fname">Team 7</string>
+    <string name="lname">CSCI5708</string>
+
     <string name="profile_edit">Edit</string>
     <string name="title_activity_profile">Profile</string>
     <string name="accountinfo">Account Info</string>
@@ -48,7 +49,19 @@
         <item>Indian Rupee</item>
         <item>Euro</item>
     </string-array>
-    <string name="currency_selection"> Please select the currency: </string>
-    <string name="amount_total">Total</string>
-
+    <string-array name="list_faqs">
+        <item>Intro</item>
+        <item>How to create a bill</item>
+        <item>How to add participents</item>
+        <item>How to edit a bill</item>
+    </string-array>
+    <string name="default_currency"> Default currency is based on your location</string>
+    <string name="help_Text">FAQs</string>
+    <string name="currency_selection"> Please select the currency below to change: </string>
+    <string name="amount_total">Total balance:</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="help">Help</string>
+    <string name="title_activity_help">Help</string>
+    <string name="title_activity_share">share</string>
+    <string name="present_location"> Your location is</string>
 </resources>

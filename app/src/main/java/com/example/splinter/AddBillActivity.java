@@ -133,15 +133,11 @@ public class AddBillActivity extends AppCompatActivity {
                 sendEmailItem.setEnabled(true);
                 sendEmailItem.getIcon().setAlpha(200);
             }
-
         }
-        String body = new String("<html> <header> Bill name </header> <br> <body>" +
-                "<table >" +
-                "<tr><th>Item</th><th> count </th> <th>Price</th><th>total</th> <th>Total price</th></tr><br>" +
-                "<tr> <td> bread</td> <td> 3 </td> <td> 3.5</td> <td> 10.5 </td></tr> <br>" +
-                "" +
-                "</table>" +
-                " </body> </html>");
+        String body = new String("<html> <header> Hi, you are added into the bill with name  </header> <body> <div> Splinter" +
+                "dated November 11 2019 by Team 7 </div> <br>" +
+                "<p> Totalbill amount id 100$ <p> <br>" +
+                "Amount you have to pay to the user is 20$ <br>");
 
         if (id == R.id.send_email_button) {
 

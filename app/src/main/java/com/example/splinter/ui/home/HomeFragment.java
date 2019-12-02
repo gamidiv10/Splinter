@@ -5,18 +5,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.splinter.AddBillActivity;
+import com.example.splinter.Help;
 import com.example.splinter.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -28,6 +32,23 @@ public class HomeFragment extends Fragment {
 //            @Override
 //            public void onChanged(@Nullable String s) {
 //                textView.setText(s);
+//            }
+//        });
+//        help = root.findViewById(R.id.action_help);
+//        ((View) help).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), Help.class);
+//                startActivity(intent);
+//            }
+//        });
+       // View share = root.findViewById(R.id.action_share);
+
+//        share.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), share.class);
+//                startActivity(intent);
 //            }
 //        });
         FloatingActionButton fab = root.findViewById(R.id.addBill_fab);

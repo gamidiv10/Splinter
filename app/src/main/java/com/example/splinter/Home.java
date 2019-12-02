@@ -3,11 +3,10 @@ package com.example.splinter;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.splinter.ui.home.share;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
@@ -24,13 +23,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    private FloatingActionButton addBill;
-    private Button logout;
     private AppBarConfiguration mAppBarConfiguration;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,34 +37,18 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-        //FloatingActionButton fab = findViewById(R.id.addBill_fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_profile,
-                R.id.nav_contact_us, R.id.action_settings, R.id.nav_logout)
+                R.id.nav_contact_us, R.id.action_share, R.id.nav_logout, R.id.action_share)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-//        addBill = findViewById(R.id.addBill_fab);
-//        addBill.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intentForAddingBill = new Intent(Home.this, AddBillActivity.class);
-//                startActivity(intentForAddingBill);
-//            }
-//        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,12 +66,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
-            case R.id.nav_logout: {
-                Intent intentForAddingBill = new Intent(Home.this, LoginActivity.class);
-                startActivity(intentForAddingBill);
+
+            case R.id.action_share: {
+                startActivity(new Intent(this, share.class));
             }
         }
-
         return true;
     }
 }

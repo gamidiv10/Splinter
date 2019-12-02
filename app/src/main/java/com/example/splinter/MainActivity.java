@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         // Font https://fonts.google.com/specimen/Dancing+Script?selection.family=Dancing+Script
+
         Thread thread = new Thread()
         {
             @Override

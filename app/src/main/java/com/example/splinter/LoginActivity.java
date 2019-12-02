@@ -82,11 +82,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentToSignup = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(intentToSignup);
-
             }
         });
-
-
     }
 
     @Override
@@ -145,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Sign In Problem", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please check the credentials", Toast.LENGTH_SHORT).show();
                 } else {
                     startActivity(new Intent(LoginActivity.this, Home.class));
                     finish();
@@ -155,6 +152,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity
+
     @Override
     public void onBackPressed() {
         if (backPressSingleTime) {
