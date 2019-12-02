@@ -33,7 +33,7 @@ public class SignupActivity extends AppCompatActivity {
      *    Title: Validate Email and Password with Regular Expression
      *    Author: Coding in Flow
      *    Code version: 1.0
-     *    Availability: Coding in Flow, https://codinginflow.com/tutorials/android/validate-email-password-regular-expressions
+     *    Availability: Coding in Flow, https://codinginflow.com/tutorials/android/validate-email-password-regular-expressionscoo
      ***************************************************************************************/
     public static final Pattern PATTERN_PASSWORD =
             Pattern.compile("^" +

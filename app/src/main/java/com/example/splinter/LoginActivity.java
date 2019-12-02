@@ -112,14 +112,13 @@ public class LoginActivity extends AppCompatActivity {
         if (currentUser != null) {
             Toast.makeText(getApplicationContext(), "Already Logged in", Toast.LENGTH_SHORT).show();
             DatabaseReference referenceToRoot = databaseRef.getReference().child("Users");
-            final String dataKey = referenceToRoot.push().getKey();
             referenceToRoot.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     HashMap<String, Object> UserData = (HashMap<String, Object>) dataSnapshot.getValue();
 
-                    for (Map.Entry<String, Object> entry : UserData.entrySet()) {
-=                        Object rootID = entry.getValue();
+                    for (Map.Entry<String, Object> users : UserData.entrySet()) {
+=                        Object rootID = users.getValue();
                         try {
                             JSONObject rootObject = new JSONObject(rootID.toString());
                             JSONObject email = rootObject.getJSONObject("Email");
@@ -140,8 +139,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
             });
-            Toast.makeText(getApplicationContext(), currentUser.getEmail(), Toast.LENGTH_SHORT).show();
-
             startActivity(new Intent(LoginActivity.this, Home.class));
             finish();
 
