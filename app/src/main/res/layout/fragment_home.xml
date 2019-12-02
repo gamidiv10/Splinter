@@ -77,6 +77,8 @@
                         android:background="@color/colorLightGreen"
                         android:layout_margin="5dp"/>
                     <TextView
+                        android:id="@+id/owes_you"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
