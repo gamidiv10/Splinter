@@ -19,7 +19,7 @@ public class AddBillActivity extends AppCompatActivity {
     private ArrayList<String> itemList = new ArrayList<>();
     private ArrayList<String> itemQtyList = new ArrayList<>();
     private ArrayList<String> itemPriceList = new ArrayList<>();
-    private double billTotal;
+    private double billTotal = 0;
 
     private ArrayList<String> emailList = new ArrayList<>();
     public boolean isBillSaved = false;

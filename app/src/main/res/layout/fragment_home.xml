@@ -1,87 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="25dp">s
+    android:layout_margin="25dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/home_owes_you"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/owes_you"
-                android:textSize="20dp"
-                android:layout_marginLeft="10dp" />
-            <TextView
-                android:id="@+id/home_owes_you_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/home_owes_you"
-                android:text="0"
-                android:textSize="20dp"
-                android:layout_marginLeft="12dp"/>
-            <TextView
-                android:id="@+id/home_owed_you"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:textSize="20dp"
-                android:layout_below="@+id/home_owes_you"
-                android:text="@string/owed_you"/>
-
-                <TextView
-                    android:id="@+id/home_owed_you_amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/home_owed_you"
-                    android:textSize="22dp"
-                    android:layout_below="@+id/home_owes_you_amount"
-                    android:text="0"
-                    android:layout_marginLeft="22dp"/>
 
                 <TextView
                     android:id="@+id/home_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_below="@+id/home_owed_you"
-                    android:textSize="20dp"
-                    android:text="@string/amount_total"/>
+                    android:layout_marginStart="10dp"
+                    android:textSize="20sp"
+                    android:text="@string/amount_total"
+                    />
+
                 <TextView
                     android:id="@+id/home_total_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/home_total"
+                    android:layout_toEndOf="@id/home_total"
                     android:layout_below="@+id/home_owed_you_amount"
-                    android:text="0"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="120dp"/>
+                    android:text="@string/zero"
+                    android:textSize="20sp"
+                    android:layout_alignParentEnd="true"
+                    android:textAlignment="viewEnd"
+                    android:paddingStart="0sp"
+                    android:paddingEnd="5sp"
+                    />
+
+                <TextView
+                    android:id="@+id/home_owes_you"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/owes_you"
+                    android:layout_below="@+id/home_total"
+                    android:textSize="20sp"
+                    android:layout_marginStart="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/home_owes_you_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/home_owes_you"
+                    android:text="@string/zero"
+                    android:textSize="20sp"
+                    android:layout_alignParentEnd="true"
+                    android:textAlignment="viewEnd"
+                    android:paddingStart="0sp"
+                    android:paddingEnd="5sp"
+                    />
+
+                <TextView
+                    android:id="@+id/home_owed_you"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textSize="20sp"
+                    android:layout_below="@+id/home_owes_you"
+                    android:text="@string/owed_you"
+                    />
+
+                <TextView
+                    android:id="@+id/home_owed_you_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/home_owed_you"
+                    android:textSize="22sp"
+                    android:layout_below="@+id/home_owes_you_amount"
+                    android:text="@string/zero"
+                    android:layout_alignParentEnd="true"
+                    android:textAlignment="viewEnd"
+                    android:paddingStart="0sp"
+                    android:paddingEnd="5sp"
+                    />
+
             </RelativeLayout>
-            </LinearLayout>
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="10sp"-->
+<!--            />-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/billsRecyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10sp"
+                />
 
-        </androidx.cardview.widget.CardView>
         </LinearLayout>
-
 
     <include
         layout="@layout/home_screen_background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

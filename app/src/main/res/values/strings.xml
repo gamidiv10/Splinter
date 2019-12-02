@@ -24,8 +24,8 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="logging_out">Logging out</string>
-    <string name="owes_you">Others owes you:</string>
-    <string name="owed_you">You owe others:</string>
+    <string name="owes_you">Others owe you</string>
+    <string name="owed_you">You owe others</string>
     <string name="zero">0</string>
     <string name="bill_name">Bill Name</string>
     <string name="first_name">First name</string>
