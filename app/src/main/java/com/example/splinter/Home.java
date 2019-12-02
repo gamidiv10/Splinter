@@ -29,7 +29,6 @@ import android.widget.TextView;
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private FloatingActionButton addBill;
-    private Button logout;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override

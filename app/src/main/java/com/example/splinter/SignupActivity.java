@@ -27,7 +27,14 @@ import static com.example.splinter.R.string;
 
 public class SignupActivity extends AppCompatActivity {
 
-    // Password validation pattern //https://codinginflow.com/tutorials/android/validate-email-password-regular-expressions
+    // Password validation pattern
+
+    /***************************************************************************************
+     *    Title: Validate Email and Password with Regular Expression
+     *    Author: Coding in Flow
+     *    Code version: 1.0
+     *    Availability: Coding in Flow, https://codinginflow.com/tutorials/android/validate-email-password-regular-expressionscoo
+     ***************************************************************************************/
     public static final Pattern PATTERN_PASSWORD =
             Pattern.compile("^" +
                     "(?=.*[0-9])" +         //at least 1 digit
@@ -82,8 +89,8 @@ public class SignupActivity extends AppCompatActivity {
                     Boolean success = writeUserdata();
                     if (success) {
                         createUserInDatabase();
-                    }else{
-                        Toast.makeText(getApplicationContext(),string.error_in_user_creation,Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
                     }
                 }
 
