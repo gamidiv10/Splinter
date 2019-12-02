@@ -6,33 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".Help">
 
-<!--    <com.google.android.material.appbar.AppBarLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:theme="@style/AppTheme.AppBarOverlay">-->
+    <!--    <com.google.android.material.appbar.AppBarLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:theme="@style/AppTheme.AppBarOverlay">-->
 
-<!--&lt;!&ndash;        <androidx.appcompat.widget.Toolbar&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/toolbar"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_height="?attr/actionBarSize"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:background="?attr/colorPrimary"&ndash;&gt;-->
-<!--&lt;!&ndash;            app:popupTheme="@style/AppTheme.PopupOverlay" />&ndash;&gt;-->
+    <!--&lt;!&ndash;        <androidx.appcompat.widget.Toolbar&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:id="@+id/toolbar"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_height="?attr/actionBarSize"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:background="?attr/colorPrimary"&ndash;&gt;-->
+    <!--&lt;!&ndash;            app:popupTheme="@style/AppTheme.PopupOverlay" />&ndash;&gt;-->
 
-<!--    </com.google.android.material.appbar.AppBarLayout>-->
+    <!--    </com.google.android.material.appbar.AppBarLayout>-->
     <include layout="@layout/content_help" />
+
     <TextView
         android:id="@+id/faq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/help_Text"
-        android:textSize="24dp"/>
-<ListView
-    android:id="@+id/faq_list"
-    android:layout_below="@+id/fab"
-    android:layout_marginTop="35dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:entries="@array/list_faqs">
-</ListView>
+        android:textSize="24dp" />
+
+    <ListView
+        android:id="@+id/faq_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/fab"
+        android:layout_marginTop="35dp"
+        android:entries="@array/list_faqs" />
 
 </RelativeLayout>

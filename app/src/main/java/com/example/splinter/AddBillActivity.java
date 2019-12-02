@@ -1,3 +1,9 @@
+/*
+ * Author: Vamsi Gamidi
+ * Contributors: Prem Kumar Menni, Sneh Jogani
+ * Date: 2019
+ */
+
 package com.example.splinter;
 
 import androidx.appcompat.app.AppCompatActivity;

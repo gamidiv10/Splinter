@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.profile.profile"
     tools:showIn="@layout/profile_fragment">
@@ -11,111 +11,120 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
 
         <TextView
             style="@style/headerText"
-            android:text="@string/accountinfo"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:text="@string/accountinfo" />
 
         <RelativeLayout style="@style/profileDetailsLayout">
+
             <ImageView
                 android:id="@+id/nameImageView"
-                android:src="@drawable/ic_insert_emoticon_black_24dp"
-                style="@style/profileDetailsImage" />
+                style="@style/profileDetailsImage"
+                android:src="@drawable/ic_insert_emoticon_black_24dp" />
 
             <TextView
                 android:id="@+id/nameTextView"
-                android:text="Name"
+                style="@style/profileDetailsTextMain"
                 android:layout_toRightOf="@id/nameImageView"
-                style="@style/profileDetailsTextMain" />
+                android:text="Name" />
 
             <TextView
-                android:text="@string/myname"
+                style="@style/profileDetailsMiniText"
                 android:layout_toRightOf="@id/nameImageView"
-                style="@style/profileDetailsMiniText" />
+                android:text="@string/myname" />
 
         </RelativeLayout>
 
         <View style="@style/proifleDetailsView" />
+
         <RelativeLayout style="@style/profileDetailsLayout">
+
             <ImageView
                 android:id="@+id/mobileImageView"
-                android:src="@drawable/ic_contact_phone_black_24dp"
-                style="@style/profileDetailsImage" />
+                style="@style/profileDetailsImage"
+                android:src="@drawable/ic_contact_phone_black_24dp" />
 
             <TextView
-                android:text="Mobile"
+                style="@style/profileDetailsTextMain"
                 android:layout_toRightOf="@id/mobileImageView"
-                style="@style/profileDetailsTextMain"/>
+                android:text="Mobile" />
 
             <TextView
-                android:text="+190298924555"
+                style="@style/profileDetailsMiniText"
                 android:layout_toRightOf="@id/mobileImageView"
-                style="@style/profileDetailsMiniText" />
+                android:text="+190298924555" />
 
         </RelativeLayout>
 
         <View style="@style/proifleDetailsView" />
+
         <RelativeLayout style="@style/profileDetailsLayout">
+
             <ImageView
                 android:id="@+id/emailImageView"
-                android:src="@drawable/ic_contact_mail_black_24dp"
-                style="@style/profileDetailsImage" />
+                style="@style/profileDetailsImage"
+                android:src="@drawable/ic_contact_mail_black_24dp" />
 
             <TextView
-                android:text="Email"
+                style="@style/profileDetailsTextMain"
                 android:layout_toRightOf="@id/emailImageView"
-                style="@style/profileDetailsTextMain" />
+                android:text="Email" />
 
             <TextView
-                android:text="developer@splinter.com"
+                style="@style/profileDetailsMiniText"
                 android:layout_toRightOf="@id/emailImageView"
-                style="@style/profileDetailsMiniText" />
+                android:text="developer@splinter.com" />
 
         </RelativeLayout>
+
         <View style="@style/proifleDetailsView" />
+
         <RelativeLayout style="@style/profileDetailsLayout">
+
             <ImageView
                 android:id="@+id/dobImageView"
-                android:src="@drawable/ic_password_icon"
-                style="@style/profileDetailsImage" />
+                style="@style/profileDetailsImage"
+                android:src="@drawable/ic_password_icon" />
 
             <TextView
-                android:text="Password"
+                style="@style/profileDetailsTextMain"
                 android:layout_toRightOf="@id/dobImageView"
-                style="@style/profileDetailsTextMain" />
+                android:text="Password" />
 
             <TextView
-                android:text="Splinter@123"
+                style="@style/profileDetailsMiniText"
+                android:layout_toRightOf="@id/dobImageView"
                 android:inputType="textWebPassword"
-                android:layout_toRightOf="@id/dobImageView"
-                style="@style/profileDetailsMiniText" />
+                android:text="Splinter@123" />
 
         </RelativeLayout>
 
         <View style="@style/proifleDetailsView" />
+
         <RelativeLayout style="@style/profileDetailsLayout">
+
             <ImageView
                 android:id="@+id/addressImageView"
-                android:src="@drawable/ic_location_city_black_24dp"
-                style="@style/profileDetailsImage" />
+                style="@style/profileDetailsImage"
+                android:src="@drawable/ic_location_city_black_24dp" />
 
             <TextView
-                android:text="Address"
+                style="@style/profileDetailsTextMain"
                 android:layout_toRightOf="@id/addressImageView"
-                style="@style/profileDetailsTextMain" />
+                android:text="Address" />
 
             <TextView
-                android:text="1333 South park ST."
+                style="@style/profileDetailsMiniText"
                 android:layout_toRightOf="@id/addressImageView"
-                style="@style/profileDetailsMiniText" />
+                android:text="1333 South park ST." />
 
         </RelativeLayout>
-
 
 
         <View style="@style/proifleDetailsView" />

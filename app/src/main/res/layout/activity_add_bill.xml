@@ -26,11 +26,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-<LinearLayout
-    android:id="@+id/edit_text_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true">
+    <LinearLayout
+        android:id="@+id/edit_text_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
         <EditText
             android:id="@+id/editTextItemName"
@@ -67,23 +67,22 @@
             android:inputType="numberDecimal"
             android:scrollHorizontally="true" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btnAddItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/plus_thick"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="10dp"
-        android:layout_alignParentRight="true"
-        android:backgroundTint="@color/cardview_shadow_end_color"
-        />
-</LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btnAddItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/cardview_shadow_end_color"
+            android:src="@drawable/plus_thick" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_view"
-        android:layout_below="@+id/source_input"
-        android:layout_marginBottom="4dp"
         android:layout_above="@+id/edit_text_layout"
-        />
+        android:layout_below="@+id/source_input"
+        android:layout_marginBottom="4dp" />
 </RelativeLayout>

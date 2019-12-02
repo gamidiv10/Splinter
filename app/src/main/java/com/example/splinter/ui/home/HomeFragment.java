@@ -1,3 +1,9 @@
+/*
+ * Author: Vamsi Gamidi
+ * Contributors:
+ * Date: 2019
+ */
+
 package com.example.splinter.ui.home;
 
 import android.content.Intent;
@@ -24,19 +30,19 @@ import static android.app.Activity.RESULT_OK;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-    public String billName;
-    public double totalAmount;
-    TextView viewOwesYou;
+  private HomeViewModel homeViewModel;
+  public String billName;
+  public double totalAmount;
+  TextView viewOwesYou;
 
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+  public View onCreateView(@NonNull LayoutInflater inflater,
+                           ViewGroup container, Bundle savedInstanceState) {
+    homeViewModel =
+            ViewModelProviders.of(this).get(HomeViewModel.class);
+    View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        viewOwesYou = root.findViewById(R.id.owes_you);
+    viewOwesYou = root.findViewById(R.id.owes_you);
 //        final TextView textView = root.findViewById(R.id.text_home);
 //        homeViewModel.getText().observe(this, new Observer<String>() {
 //            @Override
@@ -52,7 +58,7 @@ public class HomeFragment extends Fragment {
 //                startActivity(intent);
 //            }
 //        });
-       // View share = root.findViewById(R.id.action_share);
+    // View share = root.findViewById(R.id.action_share);
 
 //        share.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -61,31 +67,29 @@ public class HomeFragment extends Fragment {
 //                startActivity(intent);
 //            }
 //        });
-        FloatingActionButton fab = root.findViewById(R.id.addBill_fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddBillActivity.class);
-                startActivityForResult(intent, 1);
-            }
-        });
-        return root;
+    FloatingActionButton fab = root.findViewById(R.id.addBill_fab);
+    fab.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intent = new Intent(getActivity(), AddBillActivity.class);
+        startActivityForResult(intent, 1);
+      }
+    });
+    return root;
+  }
+
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == 1) {
+      if (resultCode == RESULT_OK) {
+
+        billName = data.getStringExtra("billName");
+        totalAmount = data.getDoubleExtra("totalAmount", 0);
+        viewOwesYou.setText("" + totalAmount);
+
+
+      }
     }
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1)
-        {
-            if(resultCode == RESULT_OK)
-            {
 
-                billName = data.getStringExtra("billName");
-                totalAmount = data.getDoubleExtra("totalAmount", 0);
-                viewOwesYou.setText("" + totalAmount);
-
-
-            }
-        }
-
-    }
+  }
 }

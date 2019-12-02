@@ -1,3 +1,9 @@
+/*
+ * Author: Vamsi Gamidi
+ * Contributors:
+ * Date: 2019
+ */
+
 package com.example.splinter.ui.home;
 
 import android.widget.Button;
@@ -8,16 +14,17 @@ import androidx.lifecycle.ViewModel;
 
 public class HomeViewModel extends ViewModel {
 
-    public Button profile_edit;
-    private MutableLiveData<String> mText;
+  public Button profile_edit;
+  private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+  public HomeViewModel() {
 //        mText = new MutableLiveData<>();
 //        mText.setValue("This is home fragment");
 
 
-    }
-    public LiveData<String> getText() {
-        return mText;
-    }
+  }
+
+  public LiveData<String> getText() {
+    return mText;
+  }
 }
