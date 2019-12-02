@@ -32,6 +32,9 @@
     <string name="last_name">Last name</string>
     <string name="create_account">Create an Account</string>
     <string name="logout">Logout</string>
+    <string name="error_in_user_creation">Error in User creation! Try Again!</string>
+    <string name="no_empty_field">Field cannot be empty</string>
+    <string name="back_again_to_exit">Please click BACK again to exit</string>
     <string name="myname">myname</string>
     <string name="useremail">my mmail id</string>
     <string name="fname">userfirstname</string>

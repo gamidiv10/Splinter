@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,41 +32,40 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true">
 
-    <EditText
-        android:id="@+id/editTextItemName"
-        android:layout_width="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content"
-        android:hint="Item Name"
-        android:inputType="textMultiLine"
-        android:layout_marginLeft="5dp"
-        android:width="120dp"
-        />
+        <EditText
+            android:id="@+id/editTextItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="5dp"
+            android:width="120dp"
+            android:hint="Item Name"
+            android:inputType="textMultiLine"
+            android:scrollHorizontally="true" />
 
-    <EditText
-        android:id="@+id/editTextItemQuantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/editTextItemName"
-        android:layout_marginLeft="15dp"
-        android:layout_alignParentBottom="true"
-        android:hint="Qty"
-        android:inputType="numberDecimal"
-        android:width="40dp"
-        />
+        <EditText
+            android:id="@+id/editTextItemQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/editTextItemName"
+            android:width="40dp"
+            android:hint="Qty"
+            android:inputType="numberDecimal"
+            android:scrollHorizontally="true" />
 
-    <EditText
-        android:id="@+id/editTextItemPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:hint="Unit Price"
-        android:inputType="numberDecimal"
-        android:width="100dp"
-
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/editTextItemQuantity"
-        />
+        <EditText
+            android:id="@+id/editTextItemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/editTextItemQuantity"
+            android:width="100dp"
+            android:hint="Unit Price"
+            android:inputType="numberDecimal"
+            android:scrollHorizontally="true" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btnAddItem"

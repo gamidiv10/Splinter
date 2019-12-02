@@ -77,7 +77,8 @@ public class AddBillActivity extends AppCompatActivity {
                     itemQtyList.add("Qty:" + quantity);
                     itemPriceList.add("$" + totals);
 
-                    initRecyclerView();
+
+                   initRecyclerView();
 
                     itemName.setText("");
                     itemPrice.setText("");
