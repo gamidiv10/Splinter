@@ -42,7 +42,6 @@ public class RecyclerViewAdapterParticipants extends RecyclerView.Adapter<Recycl
   public Button buttonSave, buttonCancel;
   public ViewHolder holder;
   public EditText editTextFirstName, editTextLastName;
-  private DatabaseReference mDatabase;
 
   public RecyclerViewAdapterParticipants(Context context, ArrayList<String> fnameList, ArrayList<String> lnameList, ArrayList<String> mailList) {
     firstNameList = fnameList;
@@ -142,45 +141,6 @@ public class RecyclerViewAdapterParticipants extends RecyclerView.Adapter<Recycl
         }
       });
 
-//            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//                @Override
-//                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-//                {
-//
-//                    if(isChecked == true)
-//                    {
-//
-//                        mDatabase = FirebaseDatabase.getInstance().getReference();
-//
-//
-//                        checkedEmailList.add(emailList.get(getAdapterPosition()));
-//                        Toast.makeText(rvContext, "Finally", Toast.LENGTH_SHORT).show();
-//                        DatabaseReference refEmailList = database.getReference("checkedEmailList");
-//                        refEmailList.setValue(checkedEmailList);
-//
-//                        refEmailList.addValueEventListener(new ValueEventListener() {
-//                            @Override
-//                            public void onDataChange(DataSnapshot dataSnapshot) {
-//                                // This method is called once with the initial value and again
-//                                // whenever data at this location is updated.
-//                                ArrayList<String> value = (ArrayList<String>) dataSnapshot.getValue();
-//
-//                            }
-//                            @Override
-//                            public void onCancelled(DatabaseError error) {
-//                                // Failed to read value
-//                            }
-//                        });
-//
-//
-//                    }
-//                    if(isChecked == false)
-//                    {
-//                        checkedEmailList.remove(emailList.get(getAdapterPosition()));
-//                    }
-//
-//                }
-//            });
 
     }
   }
