@@ -47,8 +47,6 @@
             android:parentActivityName=".AddBillActivity"
             android:windowSoftInputMode="adjustResize">
         </activity>
-        <activity android:name=".Model.SignupDatabaseActivity" />
-
 
         <meta-data
             android:name="preloaded_fonts"
