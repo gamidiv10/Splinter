@@ -4,6 +4,13 @@
     >
 
     <item
+        android:id="@+id/send_email_button"
+        android:title="Send Email"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/email_send">
+
+    </item>
+    <item
         android:id="@+id/save_button"
         android:title="Save"
         app:showAsAction="ifRoom"

@@ -13,12 +13,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -28,7 +24,7 @@ public class AddParticipantActivity extends AppCompatActivity {
     EditText firstName, lastName, email;
     private ArrayList<String> fnameList = new ArrayList<>();
     private ArrayList<String> lnameList = new ArrayList<>();
-    //private ArrayList<String> emailIdList = new ArrayList<>();
+    private ArrayList<String> emailList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +33,7 @@ public class AddParticipantActivity extends AppCompatActivity {
 
         firstName = findViewById(R.id.editTextFirstName);
         lastName = findViewById(R.id.editTextLastName);
-        //email = findViewById(R.id.editTextEMail);
+        email = findViewById(R.id.editTextEmail);
 
         addParticipantButton = findViewById(R.id.btnAddParticipant);
 
@@ -53,27 +49,31 @@ public class AddParticipantActivity extends AppCompatActivity {
                     if (lastName.getText().toString().length() == 0) {
                         lastName.setError("Value should not be empty");
                     }
+                    if (email.getText().toString().length() == 0) {
+                        email.setError("Value should not be empty");
+                    }
 
                 }
                 else {
-                    String fName, lName, eMail;
+                    String fName, lName, mail;
 
                     fName = firstName.getText().toString();
                     lName = lastName.getText().toString();
-                    //eMail = email.getText().toString();
+                    mail = email.getText().toString();
                     fnameList.add(fName);
                     lnameList.add(lName);
-                    //emailIdList.add(eMail);
-
+                    emailList.add(mail);
                     initRecyclerView();
 
                     firstName.setText("");
                     lastName.setText("");
-                    //email.setText("");
+                    email.setText("");
+
                 }
             }
         });
     }
+
     private void initRecyclerView()
     {
         RecyclerView recyclerView = findViewById(R.id.recycler_view_participants);
@@ -84,7 +84,6 @@ public class AddParticipantActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.add_partcipants_menu, menu);
         return true;
     }
@@ -94,8 +93,10 @@ public class AddParticipantActivity extends AppCompatActivity {
 
         if (id == R.id.save_button) {
 
-          //button click event
-        }
+            Intent intent = new Intent();
+            intent.putExtra("emailList", emailList);
+            setResult(RESULT_OK, intent);
+            finish();        }
 
         return super.onOptionsItemSelected(item);
     }
