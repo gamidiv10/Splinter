@@ -19,21 +19,27 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
-    // Initialize variable
-    EditText etEMAIL, etPassword;
-    Button btnLogin;
-    TextView tvCreateAccount;
-    String EMAIL, PASSWORD;
-    TextInputLayout textInputLayoutEmail, textInputLayoutPassword;
-    Boolean backPressSingleTime = false;
-    public FirebaseAuth mLoginAuthentication;
-
-    // Password validation pattern //https://codinginflow.com/tutorials/android/validate-email-password-regular-expressions
+    /***************************************************************************************
+     *    Title: Validate Email and Password with Regular Expression
+     *    Author: Coding in Flow
+     *    Code version: 1.0
+     *    Availability: Coding in Flow, https://codinginflow.com/tutorials/android/validate-email-password-regular-expressions
+     ***************************************************************************************/
     public static final Pattern PATTERN_PASSWORD =
             Pattern.compile("^" +
                     "(?=.*[0-9])" +         //at least 1 digit
@@ -44,6 +50,15 @@ public class LoginActivity extends AppCompatActivity {
                     "(?=\\S+$)" +           //no white spaces
                     ".{8,24}" +               //at least between 8 to 24 characters
                     "$");
+    public FirebaseAuth mLoginAuthentication;
+    // Initialize variable
+    EditText etEMAIL, etPassword;
+    Button btnLogin;
+    TextView tvCreateAccount;
+    String EMAIL, PASSWORD, fbEmail, fbFirstName, fbLastName;
+    TextInputLayout textInputLayoutEmail, textInputLayoutPassword;
+    Boolean backPressSingleTime = false;
+    FirebaseDatabase databaseRef = FirebaseDatabase.getInstance("https://splinter-f86ee.firebaseio.com");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,15 +111,43 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser currentUser = mLoginAuthentication.getCurrentUser();
         if (currentUser != null) {
             Toast.makeText(getApplicationContext(), "Already Logged in", Toast.LENGTH_SHORT).show();
+            DatabaseReference referenceToRoot = databaseRef.getReference().child("Users");
+            final String dataKey = referenceToRoot.push().getKey();
+            referenceToRoot.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    HashMap<String, Object> UserData = (HashMap<String, Object>) dataSnapshot.getValue();
+
+                    for (Map.Entry<String, Object> entry : UserData.entrySet()) {
+=                        Object rootID = entry.getValue();
+                        try {
+                            JSONObject rootObject = new JSONObject(rootID.toString());
+                            JSONObject email = rootObject.getJSONObject("Email");
+                            fbEmail = email.getString("Email_value");
+                            if (fbEmail.equals(mLoginAuthentication.getCurrentUser().getEmail())) {
+                                fbFirstName = email.getString("First_name");
+                                fbLastName = email.getString("Last_name");
+                                break;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+            Toast.makeText(getApplicationContext(), currentUser.getEmail(), Toast.LENGTH_SHORT).show();
+
             startActivity(new Intent(LoginActivity.this, Home.class));
             finish();
 
         }
     }
 
-    private void signOut() {
-        mLoginAuthentication.signOut();
-    }
 
     public Boolean validateEMAIL() {
         EMAIL = etEMAIL.getText().toString().trim();
