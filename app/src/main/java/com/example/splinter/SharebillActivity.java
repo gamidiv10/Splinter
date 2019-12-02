@@ -174,8 +174,7 @@ public class SharebillActivity extends AppCompatActivity {
         listDevices=(Button) findViewById(R.id.listDevices);
     }
 
-    private class ServerClass extends Thread
-    {
+    private class ServerClass extends Thread {
         private BluetoothServerSocket serverSocket;
 
         public ServerClass(){
@@ -258,8 +257,7 @@ public class SharebillActivity extends AppCompatActivity {
 
 
 
-    private class SendReceive extends Thread
-    {
+    private class SendReceive extends Thread {
         private final BluetoothSocket bluetoothSocket;
         private final InputStream inputStream;
         private final OutputStream outputStream;
