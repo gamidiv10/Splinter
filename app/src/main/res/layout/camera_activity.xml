@@ -13,6 +13,6 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="196dp"
-        android:layout_height="226dp"/>
+        android:layout_width="432dp"
+        android:layout_height="693dp" />
 </LinearLayout>

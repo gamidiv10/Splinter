@@ -40,10 +40,8 @@ public class Bluetooth extends AppCompatActivity{
         mDiscoverBtn  = (Button) findViewById(R.id.discoverableBtn);
         mPairedBtn    = (Button) findViewById(R.id.pairedBtn);
 
-        //adapter
         mBlueAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        //check if bluetooth is available or not
         if (mBlueAdapter == null){
             mStatusBlueTv.setText("Bluetooth is not available");
         }
@@ -51,8 +49,6 @@ public class Bluetooth extends AppCompatActivity{
             mStatusBlueTv.setText("Bluetooth is available");
         }
 
-
-        //on btn click
         mOnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,14 +57,14 @@ public class Bluetooth extends AppCompatActivity{
                 }
                 else{
                     showToast("Turning On Bluetooth...");
-                    //intent to on bluetooth
+
                     Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                     startActivityForResult(intent, REQUEST_ENABLE_BT);
                     showToast("Bluetooth is already on");
                 }
             }
         });
-        //discover bluetooth btn click
+
         mDiscoverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +78,7 @@ public class Bluetooth extends AppCompatActivity{
                 }
             }
         });
-        //off btn click
+
         mOffBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +93,7 @@ public class Bluetooth extends AppCompatActivity{
                 }
             }
         });
-        //get paired devices btn click
+
         mPairedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,23 +114,18 @@ public class Bluetooth extends AppCompatActivity{
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_ENABLE_BT:
-                if (resultCode == RESULT_OK){
-                    //bluetooth is on
+                if (resultCode == RESULT_OK) {
                     mBlueIv.setImageResource(R.drawable.ic_action_on);
                     showToast("Bluetooth is on");
-                }
-                else {
-                    //user denied to turn bluetooth on
+                } else {
                     showToast("could't on bluetooth");
                 }
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
-    //toast message function
     private void showToast(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
