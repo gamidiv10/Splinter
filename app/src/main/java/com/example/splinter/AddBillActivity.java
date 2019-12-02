@@ -25,6 +25,7 @@ public class AddBillActivity extends AppCompatActivity {
     public boolean isBillSaved = false;
     public Menu billmenu;
     String strEditText;
+    Integer participantsCount;
     Html html;
     ImageButton itemadd;
     EditText itemName, itemPrice, itemQuantity;
@@ -77,8 +78,11 @@ public class AddBillActivity extends AppCompatActivity {
                     itemQtyList.add("Qty:" + quantity);
                     itemPriceList.add("$" + totals);
 
+                    // calculating amount the user is owed
+                    // individualShare = billTotal / (participantsCount + 1)
+                    // amountOwed = individualShare * participantsCount
 
-                   initRecyclerView();
+                    initRecyclerView();
 
                     itemName.setText("");
                     itemPrice.setText("");
@@ -105,6 +109,7 @@ public class AddBillActivity extends AppCompatActivity {
         billmenu = menu;
         return true;
     }
+
     @Override
     public boolean onPrepareOptionsMenu (Menu menu) {
         MenuItem sendEmailItem = menu.findItem(R.id.send_email_button);
@@ -179,6 +184,7 @@ public class AddBillActivity extends AppCompatActivity {
 
                 strEditText = data.getStringExtra("editTextValue");
                 emailList = data.getStringArrayListExtra("emailList");
+                participantsCount = data.getIntExtra("participantsCount", 0);
 //                if (isBillSaved) {
 //                    sendEmailItem.setEnabled(true);
 //                    sendEmailItem.getIcon().setAlpha(200);

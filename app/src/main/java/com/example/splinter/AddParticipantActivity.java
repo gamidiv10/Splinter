@@ -95,6 +95,7 @@ public class AddParticipantActivity extends AppCompatActivity {
 
             Intent intent = new Intent();
             intent.putExtra("emailList", emailList);
+            intent.putExtra("participantsCount", fnameList.size());
             setResult(RESULT_OK, intent);
             finish();        }
 
