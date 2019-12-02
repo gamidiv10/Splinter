@@ -57,7 +57,6 @@ public class SignupActivity extends AppCompatActivity {
     // Firebase Authentication
     FirebaseAuth mSignupAuthentication;
 
-
     FirebaseDatabase signUpDB = FirebaseDatabase.getInstance("https://splinter-f86ee.firebaseio.com");
 
     @Override

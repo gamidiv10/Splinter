@@ -33,7 +33,6 @@ public class RecyclerViewAdapterParticipants extends  RecyclerView.Adapter<Recyc
     {
         firstNameList = fnameList;
         lastNameList = lnameList;
-        //emailList = emailIdList;
         rvContext = context;
     }
 
@@ -58,7 +57,6 @@ public class RecyclerViewAdapterParticipants extends  RecyclerView.Adapter<Recyc
     {
         holder.firstName.setText(firstNameList.get(position));
         holder.lastName.setText(lastNameList.get(position));
-        //holder.price.setText(emailList.get(position));
 
     }
 
@@ -98,8 +96,10 @@ public class RecyclerViewAdapterParticipants extends  RecyclerView.Adapter<Recyc
                     buttonSave.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            holder.firstName.setText(editTextFirstName.getText());
-                            holder.lastName.setText(editTextLastName.getText());
+
+                            firstNameList.set(getAdapterPosition(), editTextFirstName.getText().toString());
+                            lastNameList.set(getAdapterPosition(), editTextLastName.getText().toString());
+                            notifyItemChanged(getAdapterPosition());
 
                             dialogEditParticipant.cancel();
 
