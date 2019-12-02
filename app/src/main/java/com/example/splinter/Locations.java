@@ -33,6 +33,11 @@ import androidx.core.content.ContextCompat;
 import java.util.List;
 import java.util.Locale;
 
+
+/**
+ * Created by Jasper Jiao on 2019-11-15.
+ */
+
 public class Locations extends AppCompatActivity {
 
   private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 1;

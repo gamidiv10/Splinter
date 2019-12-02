@@ -35,6 +35,8 @@ public class AddBillActivity extends AppCompatActivity {
   private final ArrayList<String> itemQtyList = new ArrayList<>();
   private final ArrayList<String> itemPriceList = new ArrayList<>();
   private double billTotal = 0;
+    private ArrayList<String> billNameList = new ArrayList<>();
+    private ArrayList<String> billAmountList = new ArrayList<>();
 
   private ArrayList<String> emailList = new ArrayList<>();
   private ArrayList<String> fnameList = new ArrayList<>();
@@ -49,6 +51,7 @@ public class AddBillActivity extends AppCompatActivity {
   @SuppressWarnings("FieldCanBeLocal")
   private boolean isBillSaved = false;
   String strEditText;
+  ImageButton itemadd;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +63,13 @@ public class AddBillActivity extends AppCompatActivity {
     itemPrice = findViewById(R.id.editTextItemPrice);
     itemQuantity = findViewById(R.id.editTextItemQuantity);
     ImageButton itemadd = findViewById(R.id.btnAddItem);
+
     billName = findViewById(R.id.source_txt);
 
     itemadd.setOnClickListener(new View.OnClickListener() {
       @Override
-      public void onClick(View view) {
+      public void onClick(View view)
+      {
 
         // validating item name and price entries
         if (itemName.getText().toString().length() == 0 || itemPrice.getText().toString().length() == 0
@@ -79,6 +84,18 @@ public class AddBillActivity extends AppCompatActivity {
             itemQuantity.setError("Value should not be empty");
           }
         } else {
+          Intent intent = getIntent();
+          if (intent.getStringArrayListExtra("billName") != null) {
+            billNameList = intent.getStringArrayListExtra("billName");
+          }
+          if (intent.getStringArrayListExtra("billAmount") != null) {
+            billAmountList = intent.getStringArrayListExtra("billAmount");
+          }
+
+          itemName = findViewById(R.id.editTextItemName);
+          itemPrice = findViewById(R.id.editTextItemPrice);
+          itemQuantity = findViewById(R.id.editTextItemQuantity);
+          billName = findViewById(R.id.source_txt);
 
           String name, price, quantity, totals;
           name = itemName.getText().toString();
@@ -113,9 +130,9 @@ public class AddBillActivity extends AppCompatActivity {
             saveItem.getIcon().setAlpha(200);
           }
         }
+
       }
     });
-
   }
 
   @Override
@@ -193,9 +210,21 @@ public class AddBillActivity extends AppCompatActivity {
         assert itemID != null;
         mDatabase.child("bills").child(itemID).setValue(bill);
 
-        Intent intent = new Intent();
-        intent.putExtra("billName", billName.getText());
-        intent.putExtra("totalAmount", totalAmount);
+
+                //mDatabase.child("bills").child(itemID).setValue(bill);
+                if(billNameList != null) {
+                    billNameList.add(billName.getText().toString());
+                }
+
+                Intent intent = new Intent();
+                if(billAmountList != null) {
+                    billAmountList.add("" + totalAmount);
+                }
+                intent.putExtra("billName", billName.getText().toString());
+                intent.putExtra("billAmount", totalAmount);
+                intent.putExtra("billNameList", billNameList);
+                intent.putExtra("bilAmountList", billAmountList);
+//              intent.putExtra("")
 
         setResult(RESULT_OK, intent);
         finish();
@@ -233,8 +262,6 @@ public class AddBillActivity extends AppCompatActivity {
       intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(body));
       intent.setType("text/html");
       startActivity(Intent.createChooser(intent, "Choose an Email client :"));
-    } else {
-      Toast.makeText(getApplicationContext(), "Please save the bill to send via email", Toast.LENGTH_SHORT).show();
     }
 
     return super.onOptionsItemSelected(item);

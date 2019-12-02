@@ -15,44 +15,51 @@
         android:text=""
         android:textAlignment="center"
         android:textSize="20sp" />
-    <!--Bluetooth icon (on/off)-->
+
     <ImageView
         android:id="@+id/bluetoothIv"
         android:layout_width="100dp"
         android:layout_height="100dp" />
-    <!--On Button-->
-    <Button
+
+    <Switch
         android:id="@+id/onBtn"
-        style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="200dp"
-        android:text="Turn On" />
-    <!--Off btn-->
-    <Button
+        android:text="Turn On"
+        android:thumbTint="@color/colorBlue"
+        android:trackTint="@color/colorLightGrey"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+
+    <Switch
         android:id="@+id/offBtn"
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="200dp"
         android:text="Turn Off" />
-    <!--Discoverable button-->
-    <Button
+
+    <Switch
         android:id="@+id/discoverableBtn"
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="200dp"
         android:text="Discoverable" />
-    <!--Get list of paired devices button-->
-    <!--Show paired devices here-->
-    <Button
+
+    <Switch
         android:id="@+id/pairedBtn"
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="200dp"
         android:text="Get Paired Devices" />
+    <Switch
+        android:id="@+id/sendBtn"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="200dp"
+        android:text="Send bill" />
 
     <TextView
         android:id="@+id/pairedTv"
@@ -61,4 +68,25 @@
         android:minWidth="200dp"
         android:text=""
         android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/listDevices"
+        android:layout_alignBottom="@+id/listDevices"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp"
+        android:text="Status"
+        android:textSize="14sp"
+        android:textStyle="italic" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/listview"
+        android:layout_centerHorizontal="true" />
+
 </LinearLayout>
