@@ -6,14 +6,8 @@
 
 package com.example.splinter;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.splinter.MainMenu.home.share;
-
-import android.view.MenuItem;
-
-import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -28,7 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Home extends AppCompatActivity {
 
   private AppBarConfiguration mAppBarConfiguration;
 
@@ -36,9 +30,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
-
     Toolbar toolbar = findViewById(R.id.toolbar);
-
     setSupportActionBar(toolbar);
     DrawerLayout drawer = findViewById(R.id.drawer_layout);
     NavigationView navigationView = findViewById(R.id.nav_view);
@@ -46,7 +38,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     // menu should be considered as top level destinations.
     mAppBarConfiguration = new AppBarConfiguration.Builder(
             R.id.nav_home, R.id.nav_profile,
-            R.id.nav_contact_us, R.id.action_share, R.id.nav_logout, R.id.action_share)
+            R.id.nav_contact_us, R.id.nav_logout)
             .setDrawerLayout(drawer)
             .build();
     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -66,16 +58,5 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
     return NavigationUI.navigateUp(navController, mAppBarConfiguration)
             || super.onSupportNavigateUp();
-  }
-
-  @Override
-  public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-    switch (menuItem.getItemId()) {
-
-      case R.id.action_share: {
-        startActivity(new Intent(this, share.class));
-      }
-    }
-    return true;
   }
 }

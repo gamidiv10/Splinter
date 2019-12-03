@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainMenu.contact_us.contact_us"
     tools:showIn="@layout/contact_us_fragment">
-    
+<!--    Contact us content layout-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

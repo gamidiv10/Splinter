@@ -6,7 +6,7 @@
     android:background="@color/colorBlack"
     android:windowSoftInputMode="adjustPan"
     tools:context=".MainActivity">
-
+<!--Splashscreen layout-->
     <TextView
         android:id="@+id/tv_splashScreen"
         android:layout_width="wrap_content"

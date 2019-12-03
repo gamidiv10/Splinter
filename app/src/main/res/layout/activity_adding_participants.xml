@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddParticipantActivity">
-
+<!--Recycler view to add participents-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_participants"
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
-
+<!--Edittext for firstname-->
         <EditText
             android:id="@+id/editTextFirstName"
             android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
             android:width="100dp"
             android:hint="First Name"
             android:inputType="textMultiLine" />
-
+<!--edittext for last name-->
         <EditText
             android:id="@+id/editTextLastName"
             android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
             android:width="100dp"
             android:hint="Last Name"
             android:inputType="textMultiLine" />
-
+<!--Edit text for email-->
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="wrap_content"

@@ -4,51 +4,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainMenu.currency.currency">
-
-    <TextView
-        android:id="@+id/default_currency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/default_currency"
-        android:textSize="24dp" />
-
     <TextView
         android:id="@+id/present_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/default_currency"
         android:layout_centerHorizontal="false"
         android:layout_marginLeft="10dp"
         android:text="@string/present_location"
-        android:textSize="24dp" />
-
+        android:textSize="24dp"
+        android:layout_marginTop="50dp"/>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_toRightOf="@+id/present_location"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="50dp">
     <TextView
         android:id="@+id/user_current_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/default_currency"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="3dp"
+        android:layout_marginLeft="7dp"
         android:layout_toRightOf="@+id/present_location"
         android:textSize="24dp" />
+</androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/select_period"
+        android:id="@+id/user_loc_currency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/user_current_location"
-        android:layout_margin="10dp"
-        android:text="@string/currency_selection"
-        android:textSize="24dp" />
-
-    <ListView
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/present_location"
+        android:text="@string/place_currency"
+        android:textSize="24dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/user_loc_currency"
+        android:layout_below="@+id/present_location"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp">
+    <TextView
+        android:id="@+id/currency_used"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/select_period"
-        android:layout_margin="10dp"
-        android:entries="@array/currency">
-
-    </ListView>
+        android:layout_marginLeft="3dp"
+        android:layout_toRightOf="@+id/user_loc_currency"
+        android:layout_below="@+id/present_location"
+        android:textSize="24dp"
+        android:textColor="@color/green"/>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

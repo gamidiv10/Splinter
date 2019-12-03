@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:transitionGroup="true"
     tools:context=".MainActivity">
-
+<!--Bluetooth functionality screen-->
     <TextView
         android:id="@+id/statusBluetoothTv"
         android:layout_width="match_parent"

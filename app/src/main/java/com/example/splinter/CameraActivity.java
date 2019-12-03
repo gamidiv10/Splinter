@@ -1,5 +1,9 @@
-package com.example.splinter;
 
+/**
+ * Created by Jasper Jiao on 2019-10-09.
+ * Contributors: Vamsi Gamidi, Menni Prem Kumar
+ */
+package com.example.splinter;
 import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,11 +17,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -56,9 +58,8 @@ public class CameraActivity extends AppCompatActivity {
                 imageView.setImageBitmap(bitmap);
             }
         }
-
     }
-
+// Function to capture picture
     private void TakingPic(){
         Intent takePic = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePic.resolveActivity(getPackageManager())!=null){
@@ -72,7 +73,7 @@ public class CameraActivity extends AppCompatActivity {
             }
         }
     }
-
+// Renaming the picture
     private File createPhoto(){
         String name = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);

@@ -24,7 +24,7 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="logging_out">Logging out</string>
-    <string name="owes_you">You get</string>
+    <string name="owes_you">You Get</string>
     <string name="owed_you">You owe</string>
     <string name="zero">0</string>
     <string name="bill_name">Bill Name</string>
@@ -42,19 +42,13 @@
     <string name="profile_edit">Edit</string>
     <string name="title_activity_profile">Profile</string>
     <string name="accountinfo">Account Info</string>
-    <string-array name="currency">
-        <item>Canadian dollar</item>
-        <item>US dollar</item>
-        <item>Indian Rupee</item>
-        <item>Euro</item>
-    </string-array>
     <string-array name="list_faqs">
         <item>Intro</item>
         <item>How to create a bill</item>
-        <item>How to add participents</item>
+        <item>How to add participants</item>
         <item>How to edit a bill</item>
     </string-array>
-    <string name="default_currency"> Default currency is based on your location</string>
+    <string name="default_currency"> Default currency is based on your location (Canada)</string>
     <string name="help_Text">FAQs</string>
     <string name="currency_selection"> Please select the currency below to change: </string>
     <string name="amount_total">Total balance:</string>
@@ -62,5 +56,6 @@
     <string name="help">Help</string>
     <string name="title_activity_help">Help</string>
     <string name="title_activity_share">share</string>
-    <string name="present_location"> Your location is</string>
+    <string name="present_location">Location: </string>
+    <string name="place_currency">Currency:</string>
 </resources>

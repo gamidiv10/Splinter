@@ -24,15 +24,11 @@
         android:theme="@style/AppTheme"
         android:value="ca-app-pub-3162157850946233~8845791837">
         <activity
-            android:name=".MainMenu.home.share"
-            android:label="@string/title_activity_share"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
             android:name=".Help"
             android:label="@string/title_activity_help"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".Home"
             android:parentActivityName=".MainActivity"
@@ -64,10 +60,11 @@
         <activity android:name=".Bluetooth">
 
         </activity>
-        <activity android:name=".Locations">
+        <activity android:name=".Locations"
+            android:parentActivityName=".Home"
+            android:windowSoftInputMode="adjustResize">
 
         </activity>
-        <activity android:name=".Internet" />
         <activity android:name=".LoginActivity">
 
         </activity>

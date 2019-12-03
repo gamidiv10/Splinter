@@ -21,6 +21,7 @@ public class Bill {
     // Default constructor required for calls to DataSnapshot.getValue(User.class)
   }
 
+  // Initialising the values
   public Bill(String name, Date date, Double totalAmount, ArrayList<Item> itemList, ArrayList<Participant> participantList) {
     this.billName = name;
     this.date = date;

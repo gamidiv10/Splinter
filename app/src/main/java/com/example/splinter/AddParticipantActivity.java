@@ -99,7 +99,7 @@ public class AddParticipantActivity extends AppCompatActivity {
 
   }
 
-
+  // Recycler view for adding participants page
   private void initRecyclerView() {
     RecyclerView recyclerView = findViewById(R.id.recycler_view_participants);
     RecyclerViewAdapterParticipants adapter = new RecyclerViewAdapterParticipants(this, fnameList, lnameList, emailList);
@@ -115,10 +115,7 @@ public class AddParticipantActivity extends AppCompatActivity {
 
   public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
-
-
     if (id == R.id.save_button) {
-
       Intent intent = new Intent();
       intent.putExtra("emailList", emailList);
       intent.putExtra("participantsCount", fnameList.size());
@@ -127,7 +124,6 @@ public class AddParticipantActivity extends AppCompatActivity {
       setResult(RESULT_OK, intent);
       finish();
     }
-
     return super.onOptionsItemSelected(item);
   }
 

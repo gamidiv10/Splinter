@@ -8,6 +8,7 @@ package com.example.splinter.MainMenu.currency;
 
 import androidx.lifecycle.ViewModel;
 
+// Currency view model class
 public class CurrencyViewModel extends ViewModel {
-  // TODO: Implement the ViewModel
+
 }

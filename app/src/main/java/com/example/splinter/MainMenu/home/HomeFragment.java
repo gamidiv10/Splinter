@@ -1,7 +1,7 @@
 /*
  * Author: Vamsi Gamidi
- * Contributors:
- * Date: 2019
+ * Contributors: Prem kumar Menni, Sneh jogani
+ * Date: November 10 2019
  */
 
 package com.example.splinter.MainMenu.home;
@@ -12,18 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.splinter.AddBillActivity;
 import com.example.splinter.R;
 import com.example.splinter.RecyclerViewAdapterHomeScreenBills;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
 
 import static android.app.Activity.RESULT_OK;

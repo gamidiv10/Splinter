@@ -6,8 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainMenu.contact_us.contact_us">
 
-    <!--    Reference: https://appsnipp.com/free-android-profile-design-with-source-code/-->
-
+    <!--    Reference:-->
+<!--    /***************************************************************************************-->
+<!--    *    Title: Free profile design with Collapsing Toolbar for android-->
+<!--    *    Author: Kapil Mohan-->
+<!--    *    Availability: Coding in Flow,  https://appsnipp.com/free-android-profile-design-with-source-code/-->
+<!--    ***************************************************************************************/-->
+<!--    Contact us layout-->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"

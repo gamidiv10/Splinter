@@ -5,7 +5,7 @@
  */
 
 package com.example.splinter;
-
+// Class for setting item details
 public class Item {
   public String itemName;
   public String itemPrice;

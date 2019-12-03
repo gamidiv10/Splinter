@@ -16,7 +16,6 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -98,46 +97,34 @@ public class AddBillActivity extends AppCompatActivity {
           if (intent.getStringArrayListExtra("owedAmount") != null) {
             owedAmountList = intent.getStringArrayListExtra("owedAmount");
           }
-
-
-
+          // Assigning edittext ids to variables
           itemName = findViewById(R.id.editTextItemName);
           itemPrice = findViewById(R.id.editTextItemPrice);
           itemQuantity = findViewById(R.id.editTextItemQuantity);
           billName = findViewById(R.id.source_txt);
-
           String name, price, quantity, totals;
           name = itemName.getText().toString();
           price = itemPrice.getText().toString();
           quantity = itemQuantity.getText().toString();
-
           // calculating total bill amount
           double total = Double.parseDouble(price) * Double.parseDouble(quantity);
           billTotal += total;
           totals = String.valueOf(total);
-
           itemList.add(name);
           itemQtyList.add("Qty:" + quantity);
           itemPriceList.add("$" + totals);
-
-
-
           // initializing recycler view with the data received
           initRecyclerView();
-
           // resetting editTextView values to empty
           itemName.setText("");
           itemPrice.setText("");
           itemQuantity.setText("");
-
           MenuItem saveItem = billmenu.findItem(R.id.save_button);
-
           if (!itemList.isEmpty() && !emailList.isEmpty()) {
             saveItem.setEnabled(true);
             saveItem.getIcon().setAlpha(200);
           }
         }
-
       }
     });
   }
@@ -212,9 +199,7 @@ public class AddBillActivity extends AppCompatActivity {
           Item itemObj = new Item(itemList.get(i), itemPriceList.get(i).substring(1), itemQtyList.get(i).substring(4));
           itemObjList.add(itemObj);
           totalAmount += Double.parseDouble(itemObj.itemPrice);
-
           mDatabase.child("items").child(itemID).setValue(itemObj);
-
         }
         Date dateNow = Calendar.getInstance().getTime();
 
@@ -222,8 +207,6 @@ public class AddBillActivity extends AppCompatActivity {
         Bill bill = new Bill(billName.getText().toString(), dateNow, totalAmount, itemObjList, participantObjList);
         assert itemID != null;
         mDatabase.child("bills").child(itemID).setValue(bill);
-
-
         //mDatabase.child("bills").child(itemID).setValue(bill);
         if (billNameList != null) {
           billNameList.add(billName.getText().toString());
@@ -234,20 +217,16 @@ public class AddBillActivity extends AppCompatActivity {
         }
 
         Intent intent = new Intent();
-
         intent.putExtra("billName", billName.getText().toString());
         intent.putExtra("billAmount", totalAmount);
         intent.putExtra("billNameList", billNameList);
         intent.putExtra("bilAmountList", billAmountList);
         intent.putExtra("fnameList", fnameList);
         intent.putExtra("owedAmountList", owedAmountList);
-
         setResult(RESULT_OK, intent);
         finish();
-
       }
       MenuItem sendEmailItem = billmenu.findItem(R.id.send_email_button);
-
       /// if bill is saved then allow send email
       if (isBillSaved) {
         sendEmailItem.setEnabled(true);
@@ -259,7 +238,6 @@ public class AddBillActivity extends AppCompatActivity {
       Intent intentForBlutoothSharing = new Intent(AddBillActivity.this, Bluetooth.class);
       startActivity(intentForBlutoothSharing);
     }
-
     // email body
     String body = "<html> <header> Hi, you are added into the bill with name  </header> <body> <div> Splinter" +
             "dated November 11 2019 by Team 7 </div> <br>" +
@@ -267,13 +245,11 @@ public class AddBillActivity extends AppCompatActivity {
             "Amount you have to pay to the user is 20$ <br>";
 
     if (id == R.id.send_email_button) {
-
       // email subject
       String subject = "Splitter - New Bill Added";
       //noinspection unused
       String message = "Bill Details";
       String[] mailList = new String[emailList.size()];
-
       for (int i = 0; i < emailList.size(); i++) {
         mailList[i] = emailList.get(i);
       }
@@ -284,29 +260,23 @@ public class AddBillActivity extends AppCompatActivity {
       intent.setType("text/html");
       startActivity(Intent.createChooser(intent, "Choose an Email client :"));
     }
-
     return super.onOptionsItemSelected(item);
   }
-
-
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode == 1) {
       if (resultCode == RESULT_OK) {
         MenuItem sendEmailItem = billmenu.findItem(R.id.send_email_button);
-
         emailList = data.getStringArrayListExtra("emailList");
         //noinspection unused
         participantsCount = data.getIntExtra("participantsCount", 0);
         fnameList = data.getStringArrayListExtra("fnameList");
         lnameList = data.getStringArrayListExtra("lnameList");
-
         MenuItem saveItem = billmenu.findItem(R.id.save_button);
       }
     }
-
   }
-
+// Recycler view to display items in Ui
   private void initRecyclerView() {
     RecyclerView recyclerView = findViewById(R.id.recycler_view);
     RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, itemList, itemQtyList, itemPriceList);

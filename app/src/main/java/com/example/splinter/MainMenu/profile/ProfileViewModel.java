@@ -8,8 +8,8 @@ package com.example.splinter.MainMenu.profile;
 
 import androidx.lifecycle.ViewModel;
 
-
+// Profile view model class
 public class ProfileViewModel extends ViewModel {
-  // TODO: Implement the ViewModel
+
 
 }

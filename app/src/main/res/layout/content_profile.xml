@@ -7,7 +7,13 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainMenu.profile.profile"
     tools:showIn="@layout/profile_fragment">
-
+    <!--    Reference:-->
+    <!--    /***************************************************************************************-->
+    <!--    *    Title: Free profile design with Collapsing Toolbar for android-->
+    <!--    *    Author: Kapil Mohan-->
+    <!--    *    Availability: Coding in Flow,  https://appsnipp.com/free-android-profile-design-with-source-code/-->
+    <!--    ***************************************************************************************/-->
+    <!--    profile layout-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

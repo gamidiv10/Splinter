@@ -6,7 +6,7 @@
     android:padding="15dp"
     android:clickable="true"
     android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
+<!--Layout for bills in Home page-->
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="40dp"
         android:layout_height="40dp"

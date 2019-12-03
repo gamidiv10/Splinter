@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:windowSoftInputMode="adjustPan"
     tools:context=".LoginActivity">
-
+<!--Email textinput in loginpage-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -20,7 +20,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email"
             android:layout_width="fill_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="2dp"
             android:hint="@string/email"
@@ -29,6 +29,7 @@
             android:scrollHorizontally="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Password textinput in loginpage-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -44,7 +45,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
             android:layout_width="fill_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="2dp"
             android:hint="@string/password"
@@ -52,7 +53,7 @@
             android:paddingStart="10dp"
             android:scrollHorizontally="true" />
     </com.google.android.material.textfield.TextInputLayout>
-
+<!--    Login button to submit the credentials-->
     <Button
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
@@ -62,7 +63,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/login"
         android:textAllCaps="true" />
-
+<!--hyper link for signup-->
     <TextView
         android:id="@+id/tv_createAccount"
         android:layout_width="wrap_content"
@@ -76,17 +77,5 @@
         android:text="@string/create_an_account"
         android:textColor="@color/colorBlue" />
 
-    <TextView
-        android:id="@+id/forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_createAccount"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:linksClickable="true"
-        android:text="@string/forgot_password"
-        android:textColor="@color/colorBlue" />
 
 </RelativeLayout>

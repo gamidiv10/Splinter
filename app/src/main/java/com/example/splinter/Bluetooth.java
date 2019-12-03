@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.Set;
 
 /**
- * Created by Jasper Jiao on 2019-10-28.
+ * Created by Jasper Jiao on 2019-10-09.
  */
 
 public class Bluetooth extends AppCompatActivity{
@@ -48,7 +48,7 @@ public class Bluetooth extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bluetooth);
-
+        // linking view elements in bluetooth layout
         mStatusBlueTv = (TextView) findViewById(R.id.statusBluetoothTv);
         mPairedTv     = (TextView) findViewById(R.id.pairedTv);
         mBlueIv       = (ImageView) findViewById(R.id.bluetoothIv);
@@ -57,7 +57,7 @@ public class Bluetooth extends AppCompatActivity{
         mDiscoverBtn  = (Button) findViewById(R.id.discoverableBtn);
         mPairedBtn    = (Button) findViewById(R.id.pairedBtn);
         msendBtn =(Button) findViewById(R.id.sendBtn);
-
+        // Checking device is Bluetooth compatible
         mBlueAdapter = BluetoothAdapter.getDefaultAdapter();
 
         if (mBlueAdapter == null){
@@ -96,7 +96,7 @@ public class Bluetooth extends AppCompatActivity{
                 }
             }
         });
-
+// Turning of bluetooth
         mOffBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,6 +128,7 @@ public class Bluetooth extends AppCompatActivity{
                 }
             }
         });
+        // Function to send data using bluetooth
         msendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -168,6 +169,7 @@ public class Bluetooth extends AppCompatActivity{
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
+    // Handling bluetooth connections
     Handler handler=new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -198,7 +200,6 @@ public class Bluetooth extends AppCompatActivity{
             return true;
         }
     });
-
     private class SendReceive extends Thread {
         private final BluetoothSocket bluetoothSocket;
         private final InputStream inputStream;
@@ -221,15 +222,12 @@ public class Bluetooth extends AppCompatActivity{
             inputStream=  tempIn;
             outputStream= tempOut;
         }
-
         public void run()
         {
-
             byte[] buffer = null;
             int numberOfBytes = 0;
             int index=0;
             boolean flag = true;
-
             while(true)
             {
                 if(flag)
@@ -252,7 +250,6 @@ public class Bluetooth extends AppCompatActivity{
 
                         System.arraycopy(data,0,buffer,index,numbers);
                         index=index+numbers;
-
                         if(index == numberOfBytes)
                         {
                             handler.obtainMessage(STATE_MESSAGE_RECEIVED,numberOfBytes,-1,buffer).sendToTarget();
@@ -263,9 +260,7 @@ public class Bluetooth extends AppCompatActivity{
                     }
                 }
             }
-
         }
-
         public void write(byte[] bytes)
         {
             try {

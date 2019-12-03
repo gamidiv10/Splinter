@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
-
+    <!--bill item edit text dialogue layout-->
     <EditText
         android:id="@+id/edit_text_item_name"
         android:layout_width="match_parent"

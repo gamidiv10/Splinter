@@ -6,7 +6,9 @@
 
 package com.example.splinter;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Patterns;
@@ -89,7 +91,6 @@ public class LoginActivity extends AppCompatActivity {
       public void onClick(View v) {
 
         if (validateEMAIL() & validatePassword()) {
-
           // Intent to home page
           startSignIn();
         }
@@ -184,6 +185,9 @@ public class LoginActivity extends AppCompatActivity {
   }
 
   private void startSignIn() {
+    if (isNetworkConnected())
+    {
+
     mLoginAuthentication.signInWithEmailAndPassword(EMAIL, PASSWORD).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
       @Override
       public void onComplete(@NonNull Task<AuthResult> task) {
@@ -195,10 +199,19 @@ public class LoginActivity extends AppCompatActivity {
         }
       }
     });
+
+    }
+    else {
+      Toast.makeText(getApplicationContext(), "Please check the internet connection", Toast.LENGTH_SHORT).show();
+    }
   }
 
   // https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity
 
+  private boolean isNetworkConnected() {
+    ConnectivityManager Internet_cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+    return Internet_cm.getActiveNetworkInfo() != null && Internet_cm.getActiveNetworkInfo().isConnected();
+  }
   @Override
   public void onBackPressed() {
     if (backPressSingleTime) {

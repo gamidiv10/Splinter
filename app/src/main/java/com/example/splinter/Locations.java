@@ -1,6 +1,6 @@
 /*
  * Author: Jasper Jiao
- * Contributors:
+ * Contributors: Menni Prem Kumar, Sneh Jogani, Vamsi Gamidi
  * Date: 2019
  */
 
@@ -17,30 +17,23 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
-
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
-
-
-/**
- * Created by Jasper Jiao on 2019-11-15.
- */
 
 public class Locations extends AppCompatActivity {
 
   private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 1;
   Context context = this;
-  TextView user_location;
+  TextView user_location, currency_used;
   private FusedLocationProviderClient mFusedLocationClient;
   Geocoder geocoder;
   List<Address> addresses;
@@ -50,10 +43,11 @@ public class Locations extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.currency_fragment);
 
+    currency_used = findViewById(R.id.currency_used);
     user_location = findViewById(R.id.user_current_location);
     mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
     fetchLocation();
+
   }
 
   private void fetchLocation() {
@@ -109,8 +103,11 @@ public class Locations extends AppCompatActivity {
                     // Logic to handle location object
                     Double latittude = location.getLatitude();
                     Double longitude = location.getLongitude();
-                    user_location.setText(getCompleteAddressString(latittude, longitude));
-                    //user_location.setText(latittude+""+longitude);
+                    String user_loc_currency = getCompleteAddressString(latittude, longitude);
+                    String[] split = user_loc_currency.split(" ");
+                    String cur_symbol = user_loc_currency.replace(split[0], "");
+                    currency_used.setText(cur_symbol);
+                    user_location.setText(split[0]);
                   }
                 }
               });
@@ -126,8 +123,11 @@ public class Locations extends AppCompatActivity {
       String city = addresses.get(0).getLocality();
       String state = addresses.get(0).getAdminArea();
       String zip = addresses.get(0).getPostalCode();
+      // Getting country code
       String country = addresses.get(0).getCountryName();
-
+      String user_cur_loc = addresses.get(0).getCountryCode();
+      // Currency symbol
+      String symbol = Currency.getInstance(new Locale("", user_cur_loc)).getSymbol();
       if (addresses != null) {
         Address returnedAddress = addresses.get(0);
         StringBuilder strReturnedAddress = new StringBuilder("");
@@ -135,7 +135,7 @@ public class Locations extends AppCompatActivity {
         for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
           strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
         }
-        strAdd = country.toString();
+        strAdd = country.toString()+"("+user_cur_loc+") " + symbol.toString();
         Log.w("My Current address", strReturnedAddress.toString());
       } else {
         Log.w("My Current address", "No Address returned!");
@@ -144,6 +144,7 @@ public class Locations extends AppCompatActivity {
       e.printStackTrace();
       Log.w("My Current address", "Canont get Address!");
     }
+
     return strAdd;
   }
 
@@ -151,7 +152,6 @@ public class Locations extends AppCompatActivity {
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     if (requestCode == MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION) {
       if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
       } else {
 
       }

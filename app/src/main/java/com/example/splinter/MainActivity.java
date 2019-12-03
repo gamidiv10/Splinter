@@ -19,8 +19,11 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
-    // Font https://fonts.google.com/specimen/Dancing+Script?selection.family=Dancing+Script
+/***************************************************************************************
+ *    Title: Font
+ *    Code version: 1.0
+ *    Availability: Coding in Flow, https://fonts.google.com/specimen/Dancing+Script?selection.family=Dancing+Script
+ ***************************************************************************************/
 
     Thread thread = new Thread() {
       @Override

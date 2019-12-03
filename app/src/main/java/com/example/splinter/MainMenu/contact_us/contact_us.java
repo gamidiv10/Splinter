@@ -25,10 +25,12 @@ import com.example.splinter.R;
 
 public class contact_us extends Fragment {
 
+  // Initialising contactusviewmodel class
   private ContactUsViewModel mViewModel;
 
   Button help;
 
+  // Creating constructor instance
   public static contact_us newInstance() {
     return new contact_us();
   }
@@ -38,6 +40,7 @@ public class contact_us extends Fragment {
                            @Nullable Bundle savedInstanceState) {
     View root = inflater.inflate(R.layout.contact_us_fragment, container, false);
     help = root.findViewById(R.id.btn_help);
+    // Calling help layout
     help.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -52,7 +55,7 @@ public class contact_us extends Fragment {
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
     mViewModel = ViewModelProviders.of(this).get(ContactUsViewModel.class);
-    // TODO: Use the ViewModel
+
   }
 
 }

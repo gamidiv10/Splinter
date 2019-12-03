@@ -16,10 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -52,13 +50,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     editTextPrice = dialogEditBill.findViewById(R.id.edit_text_price);
     buttonSave = dialogEditBill.findViewById(R.id.button_save);
     buttonCancel = dialogEditBill.findViewById(R.id.button_cancel);
-
     View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bill_recyclerview, parent, false);
     holder = new ViewHolder(view);
 
     return holder;
   }
 
+  // View holder to display items
   @Override
   public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     holder.itemName.setText(itemList.get(position));
@@ -100,26 +98,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
           dialogEditBill.show();
 
-
+          // Handling save button
           buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
               itemList.set(getAdapterPosition(), editTextItemName.getText().toString());
-
               itemQty.set(getAdapterPosition(), "Qty:" + editTextQty.getText());
-
               double updatedUnitPrice = Double.parseDouble(editTextPrice.getText().toString().substring(1));
               double updatedQuantity = Double.parseDouble(editTextQty.getText().toString());
               itemPrice.set(getAdapterPosition(), "$" + updatedUnitPrice * updatedQuantity);
-
               notifyItemChanged(getAdapterPosition());
               dialogEditBill.cancel();
-
             }
           });
-
-
           buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,7 +119,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
           });
         }
       });
-
+      // Deleting items in view
       deleteButton = itemView.findViewById(R.id.delete_item_button);
       deleteButton.setOnClickListener(new View.OnClickListener() {
         @Override

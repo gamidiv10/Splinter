@@ -6,7 +6,9 @@
 
 package com.example.splinter;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -98,19 +100,31 @@ public class SignupActivity extends AppCompatActivity {
     btnSignup.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-
-        if (isvalidEmail() & isvalidPassword() & isvalidConfirmPassword() & isvalidFirstname() & isvalidLastname()) {
-          Toast.makeText(getApplicationContext(), " Creating Account...", Toast.LENGTH_SHORT).show();
-          Boolean success = writeUserdata();
-          if (success) {
-            createUserInDatabase();
-          } else {
-            Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
+        if (isNetworkConnected()){
+          if (isvalidEmail() & isvalidPassword() & isvalidConfirmPassword() & isvalidFirstname() & isvalidLastname()) {
+            Toast.makeText(getApplicationContext(), " Creating Account...", Toast.LENGTH_SHORT).show();
+            Boolean success = writeUserdata();
+            if (success) {
+              createUserInDatabase();
+            } else {
+              Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
+            }
+            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
           }
-          startActivity(new Intent(SignupActivity.this, LoginActivity.class));
         }
+        else {
+          Toast.makeText(getApplicationContext(), "Please check the internet connection", Toast.LENGTH_SHORT).show();
+        }
+
       }
     });
+
+  }
+
+
+  private boolean isNetworkConnected() {
+    ConnectivityManager Internet_cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+    return Internet_cm.getActiveNetworkInfo() != null && Internet_cm.getActiveNetworkInfo().isConnected();
   }
 
   public Boolean writeUserdata() {
@@ -130,19 +144,25 @@ public class SignupActivity extends AppCompatActivity {
 
   private void createUserInDatabase() {
 
-    mSignupAuthentication.createUserWithEmailAndPassword(enteredEmail, enteredPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-      @Override
-      public void onComplete(@NonNull Task<AuthResult> task) {
-        if (!task.isSuccessful()) {
-          Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
+    if (isNetworkConnected()) {
+      mSignupAuthentication.createUserWithEmailAndPassword(enteredEmail, enteredPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        @Override
+        public void onComplete(@NonNull Task<AuthResult> task) {
+          if (!task.isSuccessful()) {
+            Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
 
-        } else {
-          // After Signin it will go to the dashBoard
-          startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-          finish();
+          } else {
+            // After Signin it will go to the dashBoard
+            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+            finish();
+          }
         }
-      }
-    });
+      });
+    }
+    else
+    {
+      Toast.makeText(getApplicationContext(), "Please check the internet connection", Toast.LENGTH_SHORT).show();
+    }
   }
 
   public Boolean isvalidFirstname() {
