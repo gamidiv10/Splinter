@@ -110,40 +110,46 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mLoginAuthentication.getCurrentUser();
-        if (currentUser != null) {
-            Toast.makeText(getApplicationContext(), "Already Logged in", Toast.LENGTH_SHORT).show();
-            DatabaseReference referenceToRoot = databaseRef.getReference().child("Users");
-            referenceToRoot.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    HashMap<String, Object> UserData = (HashMap<String, Object>) dataSnapshot.getValue();
-                    System.out.println(UserData);
-                    for (Map.Entry<String, Object> users : UserData.entrySet()) {
-                        Object rootID = users.getValue();
-                        try {
-                            JSONObject rootObject = new JSONObject(rootID.toString());
-                            JSONObject email = rootObject.getJSONObject("Email");
-                            fbEmail = email.getString("Email_value");
-                            if (fbEmail.equals(mLoginAuthentication.getCurrentUser().getEmail())) {
-                                fbFirstName = email.getString("First_name");
-                                fbLastName = email.getString("Last_name");
-                                fbPhoneNumber = email.getString("Phone_Number");
-                                break;
+
+        try {
+            final String user_email = mLoginAuthentication.getCurrentUser().getEmail();
+            if (currentUser != null) {
+                Toast.makeText(getApplicationContext(), "Already Logged in", Toast.LENGTH_SHORT).show();
+                DatabaseReference referenceToRoot = databaseRef.getReference().child("Users");
+                referenceToRoot.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        HashMap<String, Object> UserData = (HashMap<String, Object>) dataSnapshot.getValue();
+                        System.out.println(UserData);
+                        for (Map.Entry<String, Object> users : UserData.entrySet()) {
+                            Object rootID = users.getValue();
+                            try {
+                                JSONObject rootObject = new JSONObject(rootID.toString());
+                                JSONObject email = rootObject.getJSONObject("Email");
+                                fbEmail = email.getString("Email_value");
+                                if (fbEmail.equals(user_email)) {
+                                    fbFirstName = email.getString("First_name");
+                                    fbLastName = email.getString("Last_name");
+                                    fbPhoneNumber = email.getString("Phone_Number");
+                                    break;
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
                     }
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                }
-            });
-            startActivity(new Intent(LoginActivity.this, Home.class));
-            finish();
+                    }
+                });
+                startActivity(new Intent(LoginActivity.this, Home.class));
+                finish();
 
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -196,7 +202,13 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity
+    /***************************************************************************************
+     *    Title: Click Back Button Twice to exit
+     *    Author: StackOverFlow
+     *    Code version: 1.0
+     *    Availability: StackOverflow, https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity
+     ***************************************************************************************/
+
     @Override
     public void onBackPressed() {
         if (backPressSingleTime) {

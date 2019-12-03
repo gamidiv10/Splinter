@@ -150,7 +150,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 } else {
                     // After Signin it will go to the dashBoard
-                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                    startActivity(new Intent(SignupActivity.this, Home.class));
                     finish();
                 }
             }
