@@ -110,46 +110,6 @@ public class LoginActivity extends AppCompatActivity {
     });
   }
 
-  @Override
-  public void onStart() {
-    super.onStart();
-    // Check if user is signed in (non-null) and update UI accordingly.
-    FirebaseUser currentUser = mLoginAuthentication.getCurrentUser();
-    if (currentUser != null) {
-      Toast.makeText(getApplicationContext(), "Already Logged in", Toast.LENGTH_SHORT).show();
-      DatabaseReference referenceToRoot = databaseRef.getReference().child("Users");
-      referenceToRoot.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-          HashMap<String, Object> UserData = (HashMap<String, Object>) dataSnapshot.getValue();
-
-          for (Map.Entry<String, Object> users : UserData.entrySet()) {
-            Object rootID = users.getValue();
-            try {
-              JSONObject rootObject = new JSONObject(rootID.toString());
-              JSONObject email = rootObject.getJSONObject("Email");
-              fbEmail = email.getString("Email_value");
-              if (fbEmail.equals(mLoginAuthentication.getCurrentUser().getEmail())) {
-                fbFirstName = email.getString("First_name");
-                fbLastName = email.getString("Last_name");
-                break;
-              }
-            } catch (JSONException e) {
-              e.printStackTrace();
-            }
-          }
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-      });
-      startActivity(new Intent(LoginActivity.this, Home.class));
-      finish();
-
-    }
-
     @Override
     public void onStart() {
         super.onStart();
@@ -198,7 +158,39 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-  }
+      public Boolean validateEMAIL() {
+        EMAIL = etEMAIL.getText().toString().trim();
+        if (EMAIL.isEmpty()) {
+            textInputLayoutEmail.setError(getString(R.string.no_empty_field));
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(EMAIL).matches()) {
+            textInputLayoutEmail.setError("Please enter a valid EMAIL address");
+            return false;
+        } else {
+            textInputLayoutEmail.setError(null);
+            return true;
+        }
+    }
+
+    public Boolean validatePassword() {
+        PASSWORD = etPassword.getText().toString().trim();
+        if (PASSWORD.isEmpty()) {
+            textInputLayoutPassword.setError(getString(R.string.no_empty_field));
+            return false;
+        } else if (!PATTERN_PASSWORD.matcher(PASSWORD).matches()) {
+            textInputLayoutPassword.setError("Password should be between 8 to 24 character\n" +
+                    "at least 1 special character [@#$%^&+=]\n" +
+                    "at least 1 digit\n" +
+                    "at least 1 capital letter\n" +
+                    "at least 1 small letter\n");
+            etPassword.setText("");
+            return false;
+        } else {
+            textInputLayoutPassword.setError(null);
+            return true;
+        }
+
+    }
 
   private void startSignIn() {
     if (isNetworkConnected())
