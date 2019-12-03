@@ -119,7 +119,6 @@ public class LoginActivity extends AppCompatActivity {
                     HashMap<String, Object> UserData = (HashMap<String, Object>) dataSnapshot.getValue();
                     System.out.println(UserData);
                     for (Map.Entry<String, Object> users : UserData.entrySet()) {
-                        System.out.println("In Loop");
                         Object rootID = users.getValue();
                         try {
                             JSONObject rootObject = new JSONObject(rootID.toString());
