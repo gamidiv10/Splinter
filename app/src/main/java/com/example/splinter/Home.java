@@ -9,8 +9,7 @@ package com.example.splinter;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.splinter.ui.home.share;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.splinter.MainMenu.home.share;
 
 import android.view.MenuItem;
 
@@ -28,7 +27,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.Button;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

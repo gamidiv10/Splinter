@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Help">
 
-    <!--    <com.google.android.material.appbar.AppBarLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:theme="@style/AppTheme.AppBarOverlay">-->
-
-    <!--&lt;!&ndash;        <androidx.appcompat.widget.Toolbar&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:id="@+id/toolbar"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:layout_height="?attr/actionBarSize"&ndash;&gt;-->
-    <!--&lt;!&ndash;            android:background="?attr/colorPrimary"&ndash;&gt;-->
-    <!--&lt;!&ndash;            app:popupTheme="@style/AppTheme.PopupOverlay" />&ndash;&gt;-->
-
-    <!--    </com.google.android.material.appbar.AppBarLayout>-->
     <include layout="@layout/content_help" />
 
     <TextView

@@ -65,7 +65,7 @@ public class RecyclerViewAdapterHomeScreenBills extends  RecyclerView.Adapter<Re
 
         TextView billName, billAmount;
         RelativeLayout parent_layout;
-        ImageButton editButton, deleteButton;
+        ImageButton deleteButton;
         AppCompatCheckBox checkBox;
 
 
@@ -77,9 +77,20 @@ public class RecyclerViewAdapterHomeScreenBills extends  RecyclerView.Adapter<Re
             billName = itemView.findViewById(R.id.tv_bill_name);
             billAmount = itemView.findViewById(R.id.tv_bill_amount);
 
+            deleteButton = itemView.findViewById(R.id.delete_bill);
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        billNameList.remove(position);
+                        billAmountList.remove(position);
 
 
-
+                        notifyItemRemoved(position);
+                    }
+                }
+            });
         }
     }
-}
+    }

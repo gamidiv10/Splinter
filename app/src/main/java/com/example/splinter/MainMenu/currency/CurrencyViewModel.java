@@ -4,7 +4,7 @@
  * Date: 2019
  */
 
-package com.example.splinter.ui.currency;
+package com.example.splinter.MainMenu.currency;
 
 import androidx.lifecycle.ViewModel;
 

@@ -28,9 +28,9 @@ public class AddParticipantActivity extends AppCompatActivity {
   private EditText firstName;
   private EditText lastName;
   private EditText email;
-  private final ArrayList<String> fnameList = new ArrayList<>();
-  private final ArrayList<String> lnameList = new ArrayList<>();
-  private final ArrayList<String> emailList = new ArrayList<>();
+  private ArrayList<String> fnameList = new ArrayList<>();
+  private ArrayList<String> lnameList = new ArrayList<>();
+  private ArrayList<String> emailList = new ArrayList<>();
   private ArrayList<String> selectedfnameList = new ArrayList<>();
   private ArrayList<String> selectedlnameList = new ArrayList<>();
   private ArrayList<String> selectedemailList = new ArrayList<>();
@@ -40,6 +40,18 @@ public class AddParticipantActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_adding_participants);
+
+    Intent intent = getIntent();
+    if (intent.getStringArrayListExtra("fnameList") != null) {
+      fnameList = intent.getStringArrayListExtra("fnameList");
+    }
+    if (intent.getStringArrayListExtra("lnameList") != null) {
+      lnameList = intent.getStringArrayListExtra("lnameList");
+    }
+    if (intent.getStringArrayListExtra("emailList") != null) {
+      emailList = intent.getStringArrayListExtra("emailList");
+    }
+    initRecyclerView();
 
     firstName = findViewById(R.id.editTextFirstName);
     lastName = findViewById(R.id.editTextLastName);

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.currency.currency">
+    tools:context=".MainMenu.currency.currency">
 
     <TextView
         android:id="@+id/default_currency"
@@ -41,11 +41,6 @@
         android:layout_margin="10dp"
         android:text="@string/currency_selection"
         android:textSize="24dp" />
-    <!--    <Spinner-->
-    <!--        android:id="@+id/currencyspinner"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_below="@id/select_period"/>-->
 
     <ListView
         android:layout_width="wrap_content"

@@ -60,12 +60,6 @@ public class SharebillActivity extends AppCompatActivity {
         findViewByIdes();
         bluetoothAdapter=BluetoothAdapter.getDefaultAdapter();
 
-        /*if(!bluetoothAdapter.isEnabled())
-        {
-            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableIntent,REQUEST_ENABLE_BLUETOOTH);
-        }*/
-
         implementListeners();
     }
 

@@ -4,7 +4,7 @@
  * Date: 2019
  */
 
-package com.example.splinter.ui.logout;
+package com.example.splinter.MainMenu.logout;
 
 import android.content.Intent;
 import android.os.Bundle;

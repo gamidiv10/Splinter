@@ -4,7 +4,7 @@
  * Date: 2019
  */
 
-package com.example.splinter.ui.home;
+package com.example.splinter.MainMenu.home;
 
 import android.os.Bundle;
 

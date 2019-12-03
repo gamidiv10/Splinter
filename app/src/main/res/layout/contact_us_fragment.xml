@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.contact_us.contact_us">
+    tools:context=".MainMenu.contact_us.contact_us">
 
     <!--    Reference: https://appsnipp.com/free-android-profile-design-with-source-code/-->
 

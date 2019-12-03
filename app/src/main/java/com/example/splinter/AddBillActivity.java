@@ -16,6 +16,7 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ public class AddBillActivity extends AppCompatActivity {
   private double billTotal = 0;
     private ArrayList<String> billNameList = new ArrayList<>();
     private ArrayList<String> billAmountList = new ArrayList<>();
+    private ArrayList<String> owedAmountList = new ArrayList<>();
 
   private ArrayList<String> emailList = new ArrayList<>();
   private ArrayList<String> fnameList = new ArrayList<>();
@@ -52,6 +54,9 @@ public class AddBillActivity extends AppCompatActivity {
   private boolean isBillSaved = false;
   String strEditText;
   ImageButton itemadd;
+  Integer participantsCount;
+  Double individualShare, amountOwed;
+  MenuItem saveItem;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +68,6 @@ public class AddBillActivity extends AppCompatActivity {
     itemPrice = findViewById(R.id.editTextItemPrice);
     itemQuantity = findViewById(R.id.editTextItemQuantity);
     ImageButton itemadd = findViewById(R.id.btnAddItem);
-
     billName = findViewById(R.id.source_txt);
 
     itemadd.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +95,11 @@ public class AddBillActivity extends AppCompatActivity {
           if (intent.getStringArrayListExtra("billAmount") != null) {
             billAmountList = intent.getStringArrayListExtra("billAmount");
           }
+          if (intent.getStringArrayListExtra("owedAmount") != null) {
+            owedAmountList = intent.getStringArrayListExtra("owedAmount");
+          }
+
+
 
           itemName = findViewById(R.id.editTextItemName);
           itemPrice = findViewById(R.id.editTextItemPrice);
@@ -111,9 +120,7 @@ public class AddBillActivity extends AppCompatActivity {
           itemQtyList.add("Qty:" + quantity);
           itemPriceList.add("$" + totals);
 
-          // calculating amount the user is owed
-          // individualShare = billTotal / (participantsCount + 1)
-          // amountOwed = individualShare * participantsCount
+
 
           // initializing recycler view with the data received
           initRecyclerView();
@@ -147,18 +154,7 @@ public class AddBillActivity extends AppCompatActivity {
     //noinspection unused
     MenuItem sendEmailItem = menu.findItem(R.id.send_email_button);
     //noinspection unused
-    MenuItem saveItem = menu.findItem(R.id.save_button);
-
-//    if (!isBillSaved) {
-//        sendEmailItem.setEnabled(false);
-//        sendEmailItem.getIcon().setAlpha(130);
-//    }
-//
-//    if(itemList.isEmpty() || emailList.isEmpty())
-//    {
-//        saveItem.setEnabled(false);
-//        saveItem.getIcon().setAlpha(130);
-//    }
+    saveItem = menu.findItem(R.id.save_button);
     return super.onPrepareOptionsMenu(menu);
   }
 
@@ -167,16 +163,33 @@ public class AddBillActivity extends AppCompatActivity {
 
     if (id == R.id.add_participants_button) {
       Intent intentForAddingParticipant = new Intent(AddBillActivity.this, AddParticipantActivity.class);
+      intentForAddingParticipant.putExtra("fnameList", fnameList);
+      intentForAddingParticipant.putExtra("lnameList", lnameList);
+      intentForAddingParticipant.putExtra("emailList", emailList);
       startActivityForResult(intentForAddingParticipant, 1);
     }
 
     // on save button click in options item menu
     if (id == R.id.save_button) {
 
-      // validating whether bill name not null
-      if (Objects.requireNonNull(billName.getText()).toString().length() == 0) {
-        billName.setError("Value should not be empty");
-      } else {
+      if((Objects.requireNonNull(billName.getText()).toString().length() == 0) || (fnameList.isEmpty()) || (itemList.isEmpty()))
+      {
+        // validating whether bill name not null
+        if (Objects.requireNonNull(billName.getText()).toString().length() == 0) {
+          billName.setError("Value should not be empty");
+        }
+
+        if (fnameList.isEmpty()) {
+          Toast.makeText(this, "Please Add Participants to save", Toast.LENGTH_SHORT).show();
+
+        }
+
+        if (itemList.isEmpty()) {
+          Toast.makeText(this, "Please Add Items to save", Toast.LENGTH_SHORT).show();
+
+        }
+      }
+      else {
 
         // fetching participants list from firebase db
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -184,10 +197,10 @@ public class AddBillActivity extends AppCompatActivity {
 
         // adding participants to local arrayList
         for (int i = 0; i < fnameList.size(); i++) {
-          //String itemID = mDatabase.push().getKey();
+          String itemID = mDatabase.push().getKey();
 
           Participant participant = new Participant(fnameList.get(i), lnameList.get(i), emailList.get(i));
-          //mDatabase.child("users").child(itemID).setValue(participant);
+          mDatabase.child("users").child(itemID).setValue(participant);
           participantObjList.add(participant);
 
         }
@@ -195,12 +208,12 @@ public class AddBillActivity extends AppCompatActivity {
         Double totalAmount = (double) 0;
 
         for (int i = 0; i < itemList.size(); i++) {
-          //String itemID = mDatabase.push().getKey();
+          String itemID = mDatabase.push().getKey();
           Item itemObj = new Item(itemList.get(i), itemPriceList.get(i).substring(1), itemQtyList.get(i).substring(4));
           itemObjList.add(itemObj);
           totalAmount += Double.parseDouble(itemObj.itemPrice);
 
-          //mDatabase.child("items").child(itemID).setValue(itemObj);
+          mDatabase.child("items").child(itemID).setValue(itemObj);
 
         }
         Date dateNow = Calendar.getInstance().getTime();
@@ -211,20 +224,23 @@ public class AddBillActivity extends AppCompatActivity {
         mDatabase.child("bills").child(itemID).setValue(bill);
 
 
-                //mDatabase.child("bills").child(itemID).setValue(bill);
-                if(billNameList != null) {
-                    billNameList.add(billName.getText().toString());
-                }
+        //mDatabase.child("bills").child(itemID).setValue(bill);
+        if (billNameList != null) {
+          billNameList.add(billName.getText().toString());
+        }
+        if (billAmountList != null) {
+          billAmountList.add("" + totalAmount);
+          owedAmountList.add("" + totalAmount/(participantsCount+1));
+        }
 
-                Intent intent = new Intent();
-                if(billAmountList != null) {
-                    billAmountList.add("" + totalAmount);
-                }
-                intent.putExtra("billName", billName.getText().toString());
-                intent.putExtra("billAmount", totalAmount);
-                intent.putExtra("billNameList", billNameList);
-                intent.putExtra("bilAmountList", billAmountList);
-//              intent.putExtra("")
+        Intent intent = new Intent();
+
+        intent.putExtra("billName", billName.getText().toString());
+        intent.putExtra("billAmount", totalAmount);
+        intent.putExtra("billNameList", billNameList);
+        intent.putExtra("bilAmountList", billAmountList);
+        intent.putExtra("fnameList", fnameList);
+        intent.putExtra("owedAmountList", owedAmountList);
 
         setResult(RESULT_OK, intent);
         finish();
@@ -238,11 +254,16 @@ public class AddBillActivity extends AppCompatActivity {
         sendEmailItem.getIcon().setAlpha(200);
       }
     }
+    if(id == R.id.share)
+    {
+      Intent intentForBlutoothSharing = new Intent(AddBillActivity.this, Bluetooth.class);
+      startActivity(intentForBlutoothSharing);
+    }
 
     // email body
     String body = "<html> <header> Hi, you are added into the bill with name  </header> <body> <div> Splinter" +
             "dated November 11 2019 by Team 7 </div> <br>" +
-            "<p> Totalbill amount id 100$ <p> <br>" +
+            "<p> Totalbill amount is 100$ <p> <br>" +
             "Amount you have to pay to the user is 20$ <br>";
 
     if (id == R.id.send_email_button) {
@@ -276,33 +297,11 @@ public class AddBillActivity extends AppCompatActivity {
 
         emailList = data.getStringArrayListExtra("emailList");
         //noinspection unused
-        Integer participantsCount = data.getIntExtra("participantsCount", 0);
+        participantsCount = data.getIntExtra("participantsCount", 0);
         fnameList = data.getStringArrayListExtra("fnameList");
         lnameList = data.getStringArrayListExtra("lnameList");
 
-//        mDatabase = FirebaseDatabase.getInstance().getReference();
-//
-//        String id = mDatabase.push().getKey();
-//        for(int i = 0; i < fnameList.size() ; i++)
-//        {
-//            String id = mDatabase.push().getKey();
-//
-//            Participant participant = new Participant(fnameList.get(i), lnameList.get(i), emailList.get(i));
-//            mDatabase.child("users").child(id).setValue(participant);
-//
-//        }
-//
-//        if (isBillSaved) {
-//            sendEmailItem.setEnabled(true);
-//            sendEmailItem.getIcon().setAlpha(200);
-//        }
         MenuItem saveItem = billmenu.findItem(R.id.save_button);
-
-//        if(!itemList.isEmpty() && !emailList.isEmpty())
-//        {
-//            saveItem.setEnabled(true);
-//            saveItem.getIcon().setAlpha(200);
-//        }
       }
     }
 

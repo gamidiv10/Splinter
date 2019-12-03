@@ -24,7 +24,7 @@
         android:theme="@style/AppTheme"
         android:value="ca-app-pub-3162157850946233~8845791837">
         <activity
-            android:name=".ui.home.share"
+            android:name=".MainMenu.home.share"
             android:label="@string/title_activity_share"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
@@ -46,11 +46,10 @@
         <activity
             android:name=".AddParticipantActivity"
             android:label="Add Participant"
-            android:parentActivityName=".AddBillActivity"
             android:windowSoftInputMode="adjustResize">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+<!--            <meta-data-->
+<!--                android:name="android.support.PARENT_ACTIVITY"-->
+<!--                android:value=".MainActivity" />-->
         </activity>
         <activity
             android:name=".AddBillActivity"
@@ -76,7 +75,12 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <activity android:name=".CameraActivity"/>
+        <activity android:name=".CameraActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity android:name=".SharebillActivity"/>
 
         <provider

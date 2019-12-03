@@ -16,8 +16,6 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -153,7 +151,7 @@ public class Locations extends AppCompatActivity {
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     if (requestCode == MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION) {
       if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-        //abc
+
       } else {
 
       }

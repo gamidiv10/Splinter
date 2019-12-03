@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/profileBackground"
-    tools:context=".ui.profile.profile">
+    tools:context=".MainMenu.profile.profile">
 
     <!--    Reference: https://appsnipp.com/free-android-profile-design-with-source-code/-->
 

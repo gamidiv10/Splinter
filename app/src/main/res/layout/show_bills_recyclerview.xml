@@ -34,12 +34,22 @@
         android:id="@+id/tv_bill_amount"
         android:width="70dp"
         android:inputType="numberDecimal"
-        android:layout_toRightOf="@+id/tv_first_name"
-        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/tv_bill_name"
         android:layout_marginRight="20dp"
+        android:layout_marginLeft="40dp"
         android:layout_centerVertical="true"
         android:textSize="22dp"
         android:text="0.0"/>
+
+    <ImageButton
+        android:id="@+id/delete_bill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/edit_participant_button"
+        android:backgroundTint="@color/cardview_shadow_end_color"
+        android:src="@drawable/delete_icon" />
 
 
 

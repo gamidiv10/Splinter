@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    
+
+    <item
+        android:id="@+id/save_button"
+        android:icon="@drawable/save"
+        android:title="Save"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/add_participants_button"
+        android:icon="@drawable/add_participants"
+        android:title="Add People"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/share_outline"
+        android:title="Share"
+        app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/send_email_button"
         android:icon="@drawable/email_send"
         android:title="Send Email"
         app:showAsAction="ifRoom" />
     
-    <item
-        android:id="@+id/save_button"
-        android:icon="@drawable/save"
-        android:title="Save"
-        app:showAsAction="ifRoom" />
-    
-    <item
-        android:id="@+id/add_participants_button"
-        android:icon="@drawable/add_participants"
-        android:title="Add People"
-        app:showAsAction="ifRoom" />
+
 </menu>

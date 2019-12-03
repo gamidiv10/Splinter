@@ -4,7 +4,7 @@
  * Date: 2019
  */
 
-package com.example.splinter.ui.currency;
+package com.example.splinter.MainMenu.currency;
 
 import android.os.Bundle;
 
@@ -22,7 +22,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.splinter.R;
-import com.example.splinter.ui.home.HomeViewModel;
+import com.example.splinter.MainMenu.home.HomeViewModel;
 
 public class currency extends Fragment implements AdapterView.OnItemClickListener {
 
@@ -45,12 +45,8 @@ public class currency extends Fragment implements AdapterView.OnItemClickListene
                            @Nullable Bundle savedInstanceState) {
 
 
-//        View view = inflater.inflate(R.layout.currency_fragment, container, false);
-//        homeViewModel =
-//                ViewModelProviders.of(this).get(HomeViewModel.class);
     View root = inflater.inflate(R.layout.currency_fragment, container, false);
-    //lv = root.findViewById(R.id.select_period);
-//        lv.setOnItemClickListener(this);
+
 
     return root;
   }

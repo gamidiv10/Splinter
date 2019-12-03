@@ -4,7 +4,7 @@
  * Date: 2019
  */
 
-package com.example.splinter.ui.home;
+package com.example.splinter.MainMenu.home;
 
 import android.widget.Button;
 
@@ -18,9 +18,6 @@ public class HomeViewModel extends ViewModel {
   private MutableLiveData<String> mText;
 
   public HomeViewModel() {
-//        mText = new MutableLiveData<>();
-//        mText.setValue("This is home fragment");
-
 
   }
 
