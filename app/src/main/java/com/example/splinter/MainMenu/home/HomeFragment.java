@@ -80,7 +80,7 @@ public class HomeFragment extends Fragment {
                     owedAmount += Double.parseDouble(owedAmountList.get(i));
                 }
 
-                viewOwesYou.setText("" + owedAmount);
+                viewOwesYou.setText("" + (totalAmount-owedAmount));
                 billAmount = totalAmount;
 
                 initRecyclerView(root);

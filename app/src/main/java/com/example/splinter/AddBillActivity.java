@@ -207,7 +207,7 @@ public class AddBillActivity extends AppCompatActivity {
         Bill bill = new Bill(billName.getText().toString(), dateNow, totalAmount, itemObjList, participantObjList);
         assert itemID != null;
         mDatabase.child("bills").child(itemID).setValue(bill);
-        //mDatabase.child("bills").child(itemID).setValue(bill);
+
         if (billNameList != null) {
           billNameList.add(billName.getText().toString());
         }
