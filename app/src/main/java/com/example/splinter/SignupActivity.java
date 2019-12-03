@@ -16,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -63,7 +62,6 @@ public class SignupActivity extends AppCompatActivity {
     public TextInputLayout inputLayoutFirstName, inputLayoutLastName, inputLayoutPhoneNumber;
     Spinner countryCodeSpinner;
 
-    ProgressDialog dialog;
     String passwordError = "Password should be between 8 to 24 character\n" +
             "at least 1 special character [@#$%^&+=]\n" +
             "at least 1 digit\n" +
@@ -118,11 +116,7 @@ public class SignupActivity extends AppCompatActivity {
 
                     Boolean success = writeUserdata();
                     if (success) {
-                        dialog = new ProgressDialog(SignupActivity.this);
-                        dialog.setMessage("Creating Account ... ");
-                        dialog.show();
                         createUserInDatabase();
-                        dialog.dismiss();
                     } else {
                         Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
                     }
@@ -140,7 +134,7 @@ public class SignupActivity extends AppCompatActivity {
             emailRef.child("Email_value").setValue(enteredEmail);
             emailRef.child("First_name").setValue(firstName);
             emailRef.child("Last_name").setValue(lastName);
-            emailRef.child("Phone_Number").setValue(countryCode+phoneNumber);
+            emailRef.child("Phone_Number").setValue(countryCode + phoneNumber);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -148,99 +142,97 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
-  private boolean isNetworkConnected() {
-    ConnectivityManager Internet_cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-    return Internet_cm.getActiveNetworkInfo() != null && Internet_cm.getActiveNetworkInfo().isConnected();
-  }
+    private boolean isNetworkConnected() {
+        ConnectivityManager Internet_cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return Internet_cm.getActiveNetworkInfo() != null && Internet_cm.getActiveNetworkInfo().isConnected();
+    }
 
-  private void createUserInDatabase() {
+    private void createUserInDatabase() {
 
-    if (isNetworkConnected()) {
-      mSignupAuthentication.createUserWithEmailAndPassword(enteredEmail, enteredPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-        @Override
-        public void onComplete(@NonNull Task<AuthResult> task) {
-          if (!task.isSuccessful()) {
-            Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
+        if (isNetworkConnected()) {
+            mSignupAuthentication.createUserWithEmailAndPassword(enteredEmail, enteredPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
 
-          } else {
-            // After Signin it will go to the dashBoard
-            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-            finish();
-          }
+                    } else {
+                        // After Signin it will go to the dashBoard
+                        startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                        finish();
+                    }
+                }
+            });
+        } else {
+            Toast.makeText(getApplicationContext(), "Please check the internet connection", Toast.LENGTH_SHORT).show();
         }
-      });
     }
-    else
-    {
-      Toast.makeText(getApplicationContext(), "Please check the internet connection", Toast.LENGTH_SHORT).show();
-    }
-  }
 
-  public Boolean isvalidFirstname() {
-    firstName = etFirstName.getText().toString().trim();
-    if (firstName.isEmpty()) {
-      inputLayoutFirstName.setError(getString(R.string.no_empty_field));
-      return false;
-    } else {
-      inputLayoutFirstName.setError(null);
-      return true;
+    public Boolean isvalidFirstname() {
+        firstName = etFirstName.getText().toString().trim();
+        if (firstName.isEmpty()) {
+            inputLayoutFirstName.setError(getString(R.string.no_empty_field));
+            return false;
+        } else {
+            inputLayoutFirstName.setError(null);
+            return true;
+        }
     }
-  }
 
-  public Boolean isvalidLastname() {
-    lastName = etLastName.getText().toString().trim();
-    if (lastName.isEmpty()) {
-      inputLayoutLastName.setError(getString(string.no_empty_field));
-      return false;
-    } else {
-      inputLayoutLastName.setError(null);
-      return true;
+    public Boolean isvalidLastname() {
+        lastName = etLastName.getText().toString().trim();
+        if (lastName.isEmpty()) {
+            inputLayoutLastName.setError(getString(string.no_empty_field));
+            return false;
+        } else {
+            inputLayoutLastName.setError(null);
+            return true;
+        }
     }
-  }
 
-  public Boolean isvalidEmail() {
-    enteredEmail = etEnterEmail.getText().toString().trim();
-    if (enteredEmail.isEmpty()) {
-      inputLayoutEnterEmail.setError(getString(string.no_empty_field));
-      return false;
-    } else if (!Patterns.EMAIL_ADDRESS.matcher(enteredEmail).matches()) {
-      inputLayoutEnterEmail.setError("Please enter a valid EMAIL address");
-      return false;
-    } else {
-      inputLayoutEnterEmail.setError(null);
-      return true;
+    public Boolean isvalidEmail() {
+        enteredEmail = etEnterEmail.getText().toString().trim();
+        if (enteredEmail.isEmpty()) {
+            inputLayoutEnterEmail.setError(getString(string.no_empty_field));
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(enteredEmail).matches()) {
+            inputLayoutEnterEmail.setError("Please enter a valid EMAIL address");
+            return false;
+        } else {
+            inputLayoutEnterEmail.setError(null);
+            return true;
+        }
     }
-  }
 
-  private Boolean isvalidPassword() {
-    enteredPassword = etEnterPassword.getText().toString().trim();
-    if (enteredPassword.isEmpty()) {
-      inputLayoutEnterPassword.setError(getString(string.no_empty_field));
-      return false;
-    } else if (!PATTERN_PASSWORD.matcher(enteredPassword).matches()) {
-      inputLayoutEnterPassword.setError(passwordError);
-      etEnterPassword.setText("");
-      return false;
-    } else {
-      inputLayoutEnterPassword.setError(null);
-      return true;
+    private Boolean isvalidPassword() {
+        enteredPassword = etEnterPassword.getText().toString().trim();
+        if (enteredPassword.isEmpty()) {
+            inputLayoutEnterPassword.setError(getString(string.no_empty_field));
+            return false;
+        } else if (!PATTERN_PASSWORD.matcher(enteredPassword).matches()) {
+            inputLayoutEnterPassword.setError(passwordError);
+            etEnterPassword.setText("");
+            return false;
+        } else {
+            inputLayoutEnterPassword.setError(null);
+            return true;
+        }
     }
-  }
 
-  private Boolean isvalidConfirmPassword() {
-    reenteredPassword = etReenterPassword.getText().toString().trim();
-    if (reenteredPassword.isEmpty()) {
-      inputLayoutReenterPassword.setError(getString(string.no_empty_field));
-      return false;
-    } else if (!enteredPassword.equals(reenteredPassword)) {
-      inputLayoutReenterPassword.setError("Doesn't match the given Password");
-      etReenterPassword.setText("");
-      return false;
-    } else {
-      inputLayoutReenterPassword.setError(null);
-      return true;
+    private Boolean isvalidConfirmPassword() {
+        reenteredPassword = etReenterPassword.getText().toString().trim();
+        if (reenteredPassword.isEmpty()) {
+            inputLayoutReenterPassword.setError(getString(string.no_empty_field));
+            return false;
+        } else if (!enteredPassword.equals(reenteredPassword)) {
+            inputLayoutReenterPassword.setError("Doesn't match the given Password");
+            etReenterPassword.setText("");
+            return false;
+        } else {
+            inputLayoutReenterPassword.setError(null);
+            return true;
+        }
     }
-  }
 
     private Boolean isvalidPhoneNumber() {
         phoneNumber = etPhoneNumber.getText().toString().trim();
@@ -248,7 +240,7 @@ public class SignupActivity extends AppCompatActivity {
             inputLayoutPhoneNumber.setError(getString(string.no_empty_field));
             return false;
         } else if (phoneNumber.length() != 10) {
-            inputLayoutPhoneNumber.setError(getString(string.length_phone_number));
+            inputLayoutPhoneNumber.setError("Number not less than 10 digits");
             etPhoneNumber.setText("");
             return false;
         } else {
@@ -256,5 +248,4 @@ public class SignupActivity extends AppCompatActivity {
             return true;
         }
     }
-  }
 }

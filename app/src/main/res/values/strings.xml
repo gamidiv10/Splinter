@@ -67,6 +67,7 @@
         <item>India(INR)</item>
         <item>UK (Euro)</item>
     </string-array>
+    <string name="phone_number">Phone Number</string>
     <string name="title_activity_help_content">FAQ"s</string>
     <string name="help_intro">Introduction</string>
     <string name="help_bill">How to create a bill</string>

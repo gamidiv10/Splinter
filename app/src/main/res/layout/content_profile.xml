@@ -42,14 +42,13 @@
 
             <TextView
                 android:id="@+id/tv_profileName"
-                android:text="@string/myname"
                 style="@style/profileDetailsMiniText"
                 android:layout_toRightOf="@id/nameImageView"
                 android:text="@string/myname" />
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
 
         <RelativeLayout style="@style/profileDetailsLayout">
 
@@ -65,14 +64,13 @@
 
             <TextView
                 android:id="@+id/tv_profilePhoneNumber"
-                android:text="+190298924555"
                 style="@style/profileDetailsMiniText"
                 android:layout_toRightOf="@id/mobileImageView"
                 android:text="+190298924555" />
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
 
         <RelativeLayout style="@style/profileDetailsLayout">
 
@@ -88,14 +86,13 @@
 
             <TextView
                 android:id="@+id/tv_profileEmail"
-                android:text="developer@appsnipp.com"
                 style="@style/profileDetailsMiniText"
                 android:layout_toRightOf="@id/emailImageView"
                 android:text="developer@splinter.com" />
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
 
         <RelativeLayout style="@style/profileDetailsLayout">
 
@@ -117,7 +114,7 @@
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
 
         <RelativeLayout style="@style/profileDetailsLayout">
 
@@ -139,7 +136,7 @@
         </RelativeLayout>
 
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
 
     </LinearLayout>
 

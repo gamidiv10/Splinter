@@ -41,7 +41,7 @@
         
         </RelativeLayout>
         
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
         
         <RelativeLayout style="@style/profileDetailsLayout">
             
@@ -62,7 +62,7 @@
         
         </RelativeLayout>
         
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
         
         <RelativeLayout style="@style/profileDetailsLayout">
             
@@ -83,7 +83,7 @@
         
         </RelativeLayout>
         
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
         
         <RelativeLayout style="@style/profileDetailsLayout">
             
@@ -115,7 +115,7 @@
         
         </RelativeLayout>
         
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
     
     </LinearLayout>
 
