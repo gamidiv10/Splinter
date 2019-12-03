@@ -147,7 +147,7 @@ public class AddBillActivity extends AppCompatActivity {
 
   public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
-
+    //sending data to add participant activity if the users goes back and forth between adding bills and participants
     if (id == R.id.add_participants_button) {
       Intent intentForAddingParticipant = new Intent(AddBillActivity.this, AddParticipantActivity.class);
       intentForAddingParticipant.putExtra("fnameList", fnameList);
@@ -215,7 +215,7 @@ public class AddBillActivity extends AppCompatActivity {
           billAmountList.add("" + totalAmount);
           owedAmountList.add("" + totalAmount/(participantsCount+1));
         }
-
+        //sending data back to parent activity to display data in home screen
         Intent intent = new Intent();
         intent.putExtra("billName", billName.getText().toString());
         intent.putExtra("billAmount", totalAmount);
@@ -262,6 +262,7 @@ public class AddBillActivity extends AppCompatActivity {
     }
     return super.onOptionsItemSelected(item);
   }
+  //getting users data from participants page
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode == 1) {

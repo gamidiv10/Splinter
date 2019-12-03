@@ -9,6 +9,7 @@ package com.example.splinter;
 import java.util.ArrayList;
 import java.util.Date;
 
+//Model for Bill
 public class Bill {
 
   public String billName;

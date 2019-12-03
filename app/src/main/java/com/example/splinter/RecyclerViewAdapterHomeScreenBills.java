@@ -29,12 +29,16 @@ public class RecyclerViewAdapterHomeScreenBills extends  RecyclerView.Adapter<Re
     ArrayList<String> billAmountList = new ArrayList<>();
 
 
+    //constructor to initialize adapter
     public RecyclerViewAdapterHomeScreenBills(Context context, ArrayList<String> nameList, ArrayList<String> amountList)
     {
         billNameList = nameList;
         billAmountList = amountList;
         rvContext = context;
             }
+
+
+    //initialzing the view holder
     @NonNull
     @Override
     public RecyclerViewAdapterHomeScreenBills.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -58,6 +62,8 @@ public class RecyclerViewAdapterHomeScreenBills extends  RecyclerView.Adapter<Re
         return billNameList.size();
     }
 
+
+    //creating the view holder
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         FirebaseDatabase database = FirebaseDatabase.getInstance();

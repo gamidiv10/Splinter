@@ -43,10 +43,9 @@
     <string name="title_activity_profile">Profile</string>
     <string name="accountinfo">Account Info</string>
     <string-array name="list_faqs">
-        <item>Intro</item>
+        <item>Introduction</item>
         <item>How to create a bill</item>
         <item>How to add participants</item>
-        <item>How to edit a bill</item>
     </string-array>
     <string name="default_currency"> Default currency is based on your location (Canada)</string>
     <string name="help_Text">FAQs</string>
@@ -68,4 +67,11 @@
         <item>India(INR)</item>
         <item>UK (Euro)</item>
     </string-array>
+    <string name="title_activity_help_content">FAQ"s</string>
+    <string name="help_intro">Introduction</string>
+    <string name="help_bill">How to create a bill</string>
+    <string name="help_add_particip">How to add participants</string>
+    <string name="help_intro_sol"> Splinter is a bill sharing application which has modules like adding bills, adding items to the bill, adding participants to the bill</string>
+    <string name="help_bill_sol"> Please click on the + button on bottom right corner to create a bill</string>
+    <string name="help_add_particip_sol"> please click on the top right icon to add participants to the bill in bill creation page</string>
 </resources>

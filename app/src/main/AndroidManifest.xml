@@ -12,8 +12,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -24,17 +24,22 @@
         android:theme="@style/AppTheme"
         android:value="ca-app-pub-3162157850946233~8845791837">
         <activity
+            android:name=".Help_content"
+            android:label="@string/title_activity_help_content"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Help"
             android:label="@string/title_activity_help"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Home"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -43,9 +48,10 @@
             android:name=".AddParticipantActivity"
             android:label="Add Participant"
             android:windowSoftInputMode="adjustResize">
-<!--            <meta-data-->
-<!--                android:name="android.support.PARENT_ACTIVITY"-->
-<!--                android:value=".MainActivity" />-->
+
+            <!-- <meta-data -->
+            <!-- android:name="android.support.PARENT_ACTIVITY" -->
+            <!-- android:value=".MainActivity" /> -->
         </activity>
         <activity android:name=".Bluetooth" />
         <activity android:name=".Locations"/>
@@ -68,36 +74,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Bluetooth">
-
-        </activity>
-        <activity android:name=".Locations"
+        <activity android:name=".Bluetooth"></activity>
+        <activity
+            android:name=".Locations"
             android:parentActivityName=".Home"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
-        <activity android:name=".LoginActivity">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".LoginActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <activity android:name=".CameraActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".SharebillActivity"/>
+        <activity android:name=".SharebillActivity" />
 
         <provider
-            android:authorities="com.example.splinter.fileprovider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.splinter.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
-                <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/file_paths"></meta-data>
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 

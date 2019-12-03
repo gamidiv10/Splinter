@@ -31,7 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
   public ViewHolder holder;
   public EditText editTextItemName, editTextQty, editTextPrice;
 
-
+//RecyclerViewAdapter for Adding Items to the bill
   public RecyclerViewAdapter(Context context, ArrayList<String> itemNameList, ArrayList<String> qty, ArrayList<String> totalPrice) {
     itemList = itemNameList;
     itemQty = qty;
@@ -39,6 +39,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     rvContext = context;
   }
 
+
+  //Initializing the view holder
   @NonNull
   @Override
   public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -64,6 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     holder.price.setText(itemPrice.get(position));
   }
 
+  //getting the count of items to iterate recycler view
   @Override
   public int getItemCount() {
     return itemList.size();
@@ -76,6 +79,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     ImageButton editButton, deleteButton;
 
 
+    //creating the view holder
     public ViewHolder(@NonNull final View itemView) {
       super(itemView);
       itemName = itemView.findViewById(R.id.tv_item_name);

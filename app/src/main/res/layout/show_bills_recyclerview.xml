@@ -52,9 +52,5 @@
         android:layout_toRightOf="@+id/edit_participant_button"
         android:backgroundTint="@color/cardview_shadow_end_color"
         android:src="@drawable/delete_icon" />
-
-
-
-
     />
 </RelativeLayout>
