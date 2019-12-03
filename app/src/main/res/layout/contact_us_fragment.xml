@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.contact_us.contact_us">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu.contact_us.contact_us">
 
-    <!--    Reference: https://appsnipp.com/free-android-profile-design-with-source-code/-->
+    <!--    Reference:-->
+<!--    /***************************************************************************************-->
+<!--    *    Title: Free profile design with Collapsing Toolbar for android-->
+<!--    *    Author: Kapil Mohan-->
+<!--    *    Availability: Coding in Flow,  https://appsnipp.com/free-android-profile-design-with-source-code/-->
+<!--    ***************************************************************************************/-->
+<!--    Contact us layout-->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -19,47 +25,47 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/profilePrimaryDark"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar"
+            app:contentScrim="@color/whiteTextColor"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
-            app:expandedTitleTextAppearance="@style/TransparentText">
+            app:expandedTitleTextAppearance="@style/TransparentText"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:background="@color/deep_purple"
                 android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:id="@+id/linearLayout"
-                android:background="@color/colorPrimaryDark">
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@mipmap/splinter" />
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/splinter_new" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SPLINTER PVT LTD"
-                    android:textSize="28dp"
-                    android:textStyle="bold"/>
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="SPLINTER PVT LTD"-->
+                <!--                    android:textColor="@color/whiteTextColor"-->
+                <!--                    android:textSize="28dp"-->
+                <!--                    android:textStyle="bold"/>-->
 
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="20dp"
-                    android:background="@color/profileBackground">
+                    android:background="@color/profileBackground"
+                    android:gravity="center">
 
                     <View
-                        android:layout_alignParentTop="true"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"/>
+                        android:layout_height="30dp"
+                        android:layout_alignParentTop="true" />
 
                 </RelativeLayout>
 

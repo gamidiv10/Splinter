@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".MainActivity"
-    android:transitionGroup="true">
-
+    android:orientation="vertical"
+    android:transitionGroup="true"
+    tools:context=".MainActivity">
+<!--Bluetooth functionality screen-->
     <TextView
         android:id="@+id/statusBluetoothTv"
         android:layout_width="match_parent"
@@ -16,50 +15,78 @@
         android:text=""
         android:textAlignment="center"
         android:textSize="20sp" />
-    <!--Bluetooth icon (on/off)-->
+
     <ImageView
         android:id="@+id/bluetoothIv"
         android:layout_width="100dp"
         android:layout_height="100dp" />
-    <!--On Button-->
-    <Button
+
+    <Switch
         android:id="@+id/onBtn"
-        android:minWidth="200dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Turn On"
+        android:thumbTint="@color/colorBlue"
+        android:trackTint="@color/colorLightGrey"
         style="@style/Base.Widget.AppCompat.Button.Colored"/>
-    <!--Off btn-->
-    <Button
+
+    <Switch
         android:id="@+id/offBtn"
-        android:minWidth="200dp"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Turn Off"
-        style="@style/Base.Widget.AppCompat.Button.Colored"/>
-    <!--Discoverable button-->
-    <Button
+        android:minWidth="200dp"
+        android:text="Turn Off" />
+
+    <Switch
         android:id="@+id/discoverableBtn"
-        android:minWidth="200dp"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Discoverable"
-        style="@style/Base.Widget.AppCompat.Button.Colored"/>
-    <!--Get list of paired devices button-->
-    <!--Show paired devices here-->
-    <Button
+        android:minWidth="200dp"
+        android:text="Discoverable" />
+
+    <Switch
         android:id="@+id/pairedBtn"
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="200dp"
         android:text="Get Paired Devices" />
+    <Switch
+        android:id="@+id/sendBtn"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="200dp"
+        android:text="Send bill" />
 
     <TextView
         android:id="@+id/pairedTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:minWidth="200dp"
         android:text=""
-        android:textColor="#000"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/listDevices"
+        android:layout_alignBottom="@+id/listDevices"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp"
+        android:text="Status"
+        android:textSize="14sp"
+        android:textStyle="italic" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/listview"
+        android:layout_centerHorizontal="true" />
+
 </LinearLayout>

@@ -1,6 +1,14 @@
+/*
+ * Author: Yashesh Savani
+ * Contributors:
+ * Date: 2019
+ */
+
 package com.example.splinter;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Patterns;
@@ -89,19 +97,56 @@ public class LoginActivity extends AppCompatActivity {
                     startSignIn();
                 }
 
+      }
+    });
+
+
+    tvCreateAccount.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intentToSignup = new Intent(getApplicationContext(), SignupActivity.class);
+        startActivity(intentToSignup);
+      }
+    });
+  }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    // Check if user is signed in (non-null) and update UI accordingly.
+    FirebaseUser currentUser = mLoginAuthentication.getCurrentUser();
+    if (currentUser != null) {
+      Toast.makeText(getApplicationContext(), "Already Logged in", Toast.LENGTH_SHORT).show();
+      DatabaseReference referenceToRoot = databaseRef.getReference().child("Users");
+      referenceToRoot.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+          HashMap<String, Object> UserData = (HashMap<String, Object>) dataSnapshot.getValue();
+
+          for (Map.Entry<String, Object> users : UserData.entrySet()) {
+            Object rootID = users.getValue();
+            try {
+              JSONObject rootObject = new JSONObject(rootID.toString());
+              JSONObject email = rootObject.getJSONObject("Email");
+              fbEmail = email.getString("Email_value");
+              if (fbEmail.equals(mLoginAuthentication.getCurrentUser().getEmail())) {
+                fbFirstName = email.getString("First_name");
+                fbLastName = email.getString("Last_name");
+                break;
+              }
+            } catch (JSONException e) {
+              e.printStackTrace();
             }
-        });
+          }
+        }
 
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        tvCreateAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentToSignup = new Intent(getApplicationContext(), SignupActivity.class);
-                startActivity(intentToSignup);
-
-            }
-        });
-
+        }
+      });
+      startActivity(new Intent(LoginActivity.this, Home.class));
+      finish();
 
     }
 
@@ -153,78 +198,50 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+  }
 
-    public Boolean validateEMAIL() {
-        EMAIL = etEMAIL.getText().toString().trim();
-        if (EMAIL.isEmpty()) {
-            textInputLayoutEmail.setError(getString(R.string.no_empty_field));
-            return false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(EMAIL).matches()) {
-            textInputLayoutEmail.setError("Please enter a valid EMAIL address");
-            return false;
+  private void startSignIn() {
+    if (isNetworkConnected())
+    {
+
+    mLoginAuthentication.signInWithEmailAndPassword(EMAIL, PASSWORD).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+      @Override
+      public void onComplete(@NonNull Task<AuthResult> task) {
+        if (!task.isSuccessful()) {
+          Toast.makeText(getApplicationContext(), "Please check the credentials", Toast.LENGTH_SHORT).show();
         } else {
-            textInputLayoutEmail.setError(null);
-            return true;
+          startActivity(new Intent(LoginActivity.this, Home.class));
+          finish();
         }
-    }
-
-    public Boolean validatePassword() {
-        PASSWORD = etPassword.getText().toString().trim();
-        if (PASSWORD.isEmpty()) {
-            textInputLayoutPassword.setError(getString(R.string.no_empty_field));
-            return false;
-        } else if (!PATTERN_PASSWORD.matcher(PASSWORD).matches()) {
-            textInputLayoutPassword.setError("Password should be between 8 to 24 character\n" +
-                    "at least 1 special character [@#$%^&+=]\n" +
-                    "at least 1 digit\n" +
-                    "at least 1 capital letter\n" +
-                    "at least 1 small letter\n");
-            etPassword.setText("");
-            return false;
-        } else {
-            textInputLayoutPassword.setError(null);
-            return true;
-        }
+      }
+    });
 
     }
-
-    private void startSignIn() {
-        mLoginAuthentication.signInWithEmailAndPassword(EMAIL, PASSWORD).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (!task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Sign In Problem", Toast.LENGTH_SHORT).show();
-                } else {
-                    startActivity(new Intent(LoginActivity.this, Home.class));
-                    finish();
-                }
-            }
-        });
+    else {
+      Toast.makeText(getApplicationContext(), "Please check the internet connection", Toast.LENGTH_SHORT).show();
     }
+  }
 
-    /***************************************************************************************
-     *    Title: Click Back Button Twice to exit
-     *    Author: StackOverFlow
-     *    Code version: 1.0
-     *    Availability: StackOverflow, https://stackoverflow.com/questions/8430805/clicking-the-back-button-twice-to-exit-an-activity
-     ***************************************************************************************/
-
-    @Override
-    public void onBackPressed() {
-        if (backPressSingleTime) {
-            super.onBackPressed();
-            return;
-        }
-        this.backPressSingleTime = true;
-        Toast.makeText(getApplicationContext(), R.string.back_again_to_exit, Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                backPressSingleTime = false;
-            }
-        }, 2000);
+  private boolean isNetworkConnected() {
+    ConnectivityManager Internet_cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+    return Internet_cm.getActiveNetworkInfo() != null && Internet_cm.getActiveNetworkInfo().isConnected();
+  }
+  @Override
+  public void onBackPressed() {
+    if (backPressSingleTime) {
+      super.onBackPressed();
+      return;
     }
+    this.backPressSingleTime = true;
+    Toast.makeText(getApplicationContext(), R.string.back_again_to_exit, Toast.LENGTH_SHORT).show();
+
+    new Handler().postDelayed(new Runnable() {
+      @Override
+      public void run() {
+        backPressSingleTime = false;
+      }
+    }, 2000);
+  }
 }
 
 

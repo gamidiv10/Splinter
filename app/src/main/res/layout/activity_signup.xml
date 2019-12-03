@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
-
+<!--                Edittext for firstname-->
                 <EditText
                     android:id="@+id/et_firstName"
                     android:layout_width="fill_parent"
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1">
-
+<!--                Edittext for last name-->
                 <EditText
                     android:id="@+id/et_lastName"
                     android:layout_width="fill_parent"
@@ -78,7 +78,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp">
-
+<!--            Edittext for email-->
             <EditText
                 android:id="@+id/et_enterEmail"
                 android:layout_width="fill_parent"
@@ -100,7 +100,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             app:passwordToggleEnabled="true">
-
+<!--            Edittext for password-->
             <EditText
                 android:id="@+id/et_enterPassword"
                 android:layout_width="fill_parent"
@@ -109,6 +109,7 @@
                 android:inputType="textPassword"
                 android:scrollHorizontally="true" />
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputLayout_reenterPassword"
@@ -121,7 +122,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             app:passwordToggleEnabled="true">
-
+<!--            Edittext for confirm password-->
             <EditText
                 android:id="@+id/et_reenterPassword"
                 android:layout_width="fill_parent"

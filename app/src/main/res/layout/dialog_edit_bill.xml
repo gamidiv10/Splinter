@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="16dp"
-
-    >
-
-
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <!--bill item edit text dialogue layout-->
     <EditText
         android:id="@+id/edit_text_item_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-/>
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/edit_text_qty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edit_text_item_name"
-        />
+        android:layout_below="@id/edit_text_item_name" />
+
     <EditText
         android:id="@+id/edit_text_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_text_qty"
-        />
+        android:layout_below="@+id/edit_text_qty" />
 
     <Button
         android:id="@+id/button_save"
@@ -33,7 +28,6 @@
         android:layout_below="@+id/edit_text_price"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
-
         android:text="Save" />
 
     <Button
@@ -41,9 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_text_price"
-        android:layout_toRightOf="@+id/button_save"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/button_save"
 
         android:text="Cancel" />
 

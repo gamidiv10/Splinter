@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.profile.profile"
-    android:background="@color/profileBackground">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/profileBackground"
+    tools:context=".MainMenu.profile.profile">
 
-<!--    Reference: https://appsnipp.com/free-android-profile-design-with-source-code/-->
+    <!--    Reference: https://appsnipp.com/free-android-profile-design-with-source-code/-->
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -20,61 +21,59 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/profilePrimaryDark"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar"
+            app:contentScrim="@color/whiteTextColor"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
-            app:expandedTitleTextAppearance="@style/TransparentText">
+            app:expandedTitleTextAppearance="@style/TransparentText"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:background="@color/deep_purple"
                 android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:id="@+id/linearLayout"
-                android:background="@drawable/profile_bk">
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/ic_insert_emoticon_black_24dp" />
+                    android:src="@drawable/ic_tag_faces_black_24dp" />
 
                 <TextView
                     android:id="@+id/tv_profileShowName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/myname"
+                    android:textColor="@color/whiteTextColor"
                     android:textSize="28dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_profileShowEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/useremail"
-                    android:textSize="12dp"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/whiteTextColor"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="20dp"
-                    android:background="@color/profileBackground">
+                    android:background="@color/profileBackground"
+                    android:gravity="center">
 
-                    <View
-                        android:layout_alignParentTop="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:background="@drawable/profile_bk"/>
 
                     <Button
                         android:id="@+id/profile_edit"
-                        android:text="@string/profile_edit"
-                        style="@style/profileStyledBackButton" />
+                        style="@style/profileStyledBackButton"
+                        android:layout_margin="5dp"
+                        android:text="@string/profile_edit" />
                 </RelativeLayout>
 
             </LinearLayout>
