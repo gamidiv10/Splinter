@@ -55,10 +55,11 @@ public class LoginActivity extends AppCompatActivity {
     EditText etEMAIL, etPassword;
     Button btnLogin;
     TextView tvCreateAccount;
-    String EMAIL, PASSWORD, fbEmail, fbFirstName, fbLastName;
+    public String EMAIL, PASSWORD;
+    public static String fbEmail, fbFirstName, fbLastName, fbPhoneNumber;
     TextInputLayout textInputLayoutEmail, textInputLayoutPassword;
     Boolean backPressSingleTime = false;
-    FirebaseDatabase databaseRef = FirebaseDatabase.getInstance("https://splinter-f86ee.firebaseio.com");
+    FirebaseDatabase databaseRef = FirebaseDatabase.getInstance("https://splinter-f86ee.firebaseio.com/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,9 +117,10 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     HashMap<String, Object> UserData = (HashMap<String, Object>) dataSnapshot.getValue();
-
+                    System.out.println(UserData);
                     for (Map.Entry<String, Object> users : UserData.entrySet()) {
-=                        Object rootID = users.getValue();
+                        System.out.println("In Loop");
+                        Object rootID = users.getValue();
                         try {
                             JSONObject rootObject = new JSONObject(rootID.toString());
                             JSONObject email = rootObject.getJSONObject("Email");
@@ -126,6 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (fbEmail.equals(mLoginAuthentication.getCurrentUser().getEmail())) {
                                 fbFirstName = email.getString("First_name");
                                 fbLastName = email.getString("Last_name");
+                                fbPhoneNumber = email.getString("Phone_Number");
                                 break;
                             }
                         } catch (JSONException e) {

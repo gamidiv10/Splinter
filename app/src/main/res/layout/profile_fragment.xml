@@ -42,6 +42,7 @@
                     android:src="@drawable/ic_insert_emoticon_black_24dp" />
 
                 <TextView
+                    android:id="@+id/tv_profileShowName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/myname"
@@ -49,6 +50,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
+                    android:id="@+id/tv_profileShowEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/useremail"

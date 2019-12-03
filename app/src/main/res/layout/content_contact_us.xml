@@ -40,7 +40,7 @@
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/mobileImageView"
@@ -59,7 +59,7 @@
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/emailImageView"
@@ -78,7 +78,7 @@
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/addressImageView"
@@ -97,7 +97,7 @@
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
 
     </LinearLayout>
 

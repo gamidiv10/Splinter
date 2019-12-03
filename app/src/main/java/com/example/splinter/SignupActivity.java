@@ -1,11 +1,14 @@
 package com.example.splinter;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,10 +48,14 @@ public class SignupActivity extends AppCompatActivity {
                     "(?=\\S+$)" +           //no white spaces
                     ".{8,24}" +               //at least between 8 to 24 characters
                     "$");
-    public EditText etEnterEmail, etEnterPassword, etReenterPassword, etFirstName, etLastName;
+    public EditText etEnterEmail, etEnterPassword, etReenterPassword, etFirstName, etLastName, etPhoneNumber;
     public Button btnSignup;
-    public String enteredEmail, enteredPassword, reenteredPassword, firstName, lastName;
-    public TextInputLayout inputLayoutEnterEmail, inputLayoutEnterPassword, inputLayoutReenterPassword, inputLayoutFirstName, inputLayoutLastName;
+    public String enteredEmail, enteredPassword, reenteredPassword, firstName, lastName, phoneNumber, countryCode;
+    public TextInputLayout inputLayoutEnterEmail, inputLayoutEnterPassword, inputLayoutReenterPassword;
+    public TextInputLayout inputLayoutFirstName, inputLayoutLastName, inputLayoutPhoneNumber;
+    Spinner countryCodeSpinner;
+
+    ProgressDialog dialog;
     String passwordError = "Password should be between 8 to 24 character\n" +
             "at least 1 special character [@#$%^&+=]\n" +
             "at least 1 digit\n" +
@@ -75,20 +82,39 @@ public class SignupActivity extends AppCompatActivity {
         inputLayoutReenterPassword = findViewById(id.inputLayout_reenterPassword);
         inputLayoutFirstName = findViewById(id.inputLayout_firstName);
         inputLayoutLastName = findViewById(id.inputLayout_lastName);
-
+        inputLayoutPhoneNumber = findViewById(id.inputLayout_phoneNumber);
+        countryCodeSpinner = findViewById(id.spinner_countryCode);
+        etPhoneNumber = findViewById(id.et_phoneNumber);
 
         // Firebase get running Instance
         mSignupAuthentication = FirebaseAuth.getInstance();
+
+        countryCodeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                countryCode = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (isvalidEmail() & isvalidPassword() & isvalidConfirmPassword() & isvalidFirstname() & isvalidLastname()) {
-                    Toast.makeText(getApplicationContext(), " Creating Account...", Toast.LENGTH_SHORT).show();
+                if (isvalidEmail() & isvalidPassword() & isvalidConfirmPassword() & isvalidFirstname() & isvalidLastname() & isvalidPhoneNumber()) {
+//                    Toast.makeText(getApplicationContext(), " Creating Account...", Toast.LENGTH_SHORT).show();
+
                     Boolean success = writeUserdata();
                     if (success) {
+                        dialog = new ProgressDialog(SignupActivity.this);
+                        dialog.setMessage("Creating Account ... ");
+                        dialog.show();
                         createUserInDatabase();
+                        dialog.dismiss();
                     } else {
                         Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
                     }
@@ -106,6 +132,7 @@ public class SignupActivity extends AppCompatActivity {
             emailRef.child("Email_value").setValue(enteredEmail);
             emailRef.child("First_name").setValue(firstName);
             emailRef.child("Last_name").setValue(lastName);
+            emailRef.child("Phone_Number").setValue(countryCode+phoneNumber);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -119,7 +146,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), string.error_in_user_creation, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "User Already Exists", Toast.LENGTH_SHORT).show();
 
                 } else {
                     // After Signin it will go to the dashBoard
@@ -196,13 +223,18 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
-    public static class User {
-        String emailToDB, firstNameToDB, lastNameToDB;
-
-        public User(String emailToDB, String firstNameToDB, String lastNameToDB) {
-            this.emailToDB = emailToDB;
-            this.firstNameToDB = firstNameToDB;
-            this.lastNameToDB = lastNameToDB;
+    private Boolean isvalidPhoneNumber() {
+        phoneNumber = etPhoneNumber.getText().toString().trim();
+        if (phoneNumber.isEmpty()) {
+            inputLayoutPhoneNumber.setError(getString(string.no_empty_field));
+            return false;
+        } else if (phoneNumber.length() != 10) {
+            inputLayoutPhoneNumber.setError(getString(string.length_phone_number));
+            etPhoneNumber.setText("");
+            return false;
+        } else {
+            inputLayoutPhoneNumber.setError(null);
+            return true;
         }
     }
 }

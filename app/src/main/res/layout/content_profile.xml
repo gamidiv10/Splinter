@@ -34,13 +34,14 @@
                 style="@style/profileDetailsTextMain" />
 
             <TextView
+                android:id="@+id/tv_profileName"
                 android:text="@string/myname"
                 android:layout_toRightOf="@id/nameImageView"
                 style="@style/profileDetailsMiniText" />
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/mobileImageView"
@@ -53,13 +54,14 @@
                 style="@style/profileDetailsTextMain"/>
 
             <TextView
+                android:id="@+id/tv_profilePhoneNumber"
                 android:text="+190298924555"
                 android:layout_toRightOf="@id/mobileImageView"
                 style="@style/profileDetailsMiniText" />
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/emailImageView"
@@ -72,13 +74,14 @@
                 style="@style/profileDetailsTextMain" />
 
             <TextView
+                android:id="@+id/tv_profileEmail"
                 android:text="developer@appsnipp.com"
                 android:layout_toRightOf="@id/emailImageView"
                 style="@style/profileDetailsMiniText" />
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/addressImageView"
@@ -97,7 +100,7 @@
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
         <RelativeLayout style="@style/profileDetailsLayout">
             <ImageView
                 android:id="@+id/dobImageView"
@@ -116,7 +119,7 @@
 
         </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
+        <View style="@style/profileDetailsView" />
 
     </LinearLayout>
 

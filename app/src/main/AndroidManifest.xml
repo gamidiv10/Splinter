@@ -36,8 +36,10 @@
         <activity android:name=".Bluetooth" />
         <activity android:name=".Locations"/>
         <activity android:name=".Internet"/>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignupActivity" />
+        <activity android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".SignupActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".AddBillActivity"
             android:label="Add Bill"
             android:parentActivityName=".Home"

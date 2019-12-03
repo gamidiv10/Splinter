@@ -35,20 +35,26 @@
     <string name="error_in_user_creation">Error in User creation! Try Again!</string>
     <string name="no_empty_field">Field cannot be empty</string>
     <string name="back_again_to_exit">Please click BACK again to exit</string>
-    <string name="myname">myname</string>
-    <string name="useremail">my mmail id</string>
+    <string name="myname">My Username</string>
+    <string name="useremail">user@example.com</string>
     <string name="fname">userfirstname</string>
     <string name="lname">userlastname</string>
     <string name="profile_edit">Edit</string>
     <string name="title_activity_profile">Profile</string>
     <string name="accountinfo">Account Info</string>
     <string-array name="currency">
-        <item>Canadian dollar</item>
-        <item>US dollar</item>
-        <item>Indian Rupee</item>
-        <item>Euro</item>
+        <item>Canada(CAD)</item>
+        <item>USA(USD)</item>
+        <item>India(INR)</item>
+        <item>UK (Euro)</item>
     </string-array>
     <string name="currency_selection"> Please select the currency: </string>
     <string name="amount_total">Total</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="length_phone_number">Phone Number Length should be 10.</string>
+    <string-array name="country_code">
+        <item>+91</item>
+        <item>+1</item>
+    </string-array>
 
 </resources>
