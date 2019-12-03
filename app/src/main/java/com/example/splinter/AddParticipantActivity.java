@@ -41,6 +41,7 @@ public class AddParticipantActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_adding_participants);
 
+    //Getting data from the add_bills page
     Intent intent = getIntent();
     if (intent.getStringArrayListExtra("fnameList") != null) {
       fnameList = intent.getStringArrayListExtra("fnameList");
@@ -107,12 +108,14 @@ public class AddParticipantActivity extends AppCompatActivity {
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
   }
 
+  //Inflating the menu to the UI
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.add_partcipants_menu, menu);
     return true;
   }
 
+  //handling button click events in Menu
   public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
     if (id == R.id.save_button) {

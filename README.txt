@@ -36,7 +36,7 @@ References:
 [12]"email_send.xml" [online]
 	Available: https://materialdesignicons.com/
 	Accessed on November 18 2019.
-[13]"save.xml"
+[13]"save.xml" [online]
 	Available: https://materialdesignicons.com/
 	Accessed on November 24 2019.
 [14]Android Documentation, "RecyclerView" [Online]
@@ -60,6 +60,8 @@ References:
 [20]Android Documentation, "Location" [online]
 	Avaliable: https://developer.android.com/reference/android/location/Location
 	Accessed on November 28 2019.
+[21]"add_participants.xml" [online]
+	Available: https://materialdesignicons.com/
 
 
 

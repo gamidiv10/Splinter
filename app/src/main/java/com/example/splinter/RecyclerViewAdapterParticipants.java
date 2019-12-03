@@ -42,9 +42,12 @@ public class RecyclerViewAdapterParticipants extends RecyclerView.Adapter<Recycl
     rvContext = context;
   }
 
+
+  //initializing the view holder
   @NonNull
   @Override
   public RecyclerViewAdapterParticipants.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    //dialog to edit the bill
     dialogEditParticipant = new Dialog(rvContext);
     dialogEditParticipant.setContentView(R.layout.dialog_edit_participant);
     editTextFirstName = dialogEditParticipant.findViewById(R.id.edit_text_first_name);
@@ -70,6 +73,7 @@ public class RecyclerViewAdapterParticipants extends RecyclerView.Adapter<Recycl
   }
 
 
+  //creating the view holder
   public class ViewHolder extends RecyclerView.ViewHolder {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -95,7 +99,7 @@ public class RecyclerViewAdapterParticipants extends RecyclerView.Adapter<Recycl
           editTextLastName.setText(lastNameList.get(getAdapterPosition()));
 
           dialogEditParticipant.show();
-
+//button click events for save and cancel buttons
           buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
